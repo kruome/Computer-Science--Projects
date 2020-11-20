@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-int main() { //a program can only have one main funtion//
+int main() { //a program can only have one main funtion
 	
 	int number;
 	int xzC;
