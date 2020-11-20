@@ -25,7 +25,7 @@ int main() {
 	--------------------------------------------------------
 
 	int result = pow(2, 3); //2^3
-	cout << result;*/
+	cout << result;
 	int result = floor(4.2);
 	cout << result;
 	int guess, userinput, i, num;
@@ -46,7 +46,7 @@ int main() {
 		cout << "You guessed correctly!" << endl;
 	}
 	cout << "It took you " << guess << " times to figure the lucky number out.";
-	*/
+	
 	system("pause");
 	return 0;
 }
