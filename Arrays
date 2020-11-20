@@ -3,6 +3,8 @@ using namespace std;
 
 int main(){
 	int scores[10];
+	double values[100];
+	char characters[50]
 	
 	return 0;
 }
