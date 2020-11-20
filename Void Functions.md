@@ -25,8 +25,6 @@ void function2() {
 	cout << "Exiting function 2 \n";
 }
 
-#include <iostream>
-using namespace std;
 /*
 void print_number(int number);
 
