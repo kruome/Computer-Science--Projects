@@ -80,7 +80,7 @@ int main() {
 int square(int& n) {
 	n = n * n;
 	return n;
-}*/
+}
 
 void get_numbers(int& n1, int& n2);
 void swap_numbers(int& num1, int& num2);
@@ -118,4 +118,5 @@ void sort_numbers(int& num1, int& num2) {
 	if (num1 > num2) {
 		swap_numbers(num1, num2);
 	}
-}```
+}*/
+```
