@@ -1,7 +1,7 @@
 ```cpp
 #include <iostream>
 using namespace std;
-/*
+
 void print_number(int number);
 
 int main() {
@@ -12,9 +12,9 @@ int main() {
 void print_number(int number) {
 	cout << "The number is " << number << endl;
 }
-*/
 
-/*
+
+
 void print_msg();
 
 int main() {
@@ -24,9 +24,9 @@ int main() {
 void print_msg() {
 	cout << "Hello!\n";
 	return;
-}*/
-
-/*double getAverage(double n1, double n2);
+}
+--------------------------------------------------------
+double getAverage(double n1, double n2);
 double getAverage(double n1, double n2, double n3);
 
 int main() {
@@ -42,9 +42,10 @@ double getAverage(double n1, double n2) {
 
 double getAverage(double n1, double n2, double n3) {
 	return (n1 + n2 + n3) / 2;
-}*/
+}
+--------------------------------------------------------
 
-/* int square(int& n);
+ int square(int& n);
 
 int main() {
 	int number = 10;
@@ -56,7 +57,9 @@ int main() {
 int square(int& n) {
 	n = n * n;
 	return n;
-}*/
+}
+--------------------------------------------------------
+
 
 void get_numbers(int& n1, int& n2);
 void swap_numbers(int& num1, int& num2);
