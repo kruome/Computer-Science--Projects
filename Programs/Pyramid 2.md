@@ -10,18 +10,7 @@ int main() {
 		}
 		cout << endl;
 	}
-
-	int userinput, fact;
-	fact = 1;
-	cout << "Enter a integer to find its factorial: ";
-	cin >> userinput;
-
-	for (int i = 1; i <= userinput; i++) {
-		fact = fact * i;
-	}
-	cout << "The factorial of " << userinput << " is " << fact << endl;
 	
-
 	system("Pause");
 	return 0;
 }
