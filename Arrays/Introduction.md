@@ -45,7 +45,28 @@ int main()
     {
       cout << scores[i] << endl;
     }
-    
+--------------------------------------------------------
+    int dates[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+  cout << "For the year 2020: " << endl;
+  for (int i = 0; i < 12; i++)
+    {
+      cout << "Month " << (i + 1) << " has " << dates[i] << " days." << endl;
+    }
+    --------------------------------------------------------
+  //#include <string>//
+  
+  int dates[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+  string months[12] = { "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+
+  cout << "For the year 2020: " << endl;
+  
+  for (int i = 0; i < 12; i++){
+
+    cout << months[i] << " has " << dates[i] << " days." << endl;
+
+  }
+
     return 0;
 }
 ```
