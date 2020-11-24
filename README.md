@@ -4,7 +4,7 @@
 School notes from Manhattan College (Prof. Tina Tian)
 Repository consists of C++ concepts.
 ```
-<h>Table of Contents</h>
+<h1>Table of Contents</h1>
 
 First Header | Second Header
 ------------ | -------------
