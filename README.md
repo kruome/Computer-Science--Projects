@@ -6,8 +6,8 @@ Repository consists of C++ concepts.
 ```
 <h1>Table of Contents</h1>
 
-First Header | Second Header
------------- | -------------
+Folders | Sub Folders |Sub Folders
+------------ | ------------- | -------------
 Content cell 1 | Content cell 2
 Content column 1 | Content column 2
 
