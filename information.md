@@ -1,6 +1,6 @@
 # Setting a range using modular
 
-**(rand() % x) + y** 
+**Formula: (rand() % x) + y** 
 
 ```cpp
 If used alone, x will always set the range as: x-1 (i.g x = 100...range = 0-99);
