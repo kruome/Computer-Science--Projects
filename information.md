@@ -1,4 +1,4 @@
-#Setting a range using modular
+# Setting a range using modular
 
 **(rand() % x) + y** 
 
