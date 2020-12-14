@@ -1,4 +1,7 @@
 ```cpp
+#include <iostream>
+using namespace std;
+
 void displayHistogram(int a[], int size);
 int main() {
 	int array[6] = { 5,0,3,-1,1,2};
