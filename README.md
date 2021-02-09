@@ -8,7 +8,7 @@ Repository consists of C++ concepts.
 
 Folders | Sub Folders |
 ------------ | ------------- 
-CMPT 101 | Arrays, Functions, Mathematical Concepts, Programs, Work Files 
-CMPT 102 | Multidimensional Arrays, Standard Template Library
+CMPT 101 | **Arrays, Functions, Mathematical Concepts, Programs, Work Files**
+CMPT 102 | **Multidimensional Arrays, Standard Template Library**
 
 :whale2:
