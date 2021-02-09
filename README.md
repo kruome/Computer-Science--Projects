@@ -8,7 +8,8 @@ Repository consists of C++ concepts.
 
 Folders | Sub-Folders | Total Files |
 ------- | ----------- | -----------
-CMPT 101 | **Arrays, Functions, Void Functions, Mathematical Concepts, Programs, Sum, Pyramid, Lucky Number, Greeting, Grade, Character, Work Files, Homework, Exchange Rates** | 64
-CMPT 102 | **Multidimensional Arrays, Standard Template Library** | 7
+CMPT101 | **Arrays, Functions, Void Functions, Mathematical Concepts, Programs, Sum, Pyramid, Lucky Number, Greeting, Grade, Character, Work Files, Homework, Exchange Rates** | 64
+CMPT102 | **Multidimensional Arrays, Standard Template Library** | 7
+Total(#)| 17          | 71
 
 :whale2:
