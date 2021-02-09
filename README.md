@@ -7,7 +7,7 @@ Repository consists of C++ concepts.
 <h1>Table of Contents</h1>
 
 Folders | Sub-Folders | Total Files |
------------- | ------------- | ---
+- | - | -
 CMPT 101 | **Arrays, Functions, Mathematical Concepts, Programs, Work Files**
 CMPT 102 | **Multidimensional Arrays, Standard Template Library**
 
