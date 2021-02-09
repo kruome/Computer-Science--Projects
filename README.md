@@ -6,9 +6,9 @@ Repository consists of C++ concepts.
 ```
 <h1>Table of Contents</h1>
 
-Folders | Sub Folders |Sub Folders
------------- | ------------- | -------------
-Content cell 1 | Content cell 2
-Content column 1 | Content column 2
+Folders | Sub Folders |
+------------ | ------------- 
+CMPT 101 | Arrays, Functions, Mathematical Concepts, Programs, Work Files 
+CMPT 102 | Multidimensional Arrays, Standard Template Library
 
 :whale2:
