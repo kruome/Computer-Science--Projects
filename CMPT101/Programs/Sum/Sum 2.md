@@ -17,7 +17,9 @@ int main() {
 		cin >> number;
 	}
 	cout << sum;
+```
 --------------------------------------------------------
+```cpp
 	int sum, number;
 	sum = 0;
 
