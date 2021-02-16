@@ -42,6 +42,7 @@ main ()
 
 ```cpp
 int main() {
+    
     int scores[3] = { 4,7,11 };
     int *scoptr = scores;
     
@@ -52,6 +53,17 @@ int main() {
     for(int i = 0; i < 3; i++){
         cout<< *(scoptr + i)<< " ";
     }cout<<endl;
+    
+    
+    for(int i = 0; i <3; i++){
+        cout<<*scoptr<<" ";
+        scoptr++;
+    }
+    cout<<endl;
+    
+    for(int i = 0; i < 3; i++){
+        scoptr--;
+        cout<<*scoptr << " ";
+    }
 }
-
 ```
