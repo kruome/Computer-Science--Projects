@@ -25,7 +25,9 @@ void print_msg() {
 	cout << "Hello!\n";
 	return;
 }
+```
 --------------------------------------------------------
+```cpp
 double getAverage(double n1, double n2);
 double getAverage(double n1, double n2, double n3);
 
@@ -43,9 +45,10 @@ double getAverage(double n1, double n2) {
 double getAverage(double n1, double n2, double n3) {
 	return (n1 + n2 + n3) / 2;
 }
+```
 --------------------------------------------------------
-
- int square(int& n);
+```cpp
+int square(int& n);
 
 int main() {
 	int number = 10;
@@ -58,9 +61,10 @@ int square(int& n) {
 	n = n * n;
 	return n;
 }
+```
 --------------------------------------------------------
 
-
+```cpp
 void get_numbers(int& n1, int& n2);
 void swap_numbers(int& num1, int& num2);
 void sort_numbers(int& num1, int& num2);
