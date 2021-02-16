@@ -20,4 +20,19 @@ int main()
     return 0;
 }
 
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num = 10;
+    int *intptr = &num;
+    
+    cout<< num; 
+    cout<<endl;
+    cout<< *intptr;
+    cout<<intptr;
+    return 0;
+}
+
 ```
