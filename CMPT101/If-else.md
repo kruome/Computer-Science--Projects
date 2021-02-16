@@ -18,7 +18,9 @@ int main() {
 	system("pause");
 	return 0;
 }
+```
 --------------------------------------------------------
+```cpp
 int main() {
 	double n1, n2;
 
@@ -35,7 +37,9 @@ int main() {
 	system("pause");
 	return 0;
 }
+```
 --------------------------------------------------------
+```cpp
 int main() {
 	int number;
 	
