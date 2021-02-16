@@ -37,5 +37,21 @@ main ()
   
   return 0;
 }
+```
+--------------------------------------------------------
+
+```cpp
+int main() {
+    int scores[3] = { 4,7,11 };
+    int *scoptr = scores;
+    
+    for (int i = 0; i < 3; i++){
+        cout<< scoptr[i] << " ";
+    }cout<<endl;
+    
+    for(int i = 0; i < 3; i++){
+        cout<< *(scoptr + i)<< " ";
+    }cout<<endl;
+}
 
 ```
