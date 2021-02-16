@@ -12,7 +12,9 @@ int main()
     scores[3] = 60;
     scores[4] = 50;
     cout<<scores[2];
+```
 --------------------------------------------------------
+```cpp
     int scores[5] = {90, 80, 70, 60, 50 };
     cout<<scores[0];
     
@@ -20,8 +22,10 @@ int main()
     {
       cout << scores[i] << endl;
     }
+```
 --------------------------------------------------------
-    //Assignment//
+```cpp
+   //Assignment//
     
     int scores[5];
     
@@ -32,7 +36,9 @@ int main()
     for (int i = 0; i < 5; i++) {
         cout << scores[i] << endl;
     }
+```
 --------------------------------------------------------
+```cpp
      int scores[5];
 
   for (int i = 0; i < 5; i++)
@@ -45,7 +51,9 @@ int main()
     {
       cout << scores[i] << endl;
     }
+```
 --------------------------------------------------------
+```cpp
     int dates[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
   cout << "For the year 2020: " << endl;
@@ -53,8 +61,10 @@ int main()
     {
       cout << "Month " << (i + 1) << " has " << dates[i] << " days." << endl;
     }
+```
     --------------------------------------------------------
-  //#include <string>//
+```cpp
+ //#include <string>//
   
   int dates[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
   string months[12] = { "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
