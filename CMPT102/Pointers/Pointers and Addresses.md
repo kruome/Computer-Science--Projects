@@ -19,19 +19,4 @@ int main()
     cout<<ptr<<endl;
     return 0;
 }
-
---------------------------------------------------------
-
-int main()
-{
-    int num = 10;
-    int *intptr = &num;
-    
-    cout<< num; 
-    cout<<endl;
-    cout<< *intptr;
-    cout<<intptr;
-    return 0;
-}
-
 ```
