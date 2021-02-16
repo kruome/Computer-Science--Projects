@@ -18,7 +18,9 @@ double celsius(double f) {
 	double c = (f - 32) * 5 / 9;
 	return c;
 }
+```
 --------------------------------------------------------
+```cpp
 
 int my_abs(int abs);
 
@@ -39,7 +41,9 @@ int my_abs(int abs) {
 	}
 	return abs;
 }
+```
 --------------------------------------------------------
+```cpp
 
 int factorial(int x);
 
@@ -55,7 +59,10 @@ int factorial(int x) {
 	}
 	return fact;
 }
+```
 --------------------------------------------------------
+```cpp
+
 bool isPrime(int n);
 
 int main() {
@@ -76,7 +83,9 @@ bool isPrime(int n) {
 	}
 	return isPrime;
 }
+```
 --------------------------------------------------------
+```cpp
 bool isEven(int n);
 
 int main() {
@@ -94,7 +103,9 @@ bool isEven(int n) {
 	else
 		return false;
 }
+```
 --------------------------------------------------------
+```cpp
 int getNumber();
 
 int main() {
