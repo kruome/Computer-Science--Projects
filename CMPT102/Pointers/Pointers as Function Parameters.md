@@ -14,8 +14,7 @@ int main()
 
 void displayValues(int *a, int size){
     for(int i = 0; i < size; i++){
-        cout<<*a<<" ";
-        *a++;
+        cout<<*(a+i)<<" ";
     }
 }
 ```
