@@ -41,3 +41,20 @@ void swap2(int* x, int* y){
    *y = temp;
 }
 ```
+----------------------------------------------
+```cpp
+int main()
+{
+    int number1 = 10;
+    int number2 = 20;
+    
+    const int a = 25;
+    const int b = 35;
+    const int *ptr = &a;
+    cout<<ptr<<endl;
+    ptr = &b;
+    cout<<ptr<<endl;
+    
+    return 0;
+}
+```
