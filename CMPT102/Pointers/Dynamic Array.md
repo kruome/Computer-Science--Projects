@@ -46,6 +46,8 @@ int* getArray(int num1, int num2, int num3){
     return a;
 }
 ```
+--------------------------------------------------------
+
 ```cpp
 int * getArray(int);
 int main(){
