@@ -22,3 +22,30 @@ main ()
   return 0;
 }
 ```
+--------------------------------------------------------
+```cpp
+#include <iostream>
+using namespace std;
+
+int* getArray(int, int, int);
+
+int main(){
+    int* arrayptr = getArray(1,2,3);
+    cout<<arrayptr<<endl;
+    
+    for(int i = 0; i < 3;i++){
+        cout<<*(arrayptr + i)<< " ";
+    }
+    
+    delete[] arrayptr;
+}
+
+int* getArray(int num1, int num2, int num3){
+    int *a = new int[3];
+    a[0] = num1;
+    a[1] = num2;
+    a[2] = num3;
+    
+    return a;
+}
+```
