@@ -1,6 +1,6 @@
 ```cpp
 #include <iostream>
-
+#include <ctime>
 using namespace std;
 
 int
@@ -24,9 +24,6 @@ main ()
 ```
 --------------------------------------------------------
 ```cpp
-#include <iostream>
-using namespace std;
-
 int* getArray(int, int, int);
 
 int main(){
@@ -46,6 +43,31 @@ int* getArray(int num1, int num2, int num3){
     a[1] = num2;
     a[2] = num3;
     
+    return a;
+}
+```
+```cpp
+int * getArray(int);
+int main(){
+    
+    srand(time(0));
+
+    int* vscoptr = getArray(10);
+    cout<< vscoptr<<endl;
+    
+    for(int i = 0; i < 10;i++){
+        cout<<*(vscoptr + i)<< " ";
+    }
+    
+    delete[] vscoptr;
+}
+
+
+int* getArray(int size){
+    int* a = new int[size];
+    for(int i = 0; i < size; i++){
+        a[i] = rand() % 10;
+    }
     return a;
 }
 ```
