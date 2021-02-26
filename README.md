@@ -1,8 +1,7 @@
 ```diff
-- bruh
 # Computer-Science-I
-School notes from Manhattan College (Prof. Tina Tian)
-Repository consists of C++ concepts.
+- School notes from Manhattan College (Prof. Tina Tian)
++ Repository consists of C++ concepts.
 ```
 <h1>Table of Contents</h1>
 
