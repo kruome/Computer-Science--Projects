@@ -1,5 +1,5 @@
- ```cpp
- #include <cctype>
+```cpp
+#include <cctype>
 #include <string>
 #include <iostream>
 using namespace std;
@@ -22,16 +22,13 @@ int main()
 
 bool isValid(string s){
     for(int i = 0; i < 3; i++){
-        if(isalpha(s[i])){
-            continue;
-        }else{
+        if(!isalpha(s[i])){
             return false;
         }
+        
     }
     for(int i = 3; i < 7 ; i++){
-        if(isdigit(s[i])){
-            continue;
-        }else{
+        if(!isdigit(s[i])){
             return false;
         }
     }
