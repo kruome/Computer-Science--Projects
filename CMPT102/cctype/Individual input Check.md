@@ -21,6 +21,7 @@ int main()
 }
 
 bool isValid(string s){
+    // Need to add a limit for the string to be 7
     for(int i = 0; i < 3; i++){
         if(!isalpha(s[i])){
             return false;
