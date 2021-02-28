@@ -49,7 +49,7 @@ int* getArray(int num1, int num2, int num3){
 --------------------------------------------------------
 
 ```cpp
-int * getArray(int);
+int* getArray(int);
 int main(){
     
     srand(time(0));
