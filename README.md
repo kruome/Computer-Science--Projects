@@ -8,7 +8,7 @@
 Folders | Sub-Folders | Total Files |
 ------- | ----------- | -----------
 CMPT101 | **Arrays, Functions, Void Functions, Mathematical Concepts, Programs, Sum, Pyramid, Lucky Number, Greeting, Grade, Character, Work Files, Homework, Exchange Rates** | 64
-CMPT102 | **Multidimensional Arrays, Standard Template Library, cctype, Pointers** | 17
-Total (#)| 19         | 83
+CMPT102 | **Multidimensional Arrays, Standard Template Library, cctype, Homework, Pointers** | 17
+Total (#)| 20         | 83
 
 :whale2:
