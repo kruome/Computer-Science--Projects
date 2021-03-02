@@ -22,7 +22,7 @@ int getSum(string s){
     int sum = 0;
     for(int i=0;i<s.length();i++ ){
         if(isdigit(s[i])){
-            sum += (s[i] - 48); //ASCII CODE FOR 0 IS 48
+            sum += (s[i] - 48); //ASCII CODE FOR 0 IS 48 -- '0' CAN ALSO BE USED
         }
     }
     return sum;
