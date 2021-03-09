@@ -14,12 +14,12 @@ int main(){
 void countDown(int n){
     if(n >= 0){
         cout<<n<<" ";
-        countDown(n-1);
+        countDown(n-1); //tail recursion
     }
 }
 void countUp(int n){
     if(n >= 0){
-        countUp(n-1);
+        countUp(n-1); //head recursion
         cout<<n<<" ";
     }
 }
