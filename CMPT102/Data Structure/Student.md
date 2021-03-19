@@ -17,6 +17,8 @@ struct Student{
     Date dob;
 };
 
+bool isEligible(double gpa);
+
 int main(){
     
     Student y;
@@ -24,7 +26,8 @@ int main(){
     cout<<"Enter the student ID: ";
     cin>>y.id;
     cout<<"Enter the student name: ";
-    cin>>y.name;
+    cin.ignore();
+    getline(cin,y.name);
     cout<<"Enter the student year: ";
     cin>>y.year;
     cout<<"Enter the student gpa: ";
@@ -41,5 +44,12 @@ int main(){
     cout<<"DOB: "<<y.dob.day<<"/"<<y.dob.month<<"/"<<y.dob.year;
     
     return 0;
+}
+
+bool isEligible(double gpa){
+    if(gpa>= 3)
+        return true;
+    else
+        return false;
 }
 ```
