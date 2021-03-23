@@ -36,18 +36,24 @@ int main(){
     cin>>y.dob.day >> y.dob.month >>y.dob.year;
     
     cout<<endl;
-    
+   
     cout<< "ID: "<< y.id<<endl;
     cout<< "Name: "<<y.name<<endl;
     cout<< "Year in school: " <<y.year<<endl;
     cout<<"GPA: "<<y.gpa<<endl;
     cout<<"DOB: "<<y.dob.day<<"/"<<y.dob.month<<"/"<<y.dob.year;
     
+    cout<<endl;
+    if(isEligible(y.gpa)){
+        cout<< y.name<<" is eligible to apply for graduate school.";
+    }else{
+        cout<<y.name<<" is not eligible to apply for graduate school.";
+    }
     return 0;
 }
 
 bool isEligible(double gpa){
-    if(gpa>= 3)
+    if(gpa >= 3)
         return true;
     else
         return false;
