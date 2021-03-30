@@ -23,7 +23,16 @@ Student getStudentData();
 
 int main(){
     
-    int num_of_students;
+    Student* ptr;
+    
+     *ptr = getStudentData();
+     showData(*ptr);
+     
+     cout<< (*ptr).id << endl;
+     cout<< ptr->id<<endl;
+     
+     
+    /*int num_of_students;
     
     cout<<"Enter the number of students: ";
     cin>>num_of_students;
@@ -41,7 +50,7 @@ int main(){
         cout<<endl;
     }
     
-    delete[] students; 
+    delete[] students;*/ 
     return 0;
 }
 Student getStudentData(){
