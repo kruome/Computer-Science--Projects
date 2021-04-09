@@ -1,4 +1,3 @@
-```cpp
 #include <cctype>
 #include <iostream>
 
@@ -24,4 +23,3 @@ int main()
 
     return 0;
 }
-```
