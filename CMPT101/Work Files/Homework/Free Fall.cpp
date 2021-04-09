@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -32,4 +31,3 @@ int fallingDistance() {
 
 	return time;
 }
-```
