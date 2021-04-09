@@ -1,4 +1,3 @@
-```cpp
 #include <cctype>
 #include <string>
 #include <iostream>
@@ -36,4 +35,3 @@ bool isValid(string s){
     
     return true;
 }
-```
