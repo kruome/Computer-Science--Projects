@@ -1,5 +1,3 @@
-```cpp
-
 #include <iostream>
 using namespace std;
 
@@ -46,4 +44,3 @@ double distance, weight;
 	system("pause");
 	return 0;
 }
-```
