@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <string>
 using namespace std;
@@ -132,4 +131,3 @@ bool same(Date d1, Date d2){
     }
     return true;
 }
-```
