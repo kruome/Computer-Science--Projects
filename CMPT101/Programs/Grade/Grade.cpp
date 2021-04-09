@@ -1,4 +1,3 @@
-```cpp
 int main() {
 	char grade;
 	cout << "What is your grade? ";
@@ -25,4 +24,3 @@ int main() {
 	return 0;
 
 }
-```
