@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -29,4 +28,3 @@ int find_sum(int a[], int size) {
 	}
 	return sum;
 }
-```
