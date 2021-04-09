@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -15,4 +14,3 @@ int main() { //a program can only have one main funtion
 	
 	return 0;
 }
-```
