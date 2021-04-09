@@ -14,7 +14,3 @@ int main(){
     cout<<"Area: "<<c2.getArea()<<endl;
     return 0;
 }
-double Circle::getArea() const{
-    return M_PI * pow(radius,2);
-}
-
