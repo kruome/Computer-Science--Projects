@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -32,4 +31,4 @@ bool compare(int a[], int b[], int size) {
 		}
 	}
 	return true;
-  ```
+}
