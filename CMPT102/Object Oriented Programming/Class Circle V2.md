@@ -42,11 +42,10 @@ void Circle::setRadius(double r){
     radius = r;
 }
 ```
-<h2>Different methods for function:</h2>
-*Void Circle*
-
+<h2>Different methods for function: Void Circle</h2>
 
 ------------------------------------------------------
+
 ```cpp
 void Circle::setRadius(double radius){
     if(radius>0){
