@@ -1,4 +1,3 @@
-```cpp
 #include <iostream> 
 #include <cctype>
 using namespace std;
@@ -56,4 +55,3 @@ int getmin(string s){
     min = min - 48;
     return min;
 }
-```
