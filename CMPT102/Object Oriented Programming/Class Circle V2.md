@@ -10,22 +10,25 @@ private:
 public:
     double getArea() const;// member function
     double getRadius() const;
-    void setRadius(double);
+    void setRadius(double r);
     
 };
 
 int main(){
     
     Circle c1, c2;
+    int n;
     
-    c1.radius = 10;
-    cout<<"Radius: "<<c1.radius<<endl;
+    c1.setRadius(10);
+    cout<<"Radius: "<<c1.getRadius()<<endl;
     cout<<"Area: "<<c1.getArea()<<endl;
     
     cout<<"Enter the radius of the second circle: ";
-    cin>> c2.radius;
+    cin>> n;
     
-    cout<<"Radius: "<<c2.radius<<endl;
+    c2.setRadius(n);
+    
+    cout<<"Radius: "<<c2.getRadius()<<endl;
     cout<<"Area: "<<c2.getArea()<<endl;
     return 0;
 }
@@ -33,9 +36,9 @@ double Circle::getArea() const{
     return M_PI * pow(radius,2);
 }
 double Circle::getRadius() const{
-    return 0.0;
+    return radius;
 }
-void Circle::setRadius(double){
-    
+void Circle::setRadius(double r){
+    radius = r;
 }
 ```
