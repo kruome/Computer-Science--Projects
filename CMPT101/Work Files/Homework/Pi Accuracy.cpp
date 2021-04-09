@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -22,4 +21,3 @@ int main()
     cout << "Pi is " << pi;
     return 0;
 }
-```
