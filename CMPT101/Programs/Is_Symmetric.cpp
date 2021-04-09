@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -25,4 +24,4 @@ bool is_symmetric(int a[], int size) {
 		}
 	}
 	return true;
-  ```
+}
