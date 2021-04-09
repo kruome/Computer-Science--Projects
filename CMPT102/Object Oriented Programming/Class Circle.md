@@ -3,14 +3,6 @@
 #include <cmath>
 using namespace std;
 
-class Circle{
-
-public:
-    
-    double radius; // member variable
-    double getArea() const;// member function
-};
-
 int main(){
     
     Circle c1, c2;
