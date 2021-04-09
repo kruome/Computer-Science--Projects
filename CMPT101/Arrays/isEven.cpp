@@ -1,5 +1,3 @@
-```cpp
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -37,4 +35,3 @@ bool isEven(int num) {
 		return false;
 	}
 }
-```
