@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -16,4 +15,3 @@ int fact(int n){
     return n*fact(n-1); // Finding the missing link 
 
 }
-```
