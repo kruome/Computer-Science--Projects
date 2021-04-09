@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -83,4 +82,3 @@ double findHighest(double s1, double s2, double s3, double s4, double s5) {
 		return s5;
 	}
 }
-```
