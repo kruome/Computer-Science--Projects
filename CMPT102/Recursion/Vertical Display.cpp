@@ -1,5 +1,3 @@
- ```cpp
- 
 #include <iostream>
 
 using namespace std;
@@ -23,4 +21,3 @@ void writeVertical(int n){
 
  }
 }
-```
