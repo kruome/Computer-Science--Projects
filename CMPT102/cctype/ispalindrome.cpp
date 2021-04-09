@@ -1,4 +1,3 @@
-```cpp
 #include <cctype>
 #include <iostream>
 #include <string>
@@ -57,4 +56,3 @@ bool isPalindrome(string s){
     }
     return true;
 }
-```
