@@ -1,4 +1,3 @@
-```cpp 
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -24,4 +23,3 @@ int max(int a[], int size) {
 	}
 	return max;
 }
-```
