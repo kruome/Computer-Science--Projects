@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -34,4 +33,3 @@ double max(int a, int b, int c) {
 	}
 	return largestvalue;
 }
-```
