@@ -1,4 +1,3 @@
-```cpp
 #include <iostream> 
 
 using namespace std; 
@@ -192,4 +191,3 @@ void getLowestInColumn(int a[][3], int c){
         cout<< "The "<< col + 1<< " column lowest value is " << lowest<< endl; 
 
     } 
-```
