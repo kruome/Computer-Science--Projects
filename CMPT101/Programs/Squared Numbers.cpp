@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 
 int main() {
@@ -12,4 +11,3 @@ int number = 1;
 		cout << number << "\t" << squared << "\n";
 		number = number + 1;
 }
-```
