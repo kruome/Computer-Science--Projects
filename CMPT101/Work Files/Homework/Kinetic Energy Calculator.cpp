@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -20,4 +19,3 @@ int kineticEnergy() {
 
 	return (pow(velocity, 2) * mass);
 }
-```
