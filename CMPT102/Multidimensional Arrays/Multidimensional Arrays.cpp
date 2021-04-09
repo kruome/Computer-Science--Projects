@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -22,4 +21,3 @@ int main(){
  cout<<"The total sum is "<< sum;
     
 }
-```
