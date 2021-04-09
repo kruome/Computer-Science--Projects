@@ -1,4 +1,3 @@
-```cpp
 #include <cctype>
 #include <iostream>
 #include <string>
@@ -27,4 +26,3 @@ int getSum(string s){
     }
     return sum;
 }
-```
