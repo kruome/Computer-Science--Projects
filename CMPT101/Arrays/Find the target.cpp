@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 
 int search(int a[], int size, int target);
@@ -17,4 +16,3 @@ int search(int a[], int size, int target) {
 	value = -1;
 	return value;
 }
-```
