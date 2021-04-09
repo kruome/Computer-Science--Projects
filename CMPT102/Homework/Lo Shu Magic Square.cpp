@@ -1,4 +1,3 @@
-```cpp
 #include <iostream> 
 
 using namespace std; 
@@ -170,4 +169,3 @@ bool isLSMS(int a[][3], int r){
   
 
 } 
-```
