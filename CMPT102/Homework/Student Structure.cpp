@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <string>
 using namespace std;
@@ -81,4 +80,3 @@ void showData(Student s){
     cout<<"Average Test Score: "<<s.average<<endl;
     cout<<"Grade: "<<s.grade<<endl;
 }
-```
