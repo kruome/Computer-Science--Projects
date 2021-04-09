@@ -43,7 +43,7 @@ void Circle::setRadius(double r){
 }
 ```
 <h2>Different methods for function:</h2>
-**Void Circle**
+*Void Circle*
 
 
 ------------------------------------------------------
