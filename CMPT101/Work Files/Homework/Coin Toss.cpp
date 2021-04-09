@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -74,4 +73,3 @@ int coinToss() {
 	int randomnumber = (rand() % 2) + 1;
 	return randomnumber;
 }
-```
