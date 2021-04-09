@@ -1,4 +1,4 @@
-```cpp
+
 #include <iostream>
 using namespace std;
 
@@ -32,4 +32,4 @@ int getaverage(int a[], int size){
     }
     return sum / size;
 }
-```
+
