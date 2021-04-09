@@ -1,4 +1,3 @@
-```cpp
 #include <iostream> 
 #include <cctype>
 using namespace std;
@@ -69,4 +68,3 @@ bool validnumber(string s){
     }
     return false;
 }
-```
