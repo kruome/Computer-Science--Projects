@@ -34,7 +34,7 @@ const int NUMBER_OF_HOMEWORK=10;
 }
 ```
 --------------------------------------------------------
-```
+```cpp
 #include <iostream>
 #include <ctime>
 
