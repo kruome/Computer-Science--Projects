@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -14,6 +13,4 @@ int power(int x, int n){
         return 1;
     }
     return power(x,n-1)*x; // Finding the missing link 
-
 }
-```
