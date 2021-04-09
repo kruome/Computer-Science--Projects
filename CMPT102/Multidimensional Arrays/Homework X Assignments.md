@@ -32,9 +32,9 @@ const int NUMBER_OF_HOMEWORK=10;
     }
     return 0;
 }
-
+```
 --------------------------------------------------------
-
+```
 #include <iostream>
 #include <ctime>
 
