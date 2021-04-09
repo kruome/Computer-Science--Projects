@@ -2,7 +2,6 @@
 #include <cmath>
 using namespace std;
 
-
 int main()
 {
     cout << "The prime numbers from 3 to 100 are: " << endl;
