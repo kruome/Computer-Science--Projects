@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -18,4 +17,3 @@ int gcd (int x, int y)
         return gcd (y, x % y);
 
 }
-```
