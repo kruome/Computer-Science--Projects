@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -23,4 +22,3 @@ void countUp(int n){
         cout<<n<<" ";
     }
 }
-```
