@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -13,4 +12,3 @@ double fractionsum(double n){
         return (1/n)+(fractionsum(n-1));
     }
 }
-```
