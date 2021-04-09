@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -28,4 +27,3 @@ int indexofSmallestElement(int a[], int size) {
 	}
 	return min;
 }
-```
