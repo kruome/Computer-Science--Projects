@@ -1,4 +1,3 @@
-```cpp
 #include <iostream> 
 using namespace std;
 
@@ -17,4 +16,3 @@ int sum(int n){
         return n + sum(n-1); 
     } 
 } 
-```
