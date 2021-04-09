@@ -1,4 +1,3 @@
-```cpp
 //Arrays need to have one data type (i.g int char double etc...)//
 
 #include <iostream>
@@ -11,4 +10,3 @@ int main(){
 	df
 	return 0;
 }
-```
