@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -15,4 +14,3 @@ void print_time(int s) {
 	cout << hours << " h," << minutes << " m," << seconds << " s,";
 
 }
-```
