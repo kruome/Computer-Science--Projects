@@ -1,8 +1,4 @@
 ```cpp
-#include <iostream>
-#include <cmath>
-using namespace std;
-
 int main(){
     
     Circle c1, c2;
