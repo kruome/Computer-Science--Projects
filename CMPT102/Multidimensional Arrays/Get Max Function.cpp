@@ -1,4 +1,3 @@
-```cpp
 int getMax(a[][10], int rows){
    
     int max = a[0][0];
@@ -13,4 +12,3 @@ int getMax(a[][10], int rows){
         
     return max;
 }
-```
