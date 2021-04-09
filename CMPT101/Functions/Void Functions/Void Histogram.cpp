@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -19,4 +18,3 @@ void displayHistogram(int a[], int size) {
 		
 	}
 }
-```
