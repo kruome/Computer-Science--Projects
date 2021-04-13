@@ -1,23 +1,14 @@
-double Rectangle::getWidth(){
-  return width;
-}
+#include <iostream>
+using namespace std;
 
-void Rectangle::setWidth(double width){
-  this->width = width;
-}
-
-double Rectangle::getHeight(){
-  return height;
-}
-
-void Rectangle::setHeight(double height){
-  this->height = height;
-}
-
-double Rectangle::getArea(){
-  return (width*height);
-}
-
-void Rectangle::getPerimeter(){
-  return 2*(width + height);
-}
+class Rectangle{
+    private:
+    double width, height;
+    public:
+    double getWidth();
+    void setWidth(double);
+    double getHeight();
+    void setHeight(double);
+    double getArea();
+    void getPerimeter();
+};
