@@ -6,7 +6,7 @@ int main(){
     Circle *c3 = new Circle;
     int n;
     
-    c1.setRadius(10);
+    //c1.setRadius(10); // Radius will be set to 1 as a default 
     cout<<"Radius: "<<c1.getRadius()<<endl;
     cout<<"Area: "<<c1.getArea()<<endl;
     
