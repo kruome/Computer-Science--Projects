@@ -10,5 +10,5 @@ class Rectangle{
     double getHeight();
     void setHeight(double);
     double getArea();
-    void getPerimeter();
+    double getPerimeter();
 };
