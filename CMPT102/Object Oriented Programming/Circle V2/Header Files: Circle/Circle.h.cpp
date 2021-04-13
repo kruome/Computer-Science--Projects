@@ -8,4 +8,5 @@ class Circle{
     double getArea() const;
     double getRadius() const;
     void SetRadius(double r);
+    Circle(); //constructor
 };
