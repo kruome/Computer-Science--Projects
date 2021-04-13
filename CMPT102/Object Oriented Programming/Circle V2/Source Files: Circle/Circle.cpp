@@ -10,5 +10,5 @@ void Circle::setRadius(double r){
     radius = r;
 }
 Circle::Circle(){
-    radius =1;
+    radius = 1;
 }
