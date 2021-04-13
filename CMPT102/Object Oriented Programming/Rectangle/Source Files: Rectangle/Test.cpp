@@ -1,3 +1,5 @@
+#include "Rectangle.h"
+
 int main(){
     Rectangle r1;
     Rectangle *r2 = new Rectangle;
