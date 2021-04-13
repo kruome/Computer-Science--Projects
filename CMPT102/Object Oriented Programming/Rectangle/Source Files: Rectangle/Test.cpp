@@ -21,7 +21,7 @@ int main(){
     r2 -> setWidth(w);
     r2 ->setHeight(h);
     
-    cout<<"Rectangle 2: "endl;
+    cout<<"Rectangle 2: "<<endl;
     cout<<"Width: " <<r2->getWidth()<<endl;
     cout<<"Height: "<<r2->getHeight()<<endl;
     cout<<"Area: "<<r2->getArea()<<endl;
