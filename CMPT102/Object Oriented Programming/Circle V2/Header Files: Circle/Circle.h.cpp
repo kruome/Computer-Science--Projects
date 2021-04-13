@@ -10,4 +10,5 @@ class Circle{
     double getRadius() const;
     void setRadius(double r);
     Circle();
+    Circle(double);
 };
