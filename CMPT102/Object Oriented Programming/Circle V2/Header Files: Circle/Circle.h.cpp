@@ -8,6 +8,6 @@ class Circle{
   public:
     double getArea() const;
     double getRadius() const;
-    void SetRadius(double r);
-    Circle(); //constructor
+    void setRadius(double r);
+    Circle();
 };
