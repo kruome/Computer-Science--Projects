@@ -9,3 +9,6 @@ double Circle::getRadius() const{
 void Circle::setRadius(double r){
     radius = r;
 }
+Circle::Circle(){
+    radius =1;
+}
