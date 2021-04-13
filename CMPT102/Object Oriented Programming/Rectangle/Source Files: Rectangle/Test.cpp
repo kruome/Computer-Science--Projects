@@ -27,5 +27,6 @@ int main(){
     cout<<"Area: "<<r2->getArea()<<endl;
     cout<<"Perimeter: "<<r2->getPerimeter()<<endl;
 
+    delete[] r2;
     return 0;
 }
