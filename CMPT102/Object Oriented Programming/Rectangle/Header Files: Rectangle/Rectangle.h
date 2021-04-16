@@ -12,5 +12,4 @@ class Rectangle{
     double getPerimeter();
     Rectangle();
     Rectangle(double, double);
-    ~Rectangle();
 };
