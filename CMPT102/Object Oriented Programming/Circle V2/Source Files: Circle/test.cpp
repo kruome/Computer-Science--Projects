@@ -31,6 +31,15 @@ int main(){
     c4-> setRadius(5);
      cout<<"Radius: "<<c4->getRadius()<<endl;
     cout<<"Area: "<<c4->getArea()<<endl;
+    cout<<endl;
+    
+    cout<<"Cricle array: ";
+    Circle circles[3];
+    
+    for (int i = 0; i < 3; i++){
+        cout<<"Radius: " << circles[i].getRadius() << endl;
+        cout<<"Area: " <<circles[i].getArea()<<endl;
+    }
     
     delete[] c4; // or delete c4
     return 0;
