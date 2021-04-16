@@ -37,6 +37,7 @@ int main(){
     Circle circles[3];
     
     for (int i = 0; i < 3; i++){
+        circles[i].setRadius(i+1);
         cout<<"Radius: " << circles[i].getRadius() << endl;
         cout<<"Area: " <<circles[i].getArea()<<endl;
     }
