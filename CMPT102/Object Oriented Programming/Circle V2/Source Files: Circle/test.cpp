@@ -34,10 +34,12 @@ int main(){
     cout<<endl;
     
     cout<<"Cricle array: ";
-    Circle circles[3];
+    
+    Circle circles[3] = {Circle(5), Circle(10), Circle(15)};
+    //Circle circles[3];
     
     for (int i = 0; i < 3; i++){
-        circles[i].setRadius(i+1);
+        //circles[i].setRadius(i+1);
         cout<<"Radius: " << circles[i].getRadius() << endl;
         cout<<"Area: " <<circles[i].getArea()<<endl;
     }
