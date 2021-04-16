@@ -27,6 +27,26 @@ int main(){
     cout<<"Area: "<<r2->getArea()<<endl;
     cout<<"Perimeter: "<<r2->getPerimeter()<<endl;
 
+    Rectangle shape[3];
+    
+    for (int i = 0; i < 3; i++){
+        cout<<"Height: " << shape[i].getHeight() << endl;
+        cout<<"Width: "<<shape[i].getWidth()<<endl;
+        cout<<"Area: " <<shape[i].getArea()<<endl;
+        cout<<"Perimeter: "<<shape[i].getPerimeter()<<endl;
+        cout<<endl;
+    }
+    
+    Rectangle arshape[3] = {Rectangle(5,10), Rectangle(6,12), Rectangle(10,20)};
+    
+    for (int i = 0; i < 3; i++){
+        cout<<"Height: " << arshape[i].getHeight() << endl;
+        cout<<"Width: "<<arshape[i].getWidth()<<endl;
+        cout<<"Area: " <<arshape[i].getArea()<<endl;
+        cout<<"Perimeter: "<<arshape[i].getPerimeter()<<endl;
+        cout<<endl;
+    }
+  
     delete[] r2;
     return 0;
 }
