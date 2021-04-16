@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 class Rectangle{
     private:
     double width, height;
@@ -11,4 +10,6 @@ class Rectangle{
     void setHeight(double);
     double getArea();
     double getPerimeter();
+    Rectangle();
+    Rectangle(double, double);
 };
