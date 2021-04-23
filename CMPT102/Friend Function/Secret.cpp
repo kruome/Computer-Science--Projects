@@ -14,8 +14,9 @@ int showSecret();
 
 int main()
 {
-	
 
+    cout << showSecret();
+    
 	return 0;
 }
 
