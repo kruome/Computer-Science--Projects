@@ -11,7 +11,7 @@ Person::Person(string name, string phone, string email){
   this-> email = email;
 }
 string Person::getName(){
-  return name():
+  return name;
 }
 void Person::setName(string name){
   this-> name = name;
