@@ -3,10 +3,11 @@ Student::Student(){
   id = 0;
   major = "undecided";
 }
-Student::Student(string name, string phone, string email, int id, string major){
-  this->name = name; //setName(name);
-  this->phone = phone; //setPhone(phone);
-  this->email = email; //setEmail(email);
+Student::Student(string name, string phone, string email, int id, string major) : Person(name, phone, email)
+{
+  //this->name = name; //setName(name);
+  //this->phone = phone; //setPhone(phone);
+  //this->email = email; //setEmail(email);
   this-> id = id;
   this-> major = major;
 }
