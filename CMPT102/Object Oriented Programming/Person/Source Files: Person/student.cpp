@@ -1,9 +1,9 @@
 #incude "Student.h"
 
 Student::Student(string name, string phone, string email, int id, string major){
-  setName(name);
-  setPhone(phone);
-  setEmail(email);
+  this->name = name; //setName(name);
+  this->phone = phone; //setPhone(phone);
+  this->email = email; //setEmail(email);
   this-> id = id;
   this-> major = major;
 }
