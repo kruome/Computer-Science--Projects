@@ -20,9 +20,11 @@ void Student::setMajor(string major){
   this-> major = major;
 }
 void Student::printInfo(){
-  cout << "Name: " << getName() << endl;
+  /*cout << "Name: " << getName() << endl;
   cout << "Phone: " << getPhone() << endl;
   cout << "Email: " << getEmail() << endl;
+  */
+  Person::printInfo();
   cout<< "ID: " << id <<endl;
   cout<<"Major: " << major << endl;
 }
