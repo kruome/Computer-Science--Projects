@@ -8,7 +8,7 @@ class Student : public Person {
     Student(string, string, string, int, string);
     int getId();
     void setId(int);
-    string getMajor()
+    string getMajor();
     void setMajor(string);
     void printInfo();
 };
