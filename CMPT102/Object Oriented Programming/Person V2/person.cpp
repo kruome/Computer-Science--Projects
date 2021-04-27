@@ -6,6 +6,9 @@ class Person{
     Person(){
         cout<<"Person's constructor"<<endl;
     }
+    ~Person(){
+        cout<<"Person's destructor"<<endl;
+    }
 };
 
 class Employee : public Person{
@@ -13,12 +16,18 @@ class Employee : public Person{
     Employee(){
         cout<<"Employee's constructor"<<endl;
     }
+    ~Employee(){
+        cout<<"Employee's destructor"<<endl;
+    }
 };
 
 class Faculty : public Employee{
     public:
     Faculty(){
         cout<<"Faculty's constructor"<<endl;
+    }
+    ~Faculty(){
+        cout<<"Facuty's destructor"<<endl;
     }
 };
 int main(){
