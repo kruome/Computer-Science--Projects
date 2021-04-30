@@ -4,7 +4,7 @@ using namespace std;
 class Base{
   public:
     void x();
-    void y();
+    virtual void y();
 };
 
 class Derived : public Base{
@@ -13,7 +13,9 @@ class Derived : public Base{
 };
 
 int main(){
+  Base b;
   Derived d;
+  b.x();
   d.x();
   d.y();
   return 0; 
