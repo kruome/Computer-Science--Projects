@@ -1,7 +1,7 @@
 #include "person.h"
 
 class Student : public Person {
-  private:
+  protected:
     int id;
     string major;
   public:
