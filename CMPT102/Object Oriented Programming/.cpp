@@ -15,6 +15,7 @@ class Derived : public Base{
 int main(){
   Derived d;
   d.x();
+  d.y();
   return 0; 
 }
 
