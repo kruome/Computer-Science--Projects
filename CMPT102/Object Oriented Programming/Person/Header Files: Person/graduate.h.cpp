@@ -6,7 +6,7 @@ class Graduate {
   public:
     Graduate();
     Graduate(string, string, string, int, string, string);
-	
-
+    string getAdvisor();
+    void setAdvisor(string);
     void printInfo();
 };
