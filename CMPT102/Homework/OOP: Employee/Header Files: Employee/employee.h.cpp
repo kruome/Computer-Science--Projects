@@ -1,3 +1,5 @@
+#include "person.h"
+
 class Employee : public Person {
     private:
         string office;
