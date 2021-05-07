@@ -1,6 +1,4 @@
-
-
-
+#include "employee.h"
 
 class Staff : public Employee {
     private:
