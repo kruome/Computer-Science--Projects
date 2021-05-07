@@ -9,7 +9,7 @@ Graduate::Graduate(string name, string phone, string email, int id, string major
 String Graduate::getAdvisor(){
   return advisor;
 }
-void Graduate::setAdvisor(){
+void Graduate::setAdvisor(string advisor){
   this->advisor = advisor;
 }
 void Graduate::printInfo(){
