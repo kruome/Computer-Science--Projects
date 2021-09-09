@@ -5,7 +5,7 @@ package Initial_Examples;
  * @author kdorji01
  */
 
-public class rounding {
+public class Rounding {
     public static void main(String[] args){
         double a = 3.14159;
         System.out.println(a);
