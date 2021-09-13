@@ -1,5 +1,3 @@
-package selections;
-
 public class Cards {
     public static void main(String[] args){
         String r = " ";
