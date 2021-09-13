@@ -1,5 +1,3 @@
-package selections;
-
 public class RandomDay {
     public static void main(String[] args){
         int number1 = 1+((int)(Math.random() * 7));
