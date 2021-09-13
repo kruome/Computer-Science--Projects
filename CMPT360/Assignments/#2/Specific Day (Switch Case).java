@@ -1,4 +1,3 @@
-package selections;
 import java.util.Scanner;
 public class SpecificDay {
     public static void main(String[] args){    
