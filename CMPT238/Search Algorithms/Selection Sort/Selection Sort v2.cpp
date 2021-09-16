@@ -6,15 +6,15 @@ void print(int Array1[], int size);
 void selectionSort(int x[], int size);
 
 int main() {
-	int A[] = { 3,2,1,4,5,7};
+	int A[] = { 3,5,4,10,-1,7 };
 	int size = 6;
 	print(A, size);
 	selectionSort(A, size);
 
 }
 void improved_bubblesort(int x[], int size) {
-	
-	int passes = 0; 
+
+	int passes = 0;
 	int comparisons = 0;
 	bool swapped = true; // Identify the flag and set it as such
 	for (int i = size - 1; i > 0 && swapped; i--) {
@@ -25,7 +25,7 @@ void improved_bubblesort(int x[], int size) {
 			if (x[j] > x[j + 1]) {
 				swap(x[j], x[j + 1]);
 				swapped = true;
-				
+
 			}
 		}
 		cout << "Pass#: " << passes << " includes " << comparisons << " number of comparisons.\n";
@@ -43,7 +43,7 @@ void selectionSort(int x[], int size) {
 	int min;
 	int minindex;
 
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size - 1; i++) {
 		min = x[i];
 		minindex = i;
 		for (int j = i + 1; j < size; j++) {
@@ -51,8 +51,8 @@ void selectionSort(int x[], int size) {
 				min = x[j];
 				minindex = j;
 			}
-			swap(x[j], x[minindex]);
-			print(x, size);
 		}
+		swap(x[i], x[minindex]);
+		print(x, size);
 	}
 }
