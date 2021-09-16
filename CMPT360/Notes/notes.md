@@ -9,3 +9,9 @@ Ternary Operators -> (boolean-expression) ? expression1 : expression2
  -- If the boolean condition is false, then expression2 is the result
  
  <b>All binary operators except assignment operator are left-associative</b>
+
+Problem sequence:
+
+1. Understand what the problem is asking for
+2. Identify and implement the algorithm
+3. 
