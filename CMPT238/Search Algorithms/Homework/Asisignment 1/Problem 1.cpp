@@ -4,6 +4,7 @@
 #include<iostream>
 using namespace std;
 
+print
 class Item
 {
 private:
@@ -31,3 +32,7 @@ public:
 		name = n;
 	}
 };
+
+int main(){
+    Item Product[6] = {Item(), Item(1,"Soap"), Item(2,"Box"), Item(3,"Shirt");
+}
