@@ -4,8 +4,7 @@
 #include<iostream>
 using namespace std;
 
-class Item
-{
+class Item{
 private:
 	int itemNO;
 	string name;
@@ -31,13 +30,17 @@ public:
 		name = n;
 	}
 };
-void print(Item[], int size);
+
+void print(Item x[], int size);
+
 int main(){
-    Item Product[6] = {Item(), Item(1,"Soap"), Item(2,"Box"), Item(3,"Shirt")};
+    Item Product[6] = {Item(0,"default"), Item(1,"Soap"), Item(2,"Box"), Item(3,"Shirt")};
     print(Product, 6);
 }
-void print(Item[], int size){
-    for(int i = 0; i < size; i++){
-        cout<< Item[i].getItemNO() << " ";
-    } cout<< "\n";
+
+void print(Item x[], int size) {
+	for (int i = 0; i < size; i++) {
+		cout << x[i].getitemNO()<< " " << x[i].getname() << "  ";
+	} cout << "\n";
+
 }
