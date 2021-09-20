@@ -30,12 +30,19 @@ public:
 		name = n;
 	}
 };
+int itemls(Item x[], int size, string value);
 
 void print(Item x[], int size);
 
 int main(){
-    Item Product[6] = {Item(0,"default"), Item(1,"Soap"), Item(2,"Box"), Item(3,"Shirt")};
-    print(Product, 6);
+    Item Product[6] = {Item(0,"Chicken"), Item(1,"Dairy"), Item(2,"Television"), Item(3,"Mattress")};
+    bool result = itemls(Product,6,"potato");
+    if(result){
+        cout<<"A match has been found for the item at " << result;
+    }else{
+        cout<< "There was no such item in the array.";
+    }
+    
 }
 
 void print(Item x[], int size) {
@@ -43,4 +50,18 @@ void print(Item x[], int size) {
 		cout << x[i].getitemNO()<< " " << x[i].getname() << "  ";
 	} cout << "\n";
 
+}
+int itemls(Item x[], int size, string value){
+    bool found = false;
+    int position = -1;
+    int index = size;
+    
+    while(index >= 0 && !found){
+        if(x[index].getname() == value){
+            found = true;
+            position = index;
+        }
+        --index;
+    }
+    return position;
 }
