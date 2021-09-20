@@ -1,3 +1,4 @@
+```java
 import java.util.Scanner;
 public class Compare {
   public static void main(String[] args) {
@@ -9,7 +10,9 @@ public class Compare {
     System.out.println("Your first name is: " + parts[0] + " and your last name is: " + parts[1]);
   }
 }
--------------------------------------------------------------------------------------------------------
+```
+------------------------------------------------------------------------------------------------------------------------
+```java
 import java.util.Scanner;
 public class Compare {
   public static void main(String[] args) {
@@ -21,3 +24,4 @@ public class Compare {
     System.out.println("Your first name is: " + fname.substring(0, k) + " and your last name is:" + fname.substring(k));
   }
 }
+```
