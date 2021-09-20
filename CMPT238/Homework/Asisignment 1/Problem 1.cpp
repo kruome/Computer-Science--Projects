@@ -1,5 +1,5 @@
 //Kalden Yugyel Dorji
-//Assignment #1 Problem 1
+//Assignment #1
 
 #include<iostream>
 using namespace std;
@@ -36,13 +36,16 @@ void print(Item x[], int size);
 
 int main(){
     Item Product[6] = {Item(0,"Chicken"), Item(1,"Dairy"), Item(2,"Television"), Item(3,"Mattress")};
-    bool result = itemls(Product,6,"potato");
-    if(result){
+    cout<<"These are the contents inside the array for 6 items:";
+    cout<<"\n" << "\n";
+    print(Product, 6); cout << "\n";
+    int result = itemls(Product,6,"Dairy");
+    
+    if(result >= 0){
         cout<<"A match has been found for the item at " << result;
     }else{
         cout<< "There was no such item in the array.";
     }
-    
 }
 
 void print(Item x[], int size) {
@@ -51,13 +54,14 @@ void print(Item x[], int size) {
 	} cout << "\n";
 
 }
-int itemls(Item x[], int size, string value){
+
+int itemls(Item arr[], int size, string value){
     bool found = false;
     int position = -1;
-    int index = size;
+    int index = size-1;
     
     while(index >= 0 && !found){
-        if(x[index].getname() == value){
+        if(arr[index].getname() == value){
             found = true;
             position = index;
         }
