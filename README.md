@@ -1,6 +1,6 @@
 ```diff
-- Computer-Science-I
-+ School notes from Manhattan College (Prof. Tina Tian)
+- Computer-Science-I II 360 283
++College notes
 + Repository consists of C++ concepts.
 ```
 <h1>Table of Contents</h1>
