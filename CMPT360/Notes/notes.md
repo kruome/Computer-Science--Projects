@@ -14,4 +14,9 @@ Problem sequence:
 
 1. Understand what the problem is asking for
 2. Identify and implement the algorithm
-3. 
+3. Code
+
+<h2>Instance vs Static Methods</h2>
+
+- Instance methods can only be invoked by using a specific instance/object
+- A static method can be invoked without using an object
