@@ -1,5 +1,5 @@
 //Kalden Yugyel Dorji
-//Assignment #1
+//Assignment #1 Problem 1
 
 #include<iostream>
 using namespace std;
