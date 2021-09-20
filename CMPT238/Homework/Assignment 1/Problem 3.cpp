@@ -1,3 +1,6 @@
+//Kalden Yugyel Dorji
+//Assignment #1 Problem 3
+
 #include <iostream>
 using namespace std;
 
