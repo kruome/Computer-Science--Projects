@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class telephone{
+public class Main{
     public static void main(String[] args){
         System.out.print("Enter a phone number: ");
         Scanner num = new Scanner(System.in);
