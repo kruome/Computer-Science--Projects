@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class letter{
+public class Main{
     public static void main(String[] args){
         System.out.print("Enter a letter (a-z): ");
         Scanner usrinput = new Scanner(System.in);
