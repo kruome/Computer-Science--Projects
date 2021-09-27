@@ -5,7 +5,7 @@ public class Main{
         boolean info = true;
         int count = 0;
         
-        while(info && (count == 0)){
+        do {
             System.out.print("Enter employee's name: ");
             Scanner name = new Scanner(System.in);
             String n = name.nextLine();
@@ -56,9 +56,10 @@ public class Main{
             
         
             count++;
-        }
+        }while((info && (count == 0))); 
         if(info == false){
             System.out.println("You entered your information incorrectly.");
-        }
+        }          
     }
 }
+
