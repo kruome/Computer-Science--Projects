@@ -1,6 +1,5 @@
-package ok;
 import java.util.Scanner;
-public class Ok{
+public class Main{
     public static void main(String[] args){
        // Display the table heading
     System.out.println("           Multiplication Table");
