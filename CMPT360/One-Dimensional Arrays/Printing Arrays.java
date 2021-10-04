@@ -7,8 +7,8 @@ public class JavaApplication4 {
         for(int i = 0;i<myList.length;i++){
             myList[i] = input.nextDouble();
         }
-        for(int i = 0;i<myList.length;i++){
-            System.out.println(myList[i]);
+        for (double value: myList){
+            System.out.println(value);
         }
         /*for(int i = 0; i < 10; i++){
             myList[i] = (int)(Math.random() * 100);
