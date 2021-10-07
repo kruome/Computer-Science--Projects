@@ -1,4 +1,3 @@
-import java.util.Collections;
 public class Main
 {
     public static int[] generateRandomArray(int arr[]){
@@ -41,6 +40,7 @@ public class Main
     public static void selectionSort(int arr[]){
         int min = arr[0];
         int minindex = 0;
+        int temp = 0;
         
         for (int i = 0; i < arr.length; i++){
             min = arr[i];
@@ -50,7 +50,9 @@ public class Main
                     min = arr[j];
                     minindex = j;
                 }
-                swap(arr[i],arr[minindex]);
+                arr[i] = temp;
+                arr[i] = arr[minindex];
+                arr[minindex] = temp;
             }
         }
     }
