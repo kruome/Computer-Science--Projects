@@ -1,46 +1,47 @@
 #include <iostream>
-#include <vector>
+
+
 using namespace std;
 
-void print(vector<int>&);
+void print(int[], int);
 
-void insertionSort(vector<int>& v);
+void insertionSort(int[], int);
 int main()
 {
 
-	vector<double> vec{ 10.0,-4,5,20,0.0,19 };
-
-	insertionSort(vec);
-	print(vec);
+	int A[] = { 10,-4,5,20,0,19 };
+	print(A,6);
+	insertionSort(A,6);
+	print(A, 6);
 
 
 }
 
-void printvec(vector<int>& v)
+void print(int A[], int size)
 {
-	for (int i = 0; i < v.size(); i++)
-		cout << v[i] << " ";
+	for (int i = 0; i < size; i++)
+		cout << A[i] << " ";
 	cout << "\n";
 
 }
 
 
-void insertionSort(vector<int>& v)
+void insertionSort(int A[], int size)
 {
 	int key;
 	int i;
-	for (int j = 1; j < v.size(); j++)
+	for (int j = 1; j < size; j++)
 	{
-		key = v[j];
+		key = A[j];
 		i = j - 1;
 
-		while (i >= 0 && v[i] > key)
+		while (i >= 0 && A[i] > key)
 		{
-			v[i + 1] = v[i];
+			A[i + 1] = A[i];
 			i = i - 1;
 		}
 
-		v[i + 1] = key;
+		A[i + 1] = key;
 	}
 
 
