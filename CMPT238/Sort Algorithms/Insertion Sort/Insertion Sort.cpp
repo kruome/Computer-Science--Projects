@@ -2,9 +2,9 @@
 #include <vector>
 using namespace std;
 
-void print(vector<double>&);
+void print(vector<int>&);
 
-void insertionSort(vector<double>& v);
+void insertionSort(vector<int>& v);
 int main()
 {
 
