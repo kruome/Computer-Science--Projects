@@ -9,4 +9,4 @@ The y value is used to change the starting point, i.g x = 100 & y = 10: range = 
 
 #LIFO
 
-**Last In First Out
+**Last In First Out -- For Stacks**
