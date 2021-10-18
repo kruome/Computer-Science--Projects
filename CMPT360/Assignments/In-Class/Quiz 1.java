@@ -4,7 +4,7 @@ package one.with.the.rainfall;
 public class OneWithTheRainfall {
 
     public static double[] getMonthlyValues(){
-        double[] monvalue = new double[1];
+        double[] monvalue = new double[12];
         
         Scanner userinput = new Scanner(System.in);
         for(int i = 0; i < monvalue.length; i++){
@@ -38,18 +38,21 @@ public class OneWithTheRainfall {
         return max;
     }
     public static String[] getHighestMonth(double arr[], double max){
-        int count = 0;
+        int size = 0;
         for(int i = 0; i < arr.length; i++){
                 if(arr[i] == getHighestValue(arr)){
-                    count++;
+                    size++;
                 }
         }
         
-        String[] highestmonths = new String[count];
+        String[] highestmonths = new String[size];
+        
+        int count = 0;
         
         for(int i = 0; i < arr.length; i++){
             if(arr[i] == getHighestValue(arr)){
-                highestmonths[i] = getMonthName(i);
+                highestmonths[count] = getMonthName(i);
+                count++;
             }
         }
         return highestmonths;
@@ -101,14 +104,13 @@ public class OneWithTheRainfall {
       double arr[] = getMonthlyValues();
       double rainfall = getTotalRainfall(arr);
       double max = getHighestValue(arr);
-      String[] s = getHighestMonth(arr,max);
+      String[] highestmonths = getHighestMonth(arr, max);
       System.out.println("The total rainfall for this year is: " + rainfall + " inches." );
       System.out.printf("The average ranfall for this year is %.2f"+ " inches.",getAverageRainfall(arr));
       System.out.println();
-      System.out.println("The highest rainfall is " + max+ " inches and the months with highest rainfall are: ");
-      for(int i = 0; i <= s.length; i++){
-            System.out.print(s[i]);
-          }
+      System.out.print("The highest rainfall is " + max+ " inches and the months with highest rainfall are: ");
+      for(int i = 0; i < highestmonths.length;i++){
+          System.out.print(highestmonths[i] + " ");
       }
     }
 }
