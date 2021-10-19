@@ -1,4 +1,5 @@
-class Stock{
+public class Main{
+    static class Stock{
     String symbol;
     String name;
     double previousClosingPrice;
@@ -19,18 +20,38 @@ class Stock{
         currentPrice = newCurrentPrice;
     }
     double getChangePercent(){
-        
+        return (currentPrice-previousClosingPrice)/previousClosingPrice;
     }
     String getSymbol(){
-        
+        return symbol;
     }
     String getName(){
-        
+        return name;
     }
     double getPreviousClosingPrice(){
-    
+        return previousClosingPrice;
     }
-    
-    
-    
+    void setPreviousClosingPrice(double newPreviousClosingPrice){
+        previousClosingPrice = newPreviousClosingPrice;
+    }
+    double getCurrentPrice(){
+        return currentPrice;
+    }
+    void setCurrentPrice(double newCurrentPrice){
+        currentPrice = newCurrentPrice;
+    }
+    }
+    public static void main(String[] args) {
+        Stock stock = new Stock("SUNW", "Sun MicroSystems Inc.");
+        stock.setPreviousClosingPrice(100);
+        // Set current price
+        stock.setCurrentPrice(90);
+        // Display stock info
+        System.out.println("Previous Closing Price: " +
+        stock.getPreviousClosingPrice());
+        System.out.println("Current Price: " +
+        stock.getCurrentPrice());
+        System.out.println("Price Change: " +
+        stock.getChangePercent() * 100 + "%");
+    }
 }
