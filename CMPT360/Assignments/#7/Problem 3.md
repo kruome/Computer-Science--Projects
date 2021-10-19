@@ -18,9 +18,10 @@ public class Main{
             System.out.println("Random integer #" + (i + 1) + " is " + flag);
         }
     }
-}```
+}
+```
 
-```java
+```cpp
 import java.util.Random;
 public class Main{
     public static void main(String[] args){
@@ -33,4 +34,5 @@ public class Main{
             System.out.println("Random integer #" + (i + 1) + " is " + flag);
         }
     }
-}```
+}
+```
