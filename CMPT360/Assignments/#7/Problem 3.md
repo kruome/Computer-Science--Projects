@@ -36,3 +36,15 @@ public class Main{
     }
 }
 ```
+```java
+import java.util.Random;
+public class Circle{
+    public static void main(String[] args){
+        Random r1 = new Random();
+        for(int i = 0; i < 10;i++){
+            int flag = r1.nextInt(100-49)+50;
+            System.out.println("Random integer #" + (i + 1) + " is " + flag);
+        }
+    }
+}
+```
