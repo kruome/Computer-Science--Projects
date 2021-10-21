@@ -53,7 +53,13 @@ public:
 
 		}
 	}
-
+	void printContent() {
+		Node* temp = top;
+		while (temp) {
+			cout << temp->data << " ";
+			temp = temp->next;
+		}
+	}
 
 	class UnderFlow {};
 };
@@ -84,11 +90,11 @@ int main()
 		obj.push(99);
 		obj.push(100);
 		cout << "===========================\n";
+		obj.printContent();
 	}
 	catch (dynamic_Stack::UnderFlow)
 	{
 		cout << "Wrong operation, stack is EMPTY\n";
-
 	}
-
+	cout << "\n";
 }
