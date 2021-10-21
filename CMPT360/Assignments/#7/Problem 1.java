@@ -1,5 +1,4 @@
-public class Main{
-    static class Stock{
+    class Stock{
     String symbol;
     String name;
     double previousClosingPrice;
@@ -41,6 +40,7 @@ public class Main{
         currentPrice = newCurrentPrice;
     }
     }
+    public class Circle{
     public static void main(String[] args) {
         Stock stock = new Stock("SUNW", "Sun MicroSystems Inc.");
         stock.setPreviousClosingPrice(100);
