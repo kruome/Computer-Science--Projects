@@ -50,21 +50,11 @@ int main() {
 	intStaticStack obj;
 
 	try {
-		obj.push(0);
-		obj.push(5);
-		obj.push(10);
-
-		cout << obj.pop(); cout << " ";
-		cout << obj.pop(); cout << " ";
-		cout << obj.pop(); cout << " ";
-		cout << obj.pop(); cout << " ";
-
-		obj.push(99);
-		obj.push(100);
-
-		cout << obj.pop(); cout << " ";
-		cout << obj.pop(); cout << " ";
-	}
+		for (int i = 0; i < 10; i++) {
+			obj.push(i);
+			cout<<obj.pop() << " ";
+		}
+}
 	catch (intStaticStack::OverFlow) {
 		cout << "Wrong Operation. The stack is full.";
 	}
