@@ -1,6 +1,11 @@
-public class Circle {
+public class TV {
   /** Main method */
   public static void main(String[] args) {
+      TV tv1 = new TV();
+      tv1.turnOn();
+      tv1.setChannel(30);
+      tv1.setVolume(3);
+      System.out.println("tv1's channel is " + tv1.channel + " and the volume is " + tv1.volumeLevel);
   }
 }
 class TV{
