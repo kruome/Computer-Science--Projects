@@ -1,65 +1,64 @@
 #include <iostream>
 using namespace std;
 
-class intStaticStack {
-private:
-	int container[10];
-	int capacity;
-	int top; // Represents the index of the available position for inserting a new item in the stack.
 
-public:
-	intStaticStack() {
-		capacity = 10;
-		for (int i = 0; i < capacity; i++) {
-			container[i] = 0;
-			top = 0;
+class dynamic_stack {
+private:
+	struct Node {
+		int data;
+		Node* next;
+		Node(int i, Node* x = nullptr) {
+			data = i;
+			next = x;
 		}
+
+	};
+	Node* top;
+public:
+	dynamic_stack() {
+		top = nullptr;
 	}
-	bool isFull() {
-		return top == capacity;
+	~dynamic_stack() {
+		Node* temp = top;
+		while (temp) {
+			top = top->next;
+			delete temp;
+			temp = top;
+		}
 	}
 	bool isEmpty() {
-		return top == 0;
+		return top == nullptr;
 	}
-	void push(int value) {
-		if (!isFull()) {
-			container[top] = value;
-			top++;
-		}
-		else {
-			throw OverFlow();
-			//cout << "Wrong Operation. The stack is full.";
-		}
+	void push(int val) {
+		top = new Node(val, top);
 	}
+	/*
 	int pop() {
+		if(!isEmpty()){
+			int result = top->data;
+			Node* garbage = top;
+			top = top->next;
+			delete garbage;
+			return result;
+		}else{
+			throw UnderFlow();
+		}
+	}*/
+	void pop(int& x) {
+
 		if (!isEmpty()) {
-			top--;
-			return container[top];
+			x = top->data;
+			Node* garbage = top;
+			top = top->next;
+			delete garbage;
 		}
 		else {
 			throw UnderFlow();
-			//cout << "Wrong operation. The stack is empty
-			//return -1;
 		}
 	}
-	class OverFlow {};
 	class UnderFlow {};
 };
 
 int main() {
-	intStaticStack obj;
-
-	try {
-		for (int i = 0; i < 10; i++) {
-			obj.push(i);
-			cout<<obj.pop() << " ";
-		}
-}
-	catch (intStaticStack::OverFlow) {
-		cout << "Wrong Operation. The stack is full.";
-	}
-	catch (intStaticStack::UnderFlow) {
-		cout << "Wrong operation. The stack is empty.";
-		return -1;
-	}
+	return 0;
 }
