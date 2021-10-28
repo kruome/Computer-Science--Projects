@@ -23,3 +23,21 @@ public class TotalArea{
         this.radius = radius;
     }
 }*/
+
+/*public class Circle{
+    private double radius;
+    public Circle(double r){
+        this.radius = r;
+    }
+}
+*/
+
+/*public class Circle{
+    private double radius;
+    public Circle(double r){
+        radius = r;
+    }
+    public Circle(){
+        this(1);
+    }
+}*/
