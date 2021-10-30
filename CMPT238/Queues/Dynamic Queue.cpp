@@ -4,19 +4,18 @@ using namespace std;
 // Queue IS FIFO => First IN FIRST OUT
 class dynamic_Queue {
 private:
-	struct Node {
+	struct Node{
 	public:
-		int data;
+		int ;
 		Node* next;
-		Node(int d, Node* p = nullptr)
+		Node(String n, int a, String m, Node* p = nullptr)
 		{
-			data = d;
+			name = n;
+			age = a;
+			major = m;
 			next = p;
 		}
-
 	};
-	
-	
 	Node* front;
 	Node* rear;
 	
@@ -71,7 +70,6 @@ public:
 			throw UnderFlow();
 
 	}
-		
 	class UnderFlow {};
 };
 
@@ -80,6 +78,5 @@ public:
 
 int main()
 {
-
-	
+    dynamic_queue dqueue;
 }
