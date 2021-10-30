@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// STACK IS LIFO => LAST IN FIRST OUT
+// QUEUE IS FIFO => FIRST IN FIRST OUT
 class static_Queue {
 private:
 	int queue[10];
