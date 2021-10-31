@@ -62,11 +62,12 @@ public:
 	class UnderFlow {};
 };
 
-bool balancedbrackets(string){
-    String a, b, c;
+/*bool balancedbrackets(string){
+    String a , b;
+    dynamic_queue obj
     
 }
-
+*/
 
 int main()
 {
@@ -74,5 +75,8 @@ int main()
   cout<<"Enter your expression: ";
   cin>> b;
   string balbrackets[b.length()];
-  cout<<b.length();
+  for(int i = 0; i < b.length(); i ++){
+      balbrackets[i] = b[i];
+      cout<< balbrackets[i] << " ";
+  }
 }
