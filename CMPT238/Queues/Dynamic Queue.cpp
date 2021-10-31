@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// Queue IS FIFO => First IN FIRST OUT
 class dynamic_Queue {
 private:
 	struct Node {
@@ -13,30 +12,21 @@ private:
 			data = d;
 			next = p;
 		}
-
 	};
-
-
 	Node* front;
 	Node* rear;
-
-
+  
 public:
 	dynamic_Queue()
 	{
 		front = nullptr;
 		rear = nullptr;
-
 	}
-
-
 
 	bool isEmpty()
 	{
 		return front == nullptr;
 	}
-
-
 
 	void enqueue(int val)
 	{
@@ -52,8 +42,6 @@ public:
 			rear = rear->next;
 
 		}
-
-
 	}
 
 	int dequeue()
@@ -71,35 +59,17 @@ public:
 			throw UnderFlow();
 
 	}
-	void printDynamicQueue() {
-		if (!isEmpty()){
-			Node* print = rear;
-				while (print != nullptr) {
-					cout << print->data << " ";
-					print = rear->next;
-				}
-		}
-	}
-
 	class UnderFlow {};
 };
 
-
+bool balancedbrackets(string)
 
 
 int main()
 {
-	dynamic_Queue obj;
-	obj.enqueue(6);
-	obj.enqueue(7);
-	obj.enqueue(8);
-	obj.enqueue(9);
-	obj.enqueue(10);
-	/*for (int i = 0; i < 2; i++) {
-		cout<<"# "<< (i+1) << " " << obj.dequeue() << " was dequeued";
-		cout << "\n";
-	}*/
-	obj.printDynamicQueue();
-	
-	
+  string b;
+  cout<<"Enter your expression: ";
+  cin>> b;
+  string balbrackets[b.length()];
+  cout<<b.length();
 }
