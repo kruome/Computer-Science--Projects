@@ -2,7 +2,7 @@
 using namespace std;
 
 class dynamic_Queue {
-private:
+public:
 	struct Node {
 	public:
 		string val;
@@ -17,6 +17,7 @@ private:
 	Node* rear;
   
 public:
+    
 	dynamic_Queue()
 	{
 		front = nullptr;
@@ -63,6 +64,7 @@ public:
 };
 dynamic_Queue balancedbrackets(string s){
     string expression[s.length()];
+    string temp = "";
     dynamic_Queue balanced;
 
     for(int i = 0; i < s.length(); i ++){
@@ -71,8 +73,15 @@ dynamic_Queue balancedbrackets(string s){
    }
     for(int i = 0; i < s.length(); i ++){
         balanced.enqueue(expression[i]);
-        
     }
+    for(int i = 0; i < s.length();i++){
+        if(balanced.front->val == "["){
+            temp = "[";
+        }else if(balanced.front ->val == "<"){
+            temp = "(";
+        }else if(balanced.front->val == "]" || balanced.front->val == ")")
+    }
+   
     return balanced;
     }
 
@@ -85,6 +94,6 @@ int main()
   cin>> b;
   
   dynamic_Queue obj = balancedbrackets(b);
-  cout<< "\n"  << obj.dequeue();
+  cout<< "\n"  << obj.front->val;
   return 0;
 }
