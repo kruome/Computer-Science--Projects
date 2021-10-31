@@ -4,28 +4,29 @@ using namespace std;
 // Queue IS FIFO => First IN FIRST OUT
 class dynamic_Queue {
 private:
-	struct Node{
+	struct Node {
 	public:
-		int ;
+		int data;
 		Node* next;
-		Node(String n, int a, String m, Node* p = nullptr)
+		Node(int d, Node* p = nullptr)
 		{
-			name = n;
-			age = a;
-			major = m;
+			data = d;
 			next = p;
 		}
+
 	};
+
+
 	Node* front;
 	Node* rear;
-	
+
 
 public:
 	dynamic_Queue()
 	{
 		front = nullptr;
 		rear = nullptr;
-		
+
 	}
 
 
@@ -35,11 +36,11 @@ public:
 		return front == nullptr;
 	}
 
-	
+
 
 	void enqueue(int val)
 	{
-		
+
 		if (isEmpty())
 		{
 			front = new Node(val);
@@ -51,8 +52,8 @@ public:
 			rear = rear->next;
 
 		}
-		
-		
+
+
 	}
 
 	int dequeue()
@@ -70,6 +71,16 @@ public:
 			throw UnderFlow();
 
 	}
+	void printDynamicQueue() {
+		if (!isEmpty()){
+			Node* print = rear;
+				while (print != nullptr) {
+					cout << print->data << " ";
+					print = rear->next;
+				}
+		}
+	}
+
 	class UnderFlow {};
 };
 
@@ -78,5 +89,17 @@ public:
 
 int main()
 {
-    dynamic_queue dqueue;
+	dynamic_Queue obj;
+	obj.enqueue(6);
+	obj.enqueue(7);
+	obj.enqueue(8);
+	obj.enqueue(9);
+	obj.enqueue(10);
+	/*for (int i = 0; i < 2; i++) {
+		cout<<"# "<< (i+1) << " " << obj.dequeue() << " was dequeued";
+		cout << "\n";
+	}*/
+	obj.printDynamicQueue();
+	
+	
 }
