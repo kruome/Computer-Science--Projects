@@ -5,11 +5,11 @@ class dynamic_Queue {
 private:
 	struct Node {
 	public:
-		int data;
+		string val;
 		Node* next;
-		Node(int d, Node* p = nullptr)
+		Node(string d, Node* p = nullptr)
 		{
-			data = d;
+			val = d;
 			next = p;
 		}
 	};
@@ -28,7 +28,7 @@ public:
 		return front == nullptr;
 	}
 
-	void enqueue(int val)
+	void enqueue(string val)
 	{
 
 		if (isEmpty())
@@ -44,12 +44,12 @@ public:
 		}
 	}
 
-	int dequeue()
+	string dequeue()
 	{
 
 		if (!isEmpty())
 		{
-			int result = front->data;
+			string result = front->val;
 			Node* trash = front;
 			front = front->next;
 			delete trash;
@@ -61,22 +61,30 @@ public:
 	}
 	class UnderFlow {};
 };
+dynamic_Queue balancedbrackets(string s){
+    string expression[s.length()];
+    dynamic_Queue balanced;
 
-/*bool balancedbrackets(string){
-    String a , b;
-    dynamic_queue obj
-    
-}
-*/
+    for(int i = 0; i < s.length(); i ++){
+        expression[i] = s[i];
+        cout<< expression[i] << " ";
+   }
+    for(int i = 0; i < s.length(); i ++){
+        balanced.enqueue(expression[i]);
+        
+    }
+    return balanced;
+    }
+
+
 
 int main()
 {
   string b;
   cout<<"Enter your expression: ";
   cin>> b;
-  string balbrackets[b.length()];
-  for(int i = 0; i < b.length(); i ++){
-      balbrackets[i] = b[i];
-      cout<< balbrackets[i] << " ";
-  }
+  
+  dynamic_Queue obj = balancedbrackets(b);
+  cout<< "\n"  << obj.dequeue();
+  return 0;
 }
