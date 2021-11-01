@@ -62,38 +62,49 @@ public:
 	}
 	class UnderFlow {};
 };
-dynamic_Queue balancedbrackets(string s){
+bool balancedbrackets(string s){
     string expression[s.length()];
     string temp = "";
+    string inv = "0";
     dynamic_Queue balanced;
+    int count = 0;
 
+    if(s.length() == 1){
+        return false;
+    }
     for(int i = 0; i < s.length(); i ++){
         expression[i] = s[i];
-        cout<< expression[i] << " ";
    }
     for(int i = 0; i < s.length(); i ++){
         balanced.enqueue(expression[i]);
     }
+    
     for(int i = 0; i < s.length();i++){
-        if(balanced.front->val == "["){
+        if(balanced.front->val == "{"){
             temp = "[";
+            balanced.front->val = inv;
         }else if(balanced.front ->val == "<"){
             temp = "(";
-        }else if(balanced.front->val == "]" || balanced.front->val == ")")
+            balanced.front->val = inv;
+        }else if((balanced.rear->val == "}") || (balanced.rear->val == ">")){
+            balanced.front->val = inv;
+        }else{
+            return false;
+        }
+        count++;
     }
-   
-    return balanced;
-    }
+        return true;
 
-
-
-int main()
-{
+}
+int main(){
   string b;
   cout<<"Enter your expression: ";
   cin>> b;
   
-  dynamic_Queue obj = balancedbrackets(b);
-  cout<< "\n"  << obj.front->val;
+  if(balancedbrackets(b)){
+      cout<<"Balanced.";
+  }else{
+      cout<<"Not balanced.";
+  }
   return 0;
 }
