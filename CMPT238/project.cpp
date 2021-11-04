@@ -172,8 +172,21 @@ void Deque::erase()
 int main()
 {
 	Deque scollection;
+	int count = 1;
+	int option;
 	
-	cout<<"This works.";
-	scollection.getRear();
+	//temp values
+	string name;
+	string school;
+	string country;
+	int age;
+	int score;
+	
+	scollection.insertRear(1580, "A", 16, "SHS","USA");
+	
+	cout<<"         INTERNATIONAL ICL LEADERBOARD FOR 20xx" << endl;
+	cout<<" Score (1600) | " << "  Participant |" << "  Age   |" << "   School  |" << "   Country   | " ;
+	for(int i = 0; i < )
+	
 	return 0;
 }
