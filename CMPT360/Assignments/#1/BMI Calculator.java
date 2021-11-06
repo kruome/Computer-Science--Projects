@@ -1,15 +1,47 @@
-import java.util.Scanner;
-public class BMI {
+class BMI
+{
+    private String name;
+    private int age;
+    private double weight;
+    private double height;
+    
+    BMI(String name, int age, double weight, double height){
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+    }
+    BMI(String name, double weight, double height){
+        this.name = name;
+        this.weight = weight;
+        this.height = height;
+    }
+    double getBMI(){
+        return (weight*.453)/((height*.0254)*(height*.0254));
+    }
+    String getName(){
+        return name;
+    }
+    String getStatus(){
+        
+        if(getBMI() >= 18.5 && getBMI() <= 24.9){
+            return "Normal";
+        }else if(getBMI() >= 25.0 && getBMI() <= 34.9)
+        {
+            return "Overweight";
+        }else
+        {
+            return "Underweight";
+        }
+    }
+}
+public class Main
+{
     public static void main(String[] args) {
-        System.out.println("Welcome to the BMI calculator!");
-        System.out.println("Enter your weight in pounds:");
-        Scanner weight = new Scanner(System.in);
-        double weight1 = weight.nextDouble();
-        double weight2 = weight1 * .45359237;
-        System.out.println("Enter your height in inches:");
-        Scanner height = new Scanner(System.in);
-        double height1 = height.nextDouble();
-        double height2 = height1 * .0254;
-        System.out.println("Your BMI is: " + weight2 / (height2 * height2));
+        BMI b1 = new BMI("Joe", 120, 68);
+        System.out.printf("The BMI is: %4.2f", b1.getBMI());
+        System.out.println();
+        System.out.println(b1.getName()+"'s BMI is " + b1.getStatus());
+        
     }
 }
