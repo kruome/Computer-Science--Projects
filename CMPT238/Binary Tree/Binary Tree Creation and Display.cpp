@@ -21,10 +21,10 @@ int main() {
 	TreeNode* root = nullptr;
 	insert(root, 10);
 	insert(root, 8);
+	insert(root, 20);
 	insert(root, 2);
 	insert(root, 3);
 	insert(root, 30);
-	insert(root, 20);
 	displayInOrder(root);
 	std::cout << "\n";
 	displayPreOrder(root);
