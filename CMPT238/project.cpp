@@ -299,6 +299,27 @@ Deque::erase ()
     }
   Size = 0;
 }
+ void printMiddle(class Deque p, int c){
+        int a = p.getFrontscore();
+        int b = p.getRearscore();
+        int count = 0;
+        int size = c;
+        int limit = c/2;
+        if (!p.isEmpty())
+        {
+            while (count < limit )
+            {
+                p.deleteRear();
+                p.deleteFront();
+                a = p.getFrontscore();
+                b = p.getRearscore();
+                count++;
+            }
+            cout << "The middle element is [" << p.getRearscore() << "]" << endl;
+        }else{
+            cout<<endl << "Nada";
+        }
+}
 
 int
 main ()
@@ -314,6 +335,8 @@ main ()
   int tscore;
 
   scollection.insertRear (1580, "A", 16, "SHS", "USA");
+  scollection.insertRear (700, "A", 16, "SHS", "USA");
+  scollection.insertRear (1000, "A", 16, "SHS", "USA");
 
   cout << "         INTERNATIONAL ICL LEADERBOARD FOR 20xx" << endl;
   cout << " Score (1600) | " << "  Participant |" << "  Age   |" <<
@@ -322,6 +345,43 @@ main ()
     {
       cout<< scollection.getFrontscore() << "  "<<  "              " << scollection.getFrontname() << "          "<< scollection.getFrontage() <<  "        " << scollection.getFrontschool() << "       " << scollection.getFrontcountry();
     }
-    system("CLS");   
+    cout<<"yes" << endl;
+    printMiddle(scollection,3);
 }
+
+//int interpolation_search (Node* p, int value, int size)
+/*{
+  int low = 0;
+  int high = size - 1;
+  int mid;
+  
+  l = p->getFrontScore();
+  h = p->getRearScore();
+ 
+  while ( l<= value && h >= value)
+  {
+    mid = low + ((value - l) * (high - low)) / (h - l);
+    if (ar[mid] < value)
+    {
+      low = mid + 1;
+    }
+    else if (ar[mid] > value)
+    {
+      low = mid - 1;
+    }
+    else
+    {
+      return mid;
+    }
+  }
+ 
+  if (l == value)
+  {
+    return low;
+  }
+  else
+  {
+    return -1;
+  }
+}*/
 
