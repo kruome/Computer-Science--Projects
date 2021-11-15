@@ -1,140 +1,269 @@
-#include <iostream>
+#include<iostream>
+using namespace std;
 
-struct TreeNode {
-	int data;
-	TreeNode* left;
-	TreeNode* right;
+class IntBinaryTree
+{
+private:
+	// The TreeNode struct is used to build the tree.
+	struct TreeNode
+	{
+		int value;
+		TreeNode* left;
+		TreeNode* right;
+		TreeNode(int value1,
+			TreeNode* left1 = nullptr,
+			TreeNode* right1 = nullptr)
+		{
+			value = value1;
+			left = left1;
+			right = right1;
+		}
+	};
 
-	TreeNode(int i, TreeNode* p = nullptr, TreeNode* q = nullptr) {
-		data = i;
-		left = p;
-		right = q;
+	TreeNode* root;     // Pointer to the root of the tree
+
+	// Various helper member functions.
+	void insert(TreeNode*&, int);
+	void destroySubtree(TreeNode*);
+	void remove(TreeNode*&, int);
+	void makeDeletion(TreeNode*&);
+	void displayInOrder(TreeNode*) const;
+	void displayPreOrder(TreeNode*) const;
+	void displayPostOrder(TreeNode*) const;
+
+public:
+	// These member functions are the public interface.
+	IntBinaryTree()		// Constructor
+	{
+		root = nullptr;
+	}
+	~IntBinaryTree()		// Destructor
+	{
+		destroySubtree(root);
+	}
+	void insert(int num)
+	{
+		insert(root, num);
+	}
+	bool search(int) const;
+	void remove(int num)
+	{
+		remove(root, num);
+	}
+	void showInOrder(void) const
+	{
+		displayInOrder(root);
+	}
+	void showPreOrder() const
+	{
+		displayPreOrder(root);
+	}
+	void showPostOrder() const
+	{
+		displayPostOrder(root);
 	}
 };
 
-void insert(TreeNode*&, int);
-void displayInOrder(TreeNode*);
-void displayPreOrder(TreeNode*);
-void displayPostOrder(TreeNode*);
-void dbst(TreeNode*&);
-void makeDeletion(TreeNode*);
-void remove(TreeNode*& root, int num);
-bool search(TreeNode*, int);
 
-int main() {
-	TreeNode* root = nullptr;
-	insert(root, 10);
-	insert(root, 8);
-	insert(root, 20);
-	insert(root, 2);
-	insert(root, 3);
-	insert(root, 30);
-	displayInOrder(root);
-	std::cout << "\n";
-	displayPreOrder(root);
-	std::cout << "\n";
-	displayPostOrder(root);
-	std::cout << std::endl;
-	std::cout << std::endl;
-	if (search(root, 20)) {
-		std::cout << "The value is in the binary tree.";
-	}
-	dbst(root);
-}
-
-void insert(TreeNode*& p, int i)
+//**************************************************
+// This version of insert inserts a number into    *
+// a given subtree of the main binary search tree. *
+//**************************************************
+void IntBinaryTree::insert(TreeNode*& tree, int num)
 {
-	if (p == nullptr) {
-		p = new TreeNode(i);
+	// If the tree is empty, make a new node and make it 
+	// the root of the tree.
+	if (!tree)
+	{
+		tree = new TreeNode(num);
 		return;
 	}
 
-	if (i < p->data) {
-		insert(p->left, i);
+	// If num is already in tree: return.
+	if (tree->value == num)
 		return;
-	}
-	if (i == p->data) {
-		return;
-	}
-	if (i > p->data) {
-		insert(p->right, i);
-		return;
-	}
-}
-void displayInOrder(TreeNode* root) {
-	if (root) {
-		displayInOrder(root->left);
-		std::cout << root->data << " ";
-		displayInOrder(root->right);
-	}
-}
-void displayPreOrder(TreeNode* root) {
-	if (root) {
-		std::cout << root->data << " ";
-		displayPreOrder(root->left);
-		displayPreOrder(root->right);
-	}
-}
-void displayPostOrder(TreeNode* root) {
-	if (root) {
-		displayPostOrder(root->left);
-		displayPostOrder(root->right);
-		std::cout << root->data << " ";
-	}
+
+	// The tree is not empty: insert the new node into the
+	// left or right subtree.
+	if (num < tree->value)
+		insert(tree->left, num);
+	else
+		insert(tree->right, num);
 }
 
-bool search(TreeNode* root, int value) {
-	TreeNode* temp = root;
-	while (temp) {
-		if (temp->data == value) {
+//***************************************************
+// destroySubTree is called by the destructor. It   *
+// deletes all nodes in the tree.                   *
+//***************************************************
+void IntBinaryTree::destroySubtree(TreeNode* tree)
+{
+	if (!tree) return;
+	destroySubtree(tree->left);
+	destroySubtree(tree->right);
+	// Delete the node at the root.
+	delete tree;
+}
+
+//***************************************************
+// searchNode determines if a value is present in   *
+// the tree. If so, the function returns true.      *
+// Otherwise, it returns false.                     *
+//***************************************************
+bool IntBinaryTree::search(int num) const
+{
+	TreeNode* tree = root;
+
+	while (tree)
+	{
+		if (tree->value == num)
 			return true;
-		}
-		else if(value < temp->data){
-			temp = temp->left;
-		}
-		else {
-			temp = temp->right;
-		}
+		else if (num < tree->value)
+			tree = tree->left;
+		else
+			tree = tree->right;
 	}
 	return false;
 }
-void dbst(TreeNode*& root) {
-	if (root) {
-		dbst(root->left);
-		dbst(root->right);
-		delete root;
-	}
+
+//********************************************
+// remove deletes the node in the given tree *
+// that has a value member the same as num.  *
+//********************************************
+void IntBinaryTree::remove(TreeNode*& tree, int num)
+{
+	if (tree == nullptr) return;
+	if (num < tree->value)
+		remove(tree->left, num);
+	else if (num > tree->value)
+		remove(tree->right, num);
+	else
+		// We have found the node to delete.
+		makeDeletion(tree);
 }
 
-void remove(TreeNode*& root, int num) {
-	if (root == nullptr) {
-		return;
-	}
-	if (num < root->data) {
-		remove(root->left, num);
-	}
-	else if (num > root->data) {
-		remove(root->right, num);
-	}
-	else {
-		makeDeletion(root);
-	}
-}
+//***********************************************************
+// makeDeletion takes a reference to a tree whose root      *
+// is to be deleted. If the tree has a single child, the    *
+// the tree is replaced by the single child after the       *    
+// removal of its root node. If the tree has two children   *
+// the left subtree of the deleted node is attached at      *
+// an appropriate point in the right subtree, and then      *
+// the right subtree replaces the original tree.            *
+//***********************************************************
+void IntBinaryTree::makeDeletion(TreeNode*& tree)
+{
+	// Used to hold node that will be deleted.
+	TreeNode* nodeToDelete = tree;
 
-void makeDeletion(TreeNode* root) {
-	TreeNode* temp = root;
-	if (root->left == nullptr) {
-		root = root->right;
-	}else if(root->right == nullptr){
-		root = root->left;
+	// Used to locate the  point where the 
+	// left subtree is attached.
+	TreeNode* attachPoint;
+
+	if (tree->right == nullptr)
+	{
+		// Replace tree with its left subtree. 
+		tree = tree->left;
 	}
-	else {
-		TreeNode* attachPoint = root->right;
-		while (attachPoint) {
+	else if (tree->left == nullptr)
+	{
+		// Replace tree with its right subtree.
+		tree = tree->right;
+	}
+	else
+		//The node has two children
+	{
+		// Move to right subtree.
+		attachPoint = tree->right;
+
+		// Locate the smallest node in the right subtree
+		// by moving as far to the left as possible.
+		while (attachPoint->left != nullptr)
 			attachPoint = attachPoint->left;
-		}
-		attachPoint = root->left;
-		root = root->right;
+
+		// Attach the left subtree of the original tree
+		// as the left subtree of the smallest node 
+		// in the right subtree.
+		attachPoint->left = tree->left;
+
+		// Replace the original tree with its right subtree.
+		tree = tree->right;
 	}
-	delete temp;
+
+	// Delete root of original tree
+	delete nodeToDelete;
+}
+
+//*********************************************************
+// This function displays the values  stored in a tree    *  
+// in inorder.                                            *
+//*********************************************************
+void IntBinaryTree::displayInOrder(TreeNode* tree) const
+{
+	if (tree)
+	{
+		displayInOrder(tree->left);
+		cout << tree->value << "  ";
+		displayInOrder(tree->right);
+	}
+}
+
+//*********************************************************
+// This function displays the values stored in a tree     *
+// in inorder.                                            *
+//*********************************************************
+void IntBinaryTree::displayPreOrder(TreeNode* tree) const
+{
+	if (tree)
+	{
+		cout << tree->value << "  ";
+		displayPreOrder(tree->left);
+		displayPreOrder(tree->right);
+	}
+}
+
+//*********************************************************
+// This function displays the values  stored  in a tree   *
+// in postorder.                                          * 
+//*********************************************************
+void IntBinaryTree::displayPostOrder(TreeNode* tree) const
+{
+	if (tree)
+	{
+		displayPostOrder(tree->left);
+		displayPostOrder(tree->right);
+		cout << tree->value << "  ";
+	}
+}
+
+int main() {
+	IntBinaryTree obj;
+
+	obj.insert( -2);
+	obj.insert( 20);
+	obj.insert( 0);
+	obj.insert( 5);
+	obj.insert( 12);
+	obj.insert( 4);
+	obj.insert( 6);
+	obj.insert( 8);
+
+	obj.showInOrder();
+	std::cout << std::endl;
+	obj.showPostOrder();
+	std::cout << std::endl;
+	obj.showPreOrder();
+
+	obj.insert(19);
+
+	std::cout << std::endl << obj.search(19);
+	std::cout << std::endl << obj.search(100) << std::endl;
+
+	obj.remove(20);
+	obj.remove(19);
+
+	obj.showInOrder();
+	std::cout << std::endl;
+	obj.showPostOrder();
+	std::cout << std::endl;
+	obj.showPreOrder();
 }
