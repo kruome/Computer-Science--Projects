@@ -84,6 +84,9 @@ public class Main{
                 System.out.println("Enter student id (-1 to exit): "); 
             } 
             userin = ui.nextInt(); 
+            if(userin == -1){ 
+            System.out.println("Thank you and goodbye."); 
+        }
             counter = 0; 
         }while(userin!=-1); 
      } 
