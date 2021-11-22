@@ -3,9 +3,8 @@ import java.util.Scanner;
 import java.io.PrintWriter;
 import java.util.regex.*;
 import java.io.FileNotFoundException;
-
-
-
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class Main{
   public static void main(String[] args)throws java.io.IOException{
@@ -19,6 +18,9 @@ public class Main{
     Scanner departmentDatabase = new Scanner(departmentFile);
     File departmentFileSize = new File("department.txt");
     Scanner departmentDatabaseSize = new Scanner(departmentFile);
+    
+    FileWriter fw = new FileWriter(instructorFile, true);
+    PrintWriter output = new PrintWriter(fw);
     
     int arrOfDeptSize = 0;
     while(departmentDatabaseSize.hasNextLine()){
@@ -142,22 +144,51 @@ public class Main{
                     System.out.print("Enter the instructor name: ");
                     String option2NameUserInput = option2Name.nextLine();
                     boolean option2NameFlag = false;
-                    if(option2NameUserInput.matches("^[A-Za-z]+")){
+                    if(option2NameUserInput.matches("^[\\p{L} .'-]+$")){
                         option2NameFlag = true;
                     }
-                    while(option2NameFlag = false){
-                        System.out.println("Please enter a valid name: ");
+                    while(option2NameFlag == false){
+                        System.out.print("Please enter a valid name: ");
                         option2NameUserInput = option2Name.nextLine();
-                        if(option2NameUserInput.matches("\\[a-z]+\\s\\[a-z]+")){
+                        if(option2NameUserInput.matches("^[\\p{L} .'-]+$")){
                             option2NameFlag = true;
                         }
                     }
+                    String newInstructorName = option2NameUserInput;
+                    
+                    System.out.print("Enter the affiliated department name: ");
+                    String option2DeptUserInput = option2Dept.nextLine();
+                    boolean option2DeptFlag = false;
+                    if(option2DeptUserInput.toUpperCase().matches("[A-Z]{4}")){
+                        option2DeptFlag = true;
+                    }
+                    while(option2DeptFlag == false){
+                        System.out.print("Please enter a valid department name: ");
+                        option2DeptUserInput = option2Dept.nextLine();
+                        if(option2DeptUserInput.toUpperCase().matches("[A-Z]{4}")){
+                            option2DeptFlag = true;
+                        }
+                    }
+                    continueFlag = false;
+                    for(int i = 0; i < listOfDepartments.length;i++){
+                        if(listOfDepartments[i].getDept().equalsIgnoreCase(option2DeptUserInput)){
+                            continueFlag = true;
+                        }
+                    }
+                    if(continueFlag == false){
+                        System.out.println("The department does not exist, hence, the instructor record cannot be added to the file.");
+                        System.out.println();
+                        break;
+                    }
+                    output.print("\n"+option2IDUserInput+","+option2NameUserInput+","+option2DeptUserInput);
                 }
+                
                 break;
             case 3:
                 System.out.println();
                 System.out.println("Exited.");
                 System.out.println();
+                output.close();
                 break;
             default:
                 System.out.println();
