@@ -23,6 +23,10 @@ public class Main{
     FileWriter fw = new FileWriter(instructorFile, true);
     PrintWriter output = new PrintWriter(fw);
  
+    ArrayList<Integer> departmentFund = new ArrayList<Integer>();
+    ArrayList<String> departmentName = new ArrayList<String>();
+    ArrayList<String> departmentLocation = new ArrayList<String>();
+    
     int arrOfDeptSize = 0;
     while(departmentDatabaseSize.hasNextLine()){
         arrOfDeptSize++;
@@ -31,10 +35,9 @@ public class Main{
     for(int j = 0; j < arrOfDeptSize;j++){
         String line = departmentDatabase.nextLine();
         String[] deptField = line.split(",");
-        String instructorID(deptField[0]);
-        String departmentLocation = deptField[1];
-        int departmentFund = Integer.parseInt(deptField[2].trim());
-        listOfDepartments[j] = new Department(departmentFund,departmentLocation,departmentName);
+        departmentName.add(deptField[0]);
+        departmentLocation.add(deptField[1]);
+        departmentFund.add(Integer.parseInt(deptField[2].trim()));
     }
 
     //counts the number of items/lines in the file "instructor.txt" -- shows 6.
@@ -42,6 +45,7 @@ public class Main{
     ArrayList<Integer> instructorID = new ArrayList<Integer>();
     ArrayList<String> instructorName = new ArrayList<String>();
     ArrayList<String> instructorDepartment = new ArrayList<String>();
+    ArrayList<String> instructorLocation = new ArrayList<String>();
     
     int arrOfInstSize = 0;
     while(instructorDatabaseSize.hasNextLine()){
@@ -52,17 +56,14 @@ public class Main{
     for(int j = 0; j < arrOfInstSize;j++){
         String line = instructorDatabase.nextLine();
         String[] instrucField = line.split(",");
-        int instructorID = Integer.parseInt(instrucField[0].trim());
-        String instructorName = instrucField[1];
-        String instructorDept = instrucField[2];
-        listOfInstructors[j] = new Instructor(instructorID,instructorName,instructorDept);
-        String instructorLocation = "";
+        instructorID.add(Integer.parseInt(instrucField[0].trim()));
+        instructorName.add(instrucField[1]);
+        instructorDepartment.add(instrucField[2]);
         for(int a = 0; a < listOfDepartments.length; a++){
-            if(listOfInstructors[j].getDept().equals(listOfDepartments[a].getDept())){
-                instructorLocation = listOfDepartments[a].getLocation();
+            if(instructorDepartment.get(j).equals(departmentName.get(a))){
+                instructorLocation.get(j) = departmentName.get(a);
             }
         }
-        listOfInstructors[j] = new Instructor(instructorID, instructorName, instructorDept, instructorLocation);
     }
     
     Scanner userInput = new Scanner(System.in);
@@ -199,85 +200,4 @@ public class Main{
         }
     }
   }
-    static class Department{
-        private int fund;
-        private String location;
-        private String dept;
-    
-        public Department(){
-            fund = 0;
-            location = "";
-            dept = "";
-        }
-        public Department(int fund, String location, String dept){
-            this.fund = fund;
-            this.location = location;
-            this.dept = dept;
-        }
-        public int getFund(){
-            return fund;
-        }
-        public void setFund(int fund){
-            this.fund = fund;
-        }
-        public String getLocation(){
-            return location;
-        }
-        public void setLocation(String location){
-            this.location = location;
-        }
-        public String getDept(){
-            return dept;
-        }
-        public void setDept(String dept){
-            this.dept = dept;
-        }
-    }
-
-    static class Instructor{
-        private int ID;
-        private String name;
-        private String dept;
-        private String location;
-
-        public Instructor(int ID, String name, String dept, String location){
-            this.ID = ID;
-            this.name = name;
-            this.dept = dept;
-            this.location = location;
-
-        }
-        public Instructor(int ID, String name, String dept){
-            this.ID = ID;
-            this.name = name;
-            this.dept = dept;
-        }
-        public Instructor(){
-            ID = 0;
-            name = "";
-            dept = "";
-            location = "";
-        }
-        public int getID(){
-            return ID;
-        }
-        public String getName(){
-            return name;
-        }
-        public void setName(String name){
-            this.name = name;
-        }
-        public String getLocation(){
-            return location;
-        }
-        public void setLocation(String location){
-            this.location = location;
-        }
-        public String getDept(){
-            return dept;
-        }
-        public void setDept(String dept){
-            this.dept = dept;
-        }
-    }
 }
