@@ -55,6 +55,7 @@ public:
   int size ();
   bool isEmpty ();
   void erase ();
+  int printMiddle(Deque, int);
 };
 
 bool
@@ -299,26 +300,13 @@ Deque::erase ()
     }
   Size = 0;
 }
- void printMiddle(class Deque p, int c){
-        int a = p.getFrontscore();
-        int b = p.getRearscore();
-        int count = 0;
-        int size = c;
-        int limit = c/2;
-        if (!p.isEmpty())
-        {
-            while (count < limit )
-            {
-                p.deleteRear();
-                p.deleteFront();
-                a = p.getFrontscore();
-                b = p.getRearscore();
-                count++;
-            }
-            cout << "The middle element is [" << p.getRearscore() << "]" << endl;
-        }else{
-            cout<<endl << "Nada";
-        }
+ int printMiddle(class Deque p, int c){
+     Node* temp = new Node;
+     Node* pa = temp;
+     for(int i = 0; i <= c; i++){
+         temp = temp->next;
+     }
+     return temp->score;
 }
 
 int
@@ -349,23 +337,23 @@ main ()
     printMiddle(scollection,3);
 }
 
-//int interpolation_search (Node* p, int value, int size)
-/*{
+int interpolation_search (Deque* p, int value, int size)
+{
   int low = 0;
   int high = size - 1;
-  int mid;
+  int mid = -1;
   
-  l = p->getFrontScore();
-  h = p->getRearScore();
+  int l = p->getFrontscore();
+  int h = p->getRearscore();
  
   while ( l<= value && h >= value)
   {
     mid = low + ((value - l) * (high - low)) / (h - l);
-    if (ar[mid] < value)
+    if (printMiddle(p,mid)< value)
     {
       low = mid + 1;
     }
-    else if (ar[mid] > value)
+    else if ( printMiddle(p,mid)> value)
     {
       low = mid - 1;
     }
@@ -383,5 +371,5 @@ main ()
   {
     return -1;
   }
-}*/
+}
 
