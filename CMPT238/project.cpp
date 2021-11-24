@@ -55,8 +55,15 @@ public:
   int size ();
   bool isEmpty ();
   void erase ();
-  int printMiddle(Deque, int);
+  int printMiddle(int);
+
 };
+int Deque:: printMiddle(int x){
+    for(int i = 0; i < x;i++){
+        front = front->next;
+    }
+    return front->score;
+}
 
 bool
 Deque::isEmpty ()
@@ -300,14 +307,42 @@ Deque::erase ()
     }
   Size = 0;
 }
- int printMiddle(class Deque p, int c){
-     Node* temp = new Node;
-     Node* pa = temp;
-     for(int i = 0; i <= c; i++){
-         temp = temp->next;
-     }
-     return temp->score;
+int interpolation_search (Deque p, int value, int size)
+{
+  int low = 0;
+  int high = size - 1;
+  int mid = -1;
+  
+  int l = p.getFrontscore();
+  int h = p.getRearscore();
+ 
+  while ( l<= value && h >= value)
+  {
+    mid = low + ((value - l) * (high - low)) / (h - l);
+    if (p.printMiddle(mid)< value)
+    {
+      low = mid + 1;
+    }
+    else if (p.printMiddle(mid)> value)
+    {
+      low = mid - 1;
+    }
+    else
+    {
+      return mid;
+    }
+  }
+ 
+  if (l == value)
+  {
+    return low;
+  }
+  else
+  {
+    return -1;
+  }
 }
+
 
 int
 main ()
@@ -333,43 +368,9 @@ main ()
     {
       cout<< scollection.getFrontscore() << "  "<<  "              " << scollection.getFrontname() << "          "<< scollection.getFrontage() <<  "        " << scollection.getFrontschool() << "       " << scollection.getFrontcountry();
     }
-    cout<<"yes" << endl;
-    printMiddle(scollection,3);
-}
 
-int interpolation_search (Deque* p, int value, int size)
-{
-  int low = 0;
-  int high = size - 1;
-  int mid = -1;
-  
-  int l = p->getFrontscore();
-  int h = p->getRearscore();
- 
-  while ( l<= value && h >= value)
-  {
-    mid = low + ((value - l) * (high - low)) / (h - l);
-    if (printMiddle(p,mid)< value)
-    {
-      low = mid + 1;
-    }
-    else if ( printMiddle(p,mid)> value)
-    {
-      low = mid - 1;
-    }
-    else
-    {
-      return mid;
-    }
-  }
- 
-  if (l == value)
-  {
-    return low;
-  }
-  else
-  {
-    return -1;
-  }
+    cout<<"\n" << scollection.printMiddle(1) << endl;
+    
+    cout<<interpolation_search(scollection, 700, 3);
 }
 
