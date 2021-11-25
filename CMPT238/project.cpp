@@ -6,20 +6,16 @@ struct Node
 {
   int score;
   string name;
-  int age;
   string country;
-  string school;
   Node *prev, *next;
 
-  static Node *getnode (int score, string name, int age, string school,
+  static Node *getnode (int score, string name,
 			string country)
   {
     Node *newNode = (Node *) malloc (sizeof (Node));
       newNode->score = score;
       newNode->name = name;
-      newNode->age = age;
       newNode->country = country;
-      newNode->school = school;
       newNode->prev = newNode->next = NULL;
       return newNode;
   }
@@ -38,19 +34,16 @@ public:
     Size = 0;
   }
 
-  void insertFront (int, string, int, string, string);
-  void insertRear (int, string, int, string, string);
+  void insertFront (int, string, string);
+  void insertRear (int, string, string);
   void deleteFront ();
   void deleteRear ();
   int getFrontscore ();
-  string getFrontschool ();
-  string getFrontcountry ();
-  int getFrontage ();
-  string getFrontname ();
   int getRearscore ();
+  string getFrontcountry ();
+  string getFrontname ();
   string getRearschool ();
   string getRearcountry ();
-  int getRearage ();
   string getRearname ();
   int size ();
   bool isEmpty ();
@@ -59,12 +52,17 @@ public:
 
 };
 int Deque:: printindex(int x){
+    int val = -1;
+    if(x==0)return front->score;
+    
     Node* temp = new Node;
-    front = temp;
-    for(int i = 0; i < x;i++){
-        temp  = temp->next;
+    temp->next = front;
+    for(int i = 1; i < x+1; i ++){
+        temp=temp->next;
     }
-    return temp->score;
+    val = temp->score;
+    free(temp);
+    return val;
 }
 
 bool
@@ -80,10 +78,9 @@ Deque::size ()
 }
 
 void
-Deque::insertFront (int score, string name, int age, string country,
-		    string school)
+Deque::insertFront (int score, string name, string country)
 {
-  Node *newNode = Node::getnode (score, name, age, country, school);
+  Node *newNode = Node::getnode (score, name, country);
   if (newNode == NULL)
     cout << "OverFlow\n";
   else
@@ -103,10 +100,9 @@ Deque::insertFront (int score, string name, int age, string country,
 }
 
 void
-Deque::insertRear (int score, string name, int age, string school,
-		   string country)
+Deque::insertRear (int score, string name, string country)
 {
-  Node *newNode = Node::getnode (score, name, age, school, country);
+  Node *newNode = Node::getnode (score, name,country);
   if (newNode == NULL)
     cout << "OverFlow\n";
   else
@@ -193,19 +189,6 @@ Deque::getFrontname ()
     }
 }
 
-int
-Deque::getFrontage ()
-{
-  if (isEmpty ())
-    {
-      return -1;
-    }
-  else
-    {
-      return front->age;
-    }
-}
-
 string
 Deque::getFrontcountry ()
 {
@@ -216,19 +199,6 @@ Deque::getFrontcountry ()
   else
     {
       return front->country;
-    }
-}
-
-string
-Deque::getFrontschool ()
-{
-  if (isEmpty ())
-    {
-      return "Empty.";
-    }
-  else
-    {
-      return front->school;
     }
 }
 
@@ -258,19 +228,6 @@ Deque::getRearname ()
     }
 }
 
-int
-Deque::getRearage ()
-{
-  if (isEmpty ())
-    {
-      return -1;
-    }
-  else
-    {
-      return rear->age;
-    }
-}
-
 string
 Deque::getRearcountry ()
 {
@@ -283,20 +240,6 @@ Deque::getRearcountry ()
       return rear->country;
     }
 }
-
-string
-Deque::getRearschool ()
-{
-  if (isEmpty ())
-    {
-      return "Empty.";
-    }
-  else
-    {
-      return rear->school;
-    }
-}
-
 void
 Deque::erase ()
 {
@@ -320,7 +263,7 @@ int interpolation_search (Deque p, int value, int size)
  
   while ( l<= value && h >= value)
   {
-    mid = (low + (high - low)) / (((p.printindex(h) - p.printindex(low))) * (size - p.printindex(low)));
+    mid = (low + (high - low)) / (((p.printindex(high) - p.printindex(low))) * (size - p.printindex(low)));
             
     if (p.printindex(mid) < value)
     {
@@ -346,25 +289,16 @@ int interpolation_search (Deque p, int value, int size)
   }
 }
 
-
 int
 main ()
 {
   Deque scollection;
-  int count = 1;
-  int option;
-
-  //temp values
-  string tschool;
-  string tcountry;
-  int tage;
-  int tscore;
-
-  scollection.insertRear (700, "A", 16, "SHS", "USA");
-  scollection.insertRear (1000, "B", 16, "SHS", "USA");
-  scollection.insertRear (1200, "C", 16, "SHS", "USA");
-  scollection.insertRear (1400, "D", 16, "SHS", "USA");
-  cout<<"huh";
-    cout<<interpolation_search(scollection, 1200, 4);
+  
+  scollection.insertRear (700, "A", "USA");
+  scollection.insertRear (1000, "B", "USA");
+  scollection.insertRear (1200, "C", "USA");
+  scollection.insertRear (1400, "D", "USA");
+  
+    scollection.printindex(3);
+    scollection.printindex(0);
 }
-
