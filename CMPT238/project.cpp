@@ -59,7 +59,12 @@ public:
 
 };
 int Deque:: printindex(int x){
-    return front->score;
+    Node* temp = new Node;
+    front = temp;
+    for(int i = 0; i < x;i++){
+        temp  = temp->next;
+    }
+    return temp->score;
 }
 
 bool
@@ -249,7 +254,7 @@ Deque::getRearname ()
     }
   else
     {
-      cout << rear->name;
+      return rear->name;
     }
 }
 
@@ -315,8 +320,9 @@ int interpolation_search (Deque p, int value, int size)
  
   while ( l<= value && h >= value)
   {
-    mid = low + ((value - l) * (high - low)) / (h - l);
-    if (p.printindex(mid)< value)
+    mid = (low + (high - low)) / (((p.printindex(h) - p.printindex(low))) * (size - p.printindex(low)));
+            
+    if (p.printindex(mid) < value)
     {
       low = mid + 1;
     }
@@ -336,7 +342,7 @@ int interpolation_search (Deque p, int value, int size)
   }
   else
   {
-    return 911;
+    return -1;
   }
 }
 
@@ -355,10 +361,10 @@ main ()
   int tscore;
 
   scollection.insertRear (700, "A", 16, "SHS", "USA");
-  scollection.insertRear (1000, "A", 16, "SHS", "USA");
-  scollection.insertRear (1200, "A", 16, "SHS", "USA");
-  scollection.insertRear (1400, "A", 16, "SHS", "USA");
-  
+  scollection.insertRear (1000, "B", 16, "SHS", "USA");
+  scollection.insertRear (1200, "C", 16, "SHS", "USA");
+  scollection.insertRear (1400, "D", 16, "SHS", "USA");
+  cout<<"huh";
     cout<<interpolation_search(scollection, 1200, 4);
 }
 
