@@ -55,13 +55,10 @@ public:
   int size ();
   bool isEmpty ();
   void erase ();
-  int printMiddle(int);
+  int printindex(int);
 
 };
-int Deque:: printMiddle(int x){
-    for(int i = 0; i < x;i++){
-        front = front->next;
-    }
+int Deque:: printindex(int x){
     return front->score;
 }
 
@@ -319,11 +316,11 @@ int interpolation_search (Deque p, int value, int size)
   while ( l<= value && h >= value)
   {
     mid = low + ((value - l) * (high - low)) / (h - l);
-    if (p.printMiddle(mid)< value)
+    if (p.printindex(mid)< value)
     {
       low = mid + 1;
     }
-    else if (p.printMiddle(mid)> value)
+    else if (p.printindex(mid)> value)
     {
       low = mid - 1;
     }
@@ -339,7 +336,7 @@ int interpolation_search (Deque p, int value, int size)
   }
   else
   {
-    return -1;
+    return 911;
   }
 }
 
@@ -357,20 +354,11 @@ main ()
   int tage;
   int tscore;
 
-  scollection.insertRear (1580, "A", 16, "SHS", "USA");
   scollection.insertRear (700, "A", 16, "SHS", "USA");
   scollection.insertRear (1000, "A", 16, "SHS", "USA");
-
-  cout << "         INTERNATIONAL ICL LEADERBOARD FOR 20xx" << endl;
-  cout << " Score (1600) | " << "  Participant |" << "  Age   |" <<
-    "   School  |" << "   Country   | " << endl;
-  for (int i = 0; i < count; i++)
-    {
-      cout<< scollection.getFrontscore() << "  "<<  "              " << scollection.getFrontname() << "          "<< scollection.getFrontage() <<  "        " << scollection.getFrontschool() << "       " << scollection.getFrontcountry();
-    }
-
-    cout<<"\n" << scollection.printMiddle(1) << endl;
-    
-    cout<<interpolation_search(scollection, 700, 3);
+  scollection.insertRear (1200, "A", 16, "SHS", "USA");
+  scollection.insertRear (1400, "A", 16, "SHS", "USA");
+  
+    cout<<interpolation_search(scollection, 1200, 4);
 }
 
