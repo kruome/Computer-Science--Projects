@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-#include  <stdlib.h>
+#include <stdlib.h>
+#include<iostream>
 using namespace std;
 
 struct Node
@@ -53,15 +54,12 @@ public:
 };
 int Deque:: printindex(int x){
     int val = -1;
-    if(x==0)return front->score;
-    
     Node* temp = new Node;
-    temp->next = front;
-    for(int i = 1; i < x+1; i ++){
+    temp = front;
+    for(int i = 0; i < x; i ++){
         temp=temp->next;
     }
     val = temp->score;
-    free(temp);
     return val;
 }
 
@@ -157,7 +155,7 @@ Deque::deleteRear ()
 	front = NULL;
       else
 	rear->next = NULL;
-      free (temp);
+      free(temp);
 
       Size--;
     }
@@ -255,37 +253,37 @@ Deque::erase ()
 int interpolation_search (Deque p, int value, int size)
 {
   int low = 0;
-  int high = size - 1;
+  int high = size-1;
   int mid = -1;
   
   int l = p.getFrontscore();
   int h = p.getRearscore();
- 
-  while ( l<= value && h >= value)
+ while (low <= high && value >= p.printindex(low) && value <= p.printindex(high))
   {
-    mid = (low + (high - low)) / (((p.printindex(high) - p.printindex(low))) * (size - p.printindex(low)));
-            
+     if (low == high)
+     {
+         if(p.printindex(low)==value)
+         {
+             return low;
+         }else
+         {
+            return -1;
+         }
+    }else{
+    mid = low +  (((high - low) / (p.printindex(high) - p.printindex(low))) * (value - p.printindex(low)));
     if (p.printindex(mid) < value)
     {
-      low = mid + 1;
+      low = mid+1;
     }
     else if (p.printindex(mid)> value)
     {
-      low = mid - 1;
+      high = mid-1;
     }
-    else
+    else if(p.printindex(mid)==value)
     {
       return mid;
     }
-  }
- 
-  if (l == value)
-  {
-    return low;
-  }
-  else
-  {
-    return -1;
+   }
   }
 }
 
@@ -294,11 +292,22 @@ main ()
 {
   Deque scollection;
   
-  scollection.insertRear (700, "A", "USA");
-  scollection.insertRear (1000, "B", "USA");
-  scollection.insertRear (1200, "C", "USA");
-  scollection.insertRear (1400, "D", "USA");
-  
-    scollection.printindex(3);
-    scollection.printindex(0);
+  scollection.insertRear (100, "A", "USA");
+  scollection.insertRear (200, "B", "USA");
+  scollection.insertRear (300, "C", "USA");
+  scollection.insertRear (400, "D", "USA");
+  scollection.insertRear (500, "D", "USA");
+  scollection.insertRear (600, "D", "USA");
+  scollection.insertRear (700, "D", "USA");
+  scollection.insertRear (800, "D", "USA");
+
+
+cout<<"The index of the requested value is at " << interpolation_search(scollection,100,8) << endl;
+cout<<"The index of the requested value is at " << interpolation_search(scollection,200,8) << endl;
+cout<<"The index of the requested value is at " << interpolation_search(scollection,300,8) << endl;
+cout<<"The index of the requested value is at " << interpolation_search(scollection,400,8) << endl;
+cout<<"The index of the requested value is at " << interpolation_search(scollection,500,8) << endl;
+cout<<"The index of the requested value is at " << interpolation_search(scollection,600,8) << endl;
+
+
 }
