@@ -19,9 +19,6 @@ public class Main{
     Scanner departmentDatabase = new Scanner(departmentFile);
     File departmentFileSize = new File("department.txt");
     Scanner departmentDatabaseSize = new Scanner(departmentFile);
-
-    FileWriter fw = new FileWriter(instructorFile, true);
-    PrintWriter output = new PrintWriter(fw);
  
     ArrayList<Integer> departmentFund = new ArrayList<Integer>();
     ArrayList<String> departmentName = new ArrayList<String>();
@@ -59,25 +56,23 @@ public class Main{
         instructorID.add(Integer.parseInt(instrucField[0].trim()));
         instructorName.add(instrucField[1]);
         instructorDepartment.add(instrucField[2]);
-        for(int a = 0; a < listOfDepartments.length; a++){
+        for(int a = 0; a < arrOfDeptSize; a++){
             if(instructorDepartment.get(j).equals(departmentName.get(a))){
-                instructorLocation.get(j) = departmentName.get(a);
+                instructorLocation.set(j,departmentName.get(a));
             }
         }
     }
     
     Scanner userInput = new Scanner(System.in);
     int userOption = 0;
-    
-    //menu which has 3 options and stops when option 3 is entered -- work in progress    
     int option1LoopCount = 0;
     Scanner option1 = new Scanner(System.in);
     int option1UserInput = 0;
-    
-    // option2 scanners
-    Scanner option2Name = new Scanner(System.in);
     Scanner option2ID = new Scanner(System.in);
+    Scanner option2Name = new Scanner(System.in);
     Scanner option2Dept = new Scanner(System.in);
+    Scanner option2UserInput = new Scanner(System.in);
+    
     while(userOption != 3){
         System.out.println("        Menu: ");
         System.out.println("1. Get instructor information");
@@ -85,18 +80,17 @@ public class Main{
         System.out.println("3. Exit");
         System.out.println();
         userOption = userInput.nextInt();
-        int instructorFileCounter = listOfInstructors.length+1;
         switch(userOption){
             case 1:
                 System.out.println();
                 System.out.print("Enter the instructor ID: ");
                 option1UserInput = option1.nextInt();
-                for(int i = 0; i < listOfInstructors.length;i++){
-                    if(listOfInstructors[i].getID() == option1UserInput){
+                for(int i = 0; i < arrOfInstSize;i++){
+                    if(instructorID.get(i) == option1UserInput){
                         System.out.println();
-                        System.out.println("Instructor name: " + listOfInstructors[i].getName());
-                        System.out.println("Instructor department: " + listOfInstructors[i].getDept());
-                        System.out.println("Instructor department location: " + listOfInstructors[i].getLocation());
+                        System.out.println("Instructor name: " + instructorName.get(i));
+                        System.out.println("Instructor department: " + instructorDepartment.get(i));
+                        System.out.println("Instructor department location: " + instructorLocation.get(i));
                         option1LoopCount++;
                     }
                 }
@@ -108,6 +102,8 @@ public class Main{
                 System.out.println();
                 break;
             case 2:
+                FileWriter fw = new FileWriter(instructorFile, true);
+                PrintWriter output = new PrintWriter(fw);
                 
                 System.out.println();
                 System.out.print("Enter the instructor ID: ");
@@ -124,8 +120,8 @@ public class Main{
                         option2IDFlag = true;
                     }
                 }
-                for(int i = 0; i < listOfInstructors.length; i++){
-                    if(listOfInstructors[i].getID() == Integer.parseInt(option2IDUserInput)){
+                for(int i = 0; i < arrOfInstSize; i++){
+                    if(instructorID.get(i) == Integer.parseInt(option2IDUserInput)){
                         System.out.println("Instructor ID already exists in the file.");
                         System.out.println();
                         continueFlag = false;
@@ -135,8 +131,6 @@ public class Main{
                 if(continueFlag == false){
                     break;
                 }else{
-                    int newInstructorID = Integer.parseInt(option2IDUserInput);
-                
                     System.out.print("Enter the instructor name: ");
                     String option2NameUserInput = option2Name.nextLine();
                     boolean option2NameFlag = false;
@@ -150,8 +144,7 @@ public class Main{
                             option2NameFlag = true;
                         }
                     }
-                    String newInstructorName = option2NameUserInput;
-                    
+
                     System.out.print("Enter the affiliated department name: ");
                     String option2DeptUserInput = option2Dept.nextLine();
                     boolean option2DeptFlag = false;
@@ -166,8 +159,8 @@ public class Main{
                         }
                     }
                     continueFlag = false;
-                    for(int i = 0; i < listOfDepartments.length;i++){
-                        if(listOfDepartments[i].getDept().equalsIgnoreCase(option2DeptUserInput)){
+                    for(int i = 0; i < arrOfDeptSize;i++){
+                        if(departmentName.get(i).equalsIgnoreCase(option2DeptUserInput)){
                             continueFlag = true;
                         }
                     }
@@ -176,14 +169,16 @@ public class Main{
                         System.out.println();
                         break;
                     }
-                    String newInstructorLocation = "";
-                    for(int a = 0; a < listOfDepartments.length; a++){
-                        if(option2DeptUserInput.equals(listOfDepartments[a].getDept())){
-                            newInstructorLocation = listOfDepartments[a].getLocation();
+                    for(int a = 0; a < arrOfDeptSize; a++){
+                        if(option2DeptUserInput.equals(departmentName.get(a))){
+                            instructorID.add(Integer.parseInt(option2IDUserInput));
+                            instructorDepartment.add(option2DeptUserInput);
+                            instructorName.add(option2NameUserInput);
+                            instructorLocation.add(departmentLocation.get(a));
                         }
                     }
-                    listOfInstructors[instructorFileCounter] = new Instructor(Integer.parseInt(option2IDUserInput),option2NameUserInput,option2DeptUserInput,newInstructorLocation);
                     output.print("\n"+option2IDUserInput+","+option2NameUserInput+","+option2DeptUserInput);
+                    output.close();
                 }
                 
                 break;
@@ -191,7 +186,6 @@ public class Main{
                 System.out.println();
                 System.out.println("Exited.");
                 System.out.println();
-                output.close();
                 break;
             default:
                 System.out.println();
