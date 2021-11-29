@@ -181,7 +181,6 @@ public class Main{
                                 instructorLocation.add("LEO");
                             }else{
                                     instructorLocation.add("RLC");
-                                    break;
                             }
                         }
                     }
