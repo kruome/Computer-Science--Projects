@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class Main{
   public static void main(String[] args)throws java.io.IOException{
 
-    File instructorFile = new File("instructor.txt");
+    File instructorFile = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
     Scanner instructorDatabase = new Scanner(instructorFile);
-    File instructorFileSize = new File("instructor.txt");
+    File instructorFileSize = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
     Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
     
-    File departmentFile = new File("department.txt");
+    File departmentFile = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
     Scanner departmentDatabase = new Scanner(departmentFile);
-    File departmentFileSize = new File("department.txt");
+    File departmentFileSize = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
     Scanner departmentDatabaseSize = new Scanner(departmentFile);
  
     ArrayList<Integer> departmentFund = new ArrayList<Integer>();
@@ -146,20 +146,21 @@ public class Main{
 
                     System.out.print("Enter the affiliated department name: ");
                     String option2DeptUserInput = option2Dept.nextLine();
+                    option2DeptUserInput = option2DeptUserInput.toUpperCase();
                     boolean option2DeptFlag = false;
-                    if(option2DeptUserInput.toUpperCase().matches("[A-Z]{4}")){
+                    if(option2DeptUserInput.matches("[A-Z]{4}")){
                         option2DeptFlag = true;
                     }
                     while(option2DeptFlag == false){
                         System.out.print("Please enter a valid department name: ");
                         option2DeptUserInput = option2Dept.nextLine();
-                        if(option2DeptUserInput.toUpperCase().matches("[A-Z]{4}")){
+                        if(option2DeptUserInput.matches("[A-Z]{4}")){
                             option2DeptFlag = true;
                         }
                     }
                     continueFlag = false;
                     for(int i = 0; i < arrOfDeptSize;i++){
-                        if(departmentName.get(i).equalsIgnoreCase(option2DeptUserInput)){
+                        if(departmentName.get(i).equals(option2DeptUserInput)){
                             continueFlag = true;
                         }
                     }
@@ -172,16 +173,13 @@ public class Main{
                     for(int a = 0; a < arrOfDeptSize; a++){
                         if(option2DeptUserInput.equals(departmentName.get(a))){
                             instructorID.add(Integer.parseInt(option2IDUserInput));
-                            instructorDepartment.add(option2DeptUserInput.toUpperCase());
+                            instructorDepartment.add(option2DeptUserInput);
                             instructorName.add(option2NameUserInput);
-                            switch(option2DeptUserInput){
-                                case "MATH":
+                            if(option2DeptUserInput == "MATH"){
                                     instructorLocation.add("RLC");
-                                    break;
-                                case "BIO":
-                                    instructorLocation.add("LEO");
-                                    break;
-                                case "CMPT":
+                            }else if(option2DeptUserInput == "CMPT"){
+                                instructorLocation.add("LEO");
+                            }else{
                                     instructorLocation.add("RLC");
                                     break;
                             }
