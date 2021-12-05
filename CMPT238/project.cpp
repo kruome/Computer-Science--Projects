@@ -109,6 +109,7 @@ rusdb:
 1399,Ogrifina Kuzmina
 1400,Filippa Novikova
 
+
 #include <bits/stdc++.h>
 #include <stdlib.h>
 #include <fstream>
@@ -171,7 +172,6 @@ Deque::printindex (int x)
       temp = temp->next;
     }
   val = temp->score;
-  delete temp;
   return val;
 }
 
