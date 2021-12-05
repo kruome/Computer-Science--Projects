@@ -32,7 +32,6 @@ ausdb:
 1372,Amber Edwards
 1373,Mila Glenn
 1374,Piper Lawson
-
 1375,Skye Baker
 1376,Zara Quin
 1378,Millie Evans
@@ -110,7 +109,6 @@ rusdb:
 1399,Ogrifina Kuzmina
 1400,Filippa Novikova
 
---------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <bits/stdc++.h>
 #include <stdlib.h>
 #include <fstream>
@@ -173,6 +171,7 @@ Deque::printindex (int x)
       temp = temp->next;
     }
   val = temp->score;
+  delete temp;
   return val;
 }
 
@@ -488,7 +487,7 @@ main ()
     }
     
     //Main Menu
-      cout<<"Welcome to the global scoreboard for the internatinal AXT test database!" << endl;
+  cout<<"Welcome to the global scoreboard for the internatinal AXT test database!" << endl;
   const int dbs = 25;
   int userinput; 
   int countryinput;
@@ -510,14 +509,22 @@ main ()
             switch(countryinput){
                 case 1:
                     cout<<"Please enter the test score you would like to search for (1300-1400) in the USA leaderboard: "<<endl;
+                    cout<<endl;
                     cin>>testscore;
-                    cout<<"With the rank of #" << abs(interpolation_search(usadataset,testscore,dbs)-25)<< " " <<usadataset.getName(interpolation_search(usadataset,testscore,dbs)) << " has the score " <<testscore<<endl;
-                    break;
+                    if(abs(interpolation_search(usadataset,testscore,dbs)-25) >=1 && abs(interpolation_search(usadataset,testscore,dbs)-25)<=25){
+                        cout<<"With the rank of #" << abs(interpolation_search(usadataset,testscore,dbs)-25)<< " " <<usadataset.getName(interpolation_search(usadataset,testscore,dbs)) << " has the score " <<testscore<<endl;
+                    }else{
+                        cout<<"There is no record for a test taker with score: " << testscore <<endl;
+                    }break;
                 case 2:
                     cout<<"Please enter the test score you would like to search for (1300-1400) in the Australian leaderboard: "<<endl;
+                    cout<<endl;
                     cin>>testscore;
-                    interpolation_search(ausdataset,testscore,dbs);
-                    break;
+                    if(abs(interpolation_search(ausdataset,testscore,dbs)-25) >=1 && abs(interpolation_search(ausdataset,testscore,dbs)-25)<=25){
+                        cout<<"With the rank of #" << abs(interpolation_search(ausdataset,testscore,dbs)-25)<< " " <<ausdataset.getName(interpolation_search(ausdataset,testscore,dbs)) << " has the score " <<testscore<<endl;
+                    }else{
+                        cout<<"There is no record for a test taker with score: " << testscore <<endl;
+                    }break;
                 case 3:
                     cout<<"Please enter the test score you would like to search for (1300-1400) in the Japanese leaderboard: "<<endl;
                     cin>>testscore;
