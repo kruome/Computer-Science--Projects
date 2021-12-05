@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <stdlib.h>
+#include <fstream>
 #include<iostream>
 using namespace std;
 
@@ -7,16 +8,13 @@ struct Node
 {
   int score;
   string name;
-  string country;
   Node *prev, *next;
 
-  static Node *getnode (int score, string name,
-			string country)
+  static Node *getnode (int score, string name)
   {
     Node *newNode = (Node *) malloc (sizeof (Node));
       newNode->score = score;
       newNode->name = name;
-      newNode->country = country;
       newNode->prev = newNode->next = NULL;
       return newNode;
   }
@@ -35,8 +33,8 @@ public:
     Size = 0;
   }
 
-  void insertFront (int, string, string);
-  void insertRear (int, string, string);
+  void insertFront (int, string);
+  void insertRear (int, string);
   void deleteFront ();
   void deleteRear ();
   int getFrontscore ();
@@ -76,9 +74,9 @@ Deque::size ()
 }
 
 void
-Deque::insertFront (int score, string name, string country)
+Deque::insertFront (int score, string name)
 {
-  Node *newNode = Node::getnode (score, name, country);
+  Node *newNode = Node::getnode (score, name);
   if (newNode == NULL)
     cout << "OverFlow\n";
   else
@@ -98,9 +96,9 @@ Deque::insertFront (int score, string name, string country)
 }
 
 void
-Deque::insertRear (int score, string name, string country)
+Deque::insertRear (int score, string name)
 {
-  Node *newNode = Node::getnode (score, name,country);
+  Node *newNode = Node::getnode (score, name);
   if (newNode == NULL)
     cout << "OverFlow\n";
   else
@@ -187,19 +185,6 @@ Deque::getFrontname ()
     }
 }
 
-string
-Deque::getFrontcountry ()
-{
-  if (isEmpty ())
-    {
-      return "Empty.";
-    }
-  else
-    {
-      return front->country;
-    }
-}
-
 int
 Deque::getRearscore ()
 {
@@ -226,18 +211,6 @@ Deque::getRearname ()
     }
 }
 
-string
-Deque::getRearcountry ()
-{
-  if (isEmpty ())
-    {
-      return "Empty.";
-    }
-  else
-    {
-      return rear->country;
-    }
-}
 void
 Deque::erase ()
 {
@@ -258,6 +231,7 @@ int interpolation_search (Deque p, int value, int size)
   
   int l = p.getFrontscore();
   int h = p.getRearscore();
+  
  while (low <= high && value >= p.printindex(low) && value <= p.printindex(high))
   {
      if (low == high)
@@ -285,29 +259,75 @@ int interpolation_search (Deque p, int value, int size)
     }
    }
   }
+  return -1;
 }
 
 int
 main ()
 {
+    std::ifstream myfile ("dataset.txt");
+
+    std::string myline;
+    if ( myfile.is_open() ) {
+        while ( myfile ) {
+        std::getline (myfile, myline);
+        std::cout << myline << ": " << myfile.tellg() << '\n';
+        }
+    }
+    
   Deque scollection;
   
-  scollection.insertRear (100, "A", "USA");
-  scollection.insertRear (200, "B", "USA");
-  scollection.insertRear (300, "C", "USA");
-  scollection.insertRear (400, "D", "USA");
-  scollection.insertRear (500, "D", "USA");
-  scollection.insertRear (600, "D", "USA");
-  scollection.insertRear (700, "D", "USA");
-  scollection.insertRear (800, "D", "USA");
+  scollection.insertRear (100, "A");
+  scollection.insertRear (200, "B");
 
+  cout<<"Welcome to the global scoreboard for the internatinal AXT test database!" << endl;
+  
+  int userinput; 
+  int countryinput;
+  int testscore;
+    while(userinput != 2){
+        cout<<"Please choose one of the one following options:" << endl;
+        cout<<"1.Database"<<endl;
+        cout<<"2.Exit"<<endl;
+        cin>>userinput;
+        cout<<endl;
 
-cout<<"The index of the requested value is at " << interpolation_search(scollection,100,8) << endl;
-cout<<"The index of the requested value is at " << interpolation_search(scollection,200,8) << endl;
-cout<<"The index of the requested value is at " << interpolation_search(scollection,300,8) << endl;
-cout<<"The index of the requested value is at " << interpolation_search(scollection,400,8) << endl;
-cout<<"The index of the requested value is at " << interpolation_search(scollection,500,8) << endl;
-cout<<"The index of the requested value is at " << interpolation_search(scollection,600,8) << endl;
-
-
+        if(userinput == 1){
+            cout<<"Please choose one of the following countries to find the test score data:"<<endl;
+            cout<<"1.USA"<<endl;
+            cout<<"2.Australia"<<endl;
+            cout<<"3.Japan"<<endl;
+            cout<<"4.China"<<endl;
+            cout<<"5.Russia"<<endl;
+            cin>>countryinput;
+            switch(countryinput){
+                case 1:
+                    cout<<"Please enter the test score you would like to search for (1300-1400): "<<endl;
+                    cin>>testscore;
+                    break;
+                case 2:
+                    cout<<"Please enter the test score you would like to search for (1300-1400): "<<endl;
+                    cin>>testscore;
+                    break;
+                case 3:
+                    cout<<"Please enter the test score you would like to search for (1300-1400):"<<endl;
+                    cin>>testscore;
+                    break;
+                case 4:
+                    cout<<"Please enter the test score you would like to search for (1300-1400):"<<endl;
+                    cin>>testscore;
+                    break;
+                case 5: 
+                    cout<<"Please enter the test score you would like to search for (1300-1400):"<<endl;
+                    cin>>testscore;
+                    break;
+                default:
+                    cout<<"Invalid input. Returning back to the main menu."<<endl;
+                    break;
+            }
+        }
+        if(userinput == 2){
+            cout<<"Exited." << endl;
+        }
+    }
 }
