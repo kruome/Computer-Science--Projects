@@ -19,7 +19,29 @@
 1376,Michael Wenham
 1375,Piper Lawson
 1374,Mila Glenn
-1299,Natalie Simpson
+1389,Natalie Simpson
+
+1400,Filippa Novikova
+1399,Ogrifina Kuzmina
+1398,Jekaterina Kozlova
+1397,Osip Mikhailov
+1396,Mariya Sokoloa
+1395,Alyosha Volkov
+1394,Nonna Koroleva
+1389,Artem Semenov
+1387,Iolanta Ivanova
+1386,Tasha Dmitrieva
+
+1400,Saito Kunio
+1398,Kono Yuichi
+1395,Noda Rei
+1394,Jin Aiko
+1392,Yamane Eiji
+1391,Tao Ayumi
+1389,Onishi Sakiko
+1387,Mochizuki Kameyo
+1386,Tamashiro Kaoru
+1384,Mayeda Sora
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <bits/stdc++.h>
 #include <stdlib.h>
