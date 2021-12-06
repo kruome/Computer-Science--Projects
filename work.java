@@ -5,9 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.*;
 import java.util.ArrayList;
 import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
+import javafx.scene.control.Button;
+import javafx.scene.Scene;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class JavaApplication1 extends Application{
+    Button button;
   public static void main(String[] args)throws java.io.IOException{
+    launch(args);
     
     File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
     Scanner instructorDatabase = new Scanner(instructorFile);
@@ -202,9 +209,17 @@ public class JavaApplication1 extends Application{
         }
     }
   }
-
     @Override
-    public void start(Stage stage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  public void start(Stage primaryStage){
+      primaryStage.setTitle("Primary Project");
+      button = new Button();
+      button.setText("Click here");
+      
+      StackPane layout = new StackPane();
+      layout.getChildren().add(button);
+      
+      Scene scene = new Scene (layout,600,450);
+      primaryStage.setScene(scene);
+      primaryStage.show();
+  }
 }
