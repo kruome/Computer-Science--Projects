@@ -16,47 +16,54 @@ public class Main extends Application{
     Button button1;
     Button button2;
     Button button3;
-    Stage window;
-    Scene scene1, scene2;
   public static void main(String[] args)throws java.io.IOException{
     launch(args);
   }
     @Override
-  public void start(Stage primaryStage) throws FileNotFoundException{
-    window = primaryStage;
-    primaryStage.setTitle("Primary Project");
-    button1 = new Button();
-    button1.setText("1. Get instructor information");
-    
-    button2 = new Button();
-    button2.setText("2. Insert a new instructor");
-      
-    button3 = new Button();
-    button3.setText("3. Exit");
+  public void start(Stage primaryStage){
+      primaryStage.setTitle("Primary Project");
+      button1 = new Button();
+      button1.setText("1. Get instructor information");
      
-    StackPane layout = new StackPane();
-    button1.setTranslateX(0);
-    button1.setTranslateY(-50);
-    button2.setTranslateX(0);
-    button2.setTranslateY(0);
-    button3.setTranslateX(0);
-    button3.setTranslateY(50);
-    layout.getChildren().add(button1);
-    layout.getChildren().add(button2);
-    layout.getChildren().add(button3);
+      button2 = new Button();
+      button2.setText("2. Insert a new instructor");
       
-    scene1 = new Scene (layout,600,300);
-    primaryStage.setScene(scene1);
-    primaryStage.show();
-    
-    File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\instructo.txt");
+      button3 = new Button();
+      button3.setText("3. Exit");
+      
+      StackPane layout = new StackPane();
+      button1.setTranslateX(0);
+      button1.setTranslateY(-50);
+      button2.setTranslateX(0);
+      button2.setTranslateY(0);
+      button3.setTranslateX(0);
+      button3.setTranslateY(50);
+      layout.getChildren().add(button1);
+      layout.getChildren().add(button2);
+      layout.getChildren().add(button3);
+      
+      Scene scene = new Scene (layout,600,300);
+      primaryStage.setScene(scene);
+      primaryStage.show();
+      
+      button3.setOnAction(new EventHandler<ActionEvent>(){
+          @Override
+          public void handle(ActionEvent event){
+              System.exit(0);
+          }
+      });
+  }
+
+}
+/*
+    File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
     Scanner instructorDatabase = new Scanner(instructorFile);
-    File instructorFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\instructo.txt");
+    File instructorFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
     Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
     
-    File departmentFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\department.txt");
+    File departmentFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
     Scanner departmentDatabase = new Scanner(departmentFile);
-    File departmentFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\department.txt");
+    File departmentFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
     Scanner departmentDatabaseSize = new Scanner(departmentFile);
  
     ArrayList<Integer> departmentFund = new ArrayList<Integer>();
@@ -99,52 +106,45 @@ public class Main extends Application{
         }
     }
 
+    Scanner userInput = new Scanner(System.in);
+    int userOption = 0;
+    int option1LoopCount = 0;
+    Scanner option1 = new Scanner(System.in);
+    int option1UserInput = 0;
     Scanner option2ID = new Scanner(System.in);
     Scanner option2Name = new Scanner(System.in);
     Scanner option2Dept = new Scanner(System.in);
     Scanner option2UserInput = new Scanner(System.in);
-
-      button1.setOnAction((ActionEvent event) -> {
-          System.out.println(instructorName.get(0));
-          int arrOfInstSize1 = 0;
-        while (instructorDatabaseSize.hasNextLine()) {
-            arrOfInstSize1++;
-            instructorDatabaseSize.nextLine();
-        }
-        int option1LoopCount = 0;
-        Scanner option1 = new Scanner(System.in);
-        int option1UserInput = 0;
-        System.out.print("Enter the instructor ID: ");
-        option1UserInput = option1.nextInt();
-        for (int i = 0; i < arrOfInstSize1; i++) {
-            if(instructorID.get(i) == option1UserInput){
-                System.out.println();
-                System.out.println("Instructor name: " + instructorName.get(i));
-                System.out.println("Instructor department: " + instructorDepartment.get(i));
-                System.out.println("Instructor department location: " + instructorLocation.get(i));
-                option1LoopCount++;
-                break;
-            }
-        }
-        if(option1LoopCount != 1){
-            System.out.println("The ID does not appear in the file.");
-            option1LoopCount = 0;
-        }
-        option1LoopCount = 0;
-        System.out.println();
-    });
-      button3.setOnAction(new EventHandler<ActionEvent>(){
-          @Override
-          public void handle(ActionEvent event){
-              System.exit(0);
-          }
-      });
-  }
-
-}
-/*
     
-   
+    while(userOption != 3){
+        System.out.println("        Menu: ");
+        System.out.println("1. Get instructor information");
+        System.out.println("2. Insert a new instructor");
+        System.out.println("3. Exit");
+        System.out.println();
+        userOption = userInput.nextInt();
+        switch(userOption){
+            case 1:
+                System.out.println();
+                System.out.print("Enter the instructor ID: ");
+                option1UserInput = option1.nextInt();
+                for(int i = 0; i < arrOfInstSize;i++){
+                    if(instructorID.get(i) == option1UserInput){
+                        System.out.println();
+                        System.out.println("Instructor name: " + instructorName.get(i));
+                        System.out.println("Instructor department: " + instructorDepartment.get(i));
+                        System.out.println("Instructor department location: " + instructorLocation.get(i));
+                        option1LoopCount++;
+                        break;
+                    }
+                }
+                if(option1LoopCount != 1){
+                    System.out.println("The ID does not appear in the file.");
+                    option1LoopCount = 0;
+                }
+                option1LoopCount = 0;
+                System.out.println();
+                break;
             case 2:
                 FileWriter fw = new FileWriter(instructorFile, true);
                 PrintWriter output = new PrintWriter(fw);
