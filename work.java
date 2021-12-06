@@ -1,23 +1,22 @@
-import java.io.File;
 import java.util.Scanner;
-import java.io.PrintWriter;
+import javafx.application.Application;
 import java.util.regex.*;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
+import javafx.stage.Stage;
 
-public class Main{
+public class JavaApplication1 extends Application{
   public static void main(String[] args)throws java.io.IOException{
-
-    File instructorFile = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
+    
+    File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
     Scanner instructorDatabase = new Scanner(instructorFile);
-    File instructorFileSize = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
+    File instructorFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
     Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
     
-    File departmentFile = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
+    File departmentFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
     Scanner departmentDatabase = new Scanner(departmentFile);
-    File departmentFileSize = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
+    File departmentFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
     Scanner departmentDatabaseSize = new Scanner(departmentFile);
  
     ArrayList<Integer> departmentFund = new ArrayList<Integer>();
@@ -54,13 +53,12 @@ public class Main{
         instructorName.add(instrucField[1]);
         instructorDepartment.add(instrucField[2]);
         for(int a = 0; a < arrOfDeptSize; a++){
-            instructorLocation.add("");
             if(instructorDepartment.get(j).equals(departmentName.get(a))){
-                instructorLocation.set(j,departmentLocation.get(a));
+                instructorLocation.add(j,departmentLocation.get(a));
             }
         }
     }
-   
+
     Scanner userInput = new Scanner(System.in);
     int userOption = 0;
     int option1LoopCount = 0;
@@ -77,7 +75,6 @@ public class Main{
         System.out.println("2. Insert a new instructor");
         System.out.println("3. Exit");
         System.out.println();
-        System.out.println(instructorID.size()+ " " + instructorName.size() + " " + instructorName.size());
         userOption = userInput.nextInt();
         switch(userOption){
             case 1:
@@ -91,6 +88,7 @@ public class Main{
                         System.out.println("Instructor department: " + instructorDepartment.get(i));
                         System.out.println("Instructor department location: " + instructorLocation.get(i));
                         option1LoopCount++;
+                        break;
                     }
                 }
                 if(option1LoopCount != 1){
@@ -148,7 +146,7 @@ public class Main{
                     String option2DeptUserInput = option2Dept.nextLine();
                     option2DeptUserInput = option2DeptUserInput.toUpperCase();
                     boolean option2DeptFlag = false;
-                    if(option2DeptUserInput.matches("[A-Z]{4}")){
+                    if(option2DeptUserInput.matches("[A-Z]{4}")||option2DeptUserInput.matches("[A-Z]{3}")){
                         option2DeptFlag = true;
                     }
                     while(option2DeptFlag == false){
@@ -175,12 +173,16 @@ public class Main{
                             instructorID.add(Integer.parseInt(option2IDUserInput));
                             instructorDepartment.add(option2DeptUserInput);
                             instructorName.add(option2NameUserInput);
-                            if(option2DeptUserInput == "MATH"){
+                            switch (option2DeptUserInput) {
+                                case "MATH":
                                     instructorLocation.add("RLC");
-                            }else if(option2DeptUserInput == "CMPT"){
-                                instructorLocation.add("LEO");
-                            }else{
+                                    break;
+                                case "BIO":
+                                    instructorLocation.add("LEO");
+                                    break;
+                                default:
                                     instructorLocation.add("RLC");
+                                    break;
                             }
                         }
                     }
@@ -200,4 +202,9 @@ public class Main{
         }
     }
   }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
