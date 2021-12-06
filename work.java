@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class JavaApplication1 extends Application{
+public class Main extends Application{
     Button button1;
     Button button2;
     Button button3;
@@ -32,28 +32,28 @@ public class JavaApplication1 extends Application{
       button3.setText("3. Exit");
       
       StackPane layout = new StackPane();
-      button1.setLayoutX(0);
-      button1.setLayoutY(100);
-      button2.setLayoutX(300);
-      button2.setLayoutY(200);
-      button2.setLayoutX(300);
-      button2.setLayoutY(300);
+      button1.setTranslateX(0);
+      button1.setTranslateY(-50);
+      button2.setTranslateX(0);
+      button2.setTranslateY(0);
+      button3.setTranslateX(0);
+      button3.setTranslateY(50);
       layout.getChildren().add(button1);
       layout.getChildren().add(button2);
       layout.getChildren().add(button3);
-      button3.setOnAction((EventHandler<ActionEvent>) this);
       
       Scene scene = new Scene (layout,600,300);
       primaryStage.setScene(scene);
       primaryStage.show();
+      
+      button3.setOnAction(new EventHandler<ActionEvent>(){
+          @Override
+          public void handle(ActionEvent event){
+              System.exit(0);
+          }
+      });
   }
-  public void handle(ActionEvent event){
-      if(event.getSource()==button3){
-        System.out.println();
-        System.out.println("Exited.");
-        System.out.println();
-      }
-  }
+
 }
 /*
     File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
