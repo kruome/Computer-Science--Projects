@@ -8,14 +8,54 @@ import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class JavaApplication1 extends Application{
-    Button button;
+    Button button1;
+    Button button2;
+    Button button3;
   public static void main(String[] args)throws java.io.IOException{
     launch(args);
-    
+  }
+    @Override
+  public void start(Stage primaryStage){
+      primaryStage.setTitle("Primary Project");
+      button1 = new Button();
+      button1.setText("1. Get instructor information");
+     
+      button2 = new Button();
+      button2.setText("2. Insert a new instructor");
+      
+      button3 = new Button();
+      button3.setText("3. Exit");
+      
+      StackPane layout = new StackPane();
+      button1.setLayoutX(0);
+      button1.setLayoutY(100);
+      button2.setLayoutX(300);
+      button2.setLayoutY(200);
+      button2.setLayoutX(300);
+      button2.setLayoutY(300);
+      layout.getChildren().add(button1);
+      layout.getChildren().add(button2);
+      layout.getChildren().add(button3);
+      button3.setOnAction((EventHandler<ActionEvent>) this);
+      
+      Scene scene = new Scene (layout,600,300);
+      primaryStage.setScene(scene);
+      primaryStage.show();
+  }
+  public void handle(ActionEvent event){
+      if(event.getSource()==button3){
+        System.out.println();
+        System.out.println("Exited.");
+        System.out.println();
+      }
+  }
+}
+/*
     File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
     Scanner instructorDatabase = new Scanner(instructorFile);
     File instructorFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
@@ -208,18 +248,4 @@ public class JavaApplication1 extends Application{
                 break;
         }
     }
-  }
-    @Override
-  public void start(Stage primaryStage){
-      primaryStage.setTitle("Primary Project");
-      button = new Button();
-      button.setText("Click here");
-      
-      StackPane layout = new StackPane();
-      layout.getChildren().add(button);
-      
-      Scene scene = new Scene (layout,600,450);
-      primaryStage.setScene(scene);
-      primaryStage.show();
-  }
-}
+  }*/
