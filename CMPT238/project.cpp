@@ -1,115 +1,3 @@
-usadb:
-1371,Rita Oliver
-1372,Ferris Barrett
-1374,Jamie Cooke
-1376,Yvette Tillery
-1379,Horace Hayes
-1381,Alexander Thompson
-1382,Rusty Thornton
-1383,Grayson Kim
-1384,Bradley Ogley
-1385,Halsey Gregory
-1386,Homer Andrews
-1387,Ged Mallin
-1388,Sienna Mitchell
-1389,Jillian Binder
-1390,Vince Webb
-1391,Lovell Hampton
-1392,Virginia Shaw
-1393,Winona Burns
-1394,Wynne Caldwell
-1395,Erin Robertson
-1396,Gilbert Cobbett
-1397,Jed Hopkins
-1398,Horace Langstaff
-1399,Terence Stephenson
-1400,Tiffany Manwaring
-
-
-ausdb:
-1370,Addison Magrath
-1371,Lara Holt
-1372,Amber Edwards
-1373,Mila Glenn
-1374,Piper Lawson
-1375,Skye Baker
-1376,Zara Quin
-1378,Millie Evans
-1379,Ava Weaver
-1380,Nathan Noble
-1381,Grace Coleman
-1383,Braxton Adams
-1385,Nicholas Coleman
-1384,Edward Wall
-1386,Jesse Griffin
-1387,Jackson Kennedy
-1388,Nate Whelan
-1389,Natalie Simpson
-1391,Zac Whitworth
-1392,Michael Wenham
-1394,Cameron Hewson
-1396,Seth Arnold
-1397,Leo Jacobs
-1400,Zachary Weaving
-
-
-jpndb:
-
-1357,Okumura Hiromi
-1358,Morioka Aika
-1359,Imada Shig
-1361,Okita Kotone
-1362,Baba Rie
-1364,Shinohara Masaru
-1365,Nakao Nobu
-1370,Nakata Misaki
-1376,Izumi Saburo
-1378,Suko Eri
-1379,Nagasawa Akihiro
-1380,Chino Suzu
-1381,Okubo Akio
-1382,Yoshimura Makoto
-1383,Ikeda Ko
-1384,Mayeda Sora
-1386,Tamashiro Kaoru
-1387,Mochizuki Kameyo
-1389,Onishi Sakiko
-1391,Tao Ayumi
-1392,Yamane Eiji
-1394,Jin Aiko
-1395,Noda Rei
-1398,Kono Yuichi
-1400,Saito Kunio
-
-
-rusdb:
-1365,Samuil Lebedev
-1367,Kuzma Smirnov
-1368,Leonid Orlov
-1371,Aleksandr Morozov
-1372,Varushka Fedoroa
-1374,Avdotia Sorokina
-1375,Ioakim Frolov
-1378,Nazariy Kiselev
-1379,Yegor Orlov
-1380,Spiridon Volkov
-1381,Sashura Sokolova
-1382,Demyan Frolov
-1383,Yevgeniya Vasilieva
-1384,Afonasei Tarasov
-1385,Kalva Zhukova
-1386,Tasha Dmitrieva
-1387,Iolanta Ivanova
-1389,Artem Semenov
-1394,Nonna Koroleva
-1395,Alyosha Volkov
-1396,Mariya Sokoloa
-1397,Osip Mikhailov
-1398,Jekaterina Kozlova
-1399,Ogrifina Kuzmina
-1400,Filippa Novikova
-
-
 #include <bits/stdc++.h>
 #include <stdlib.h>
 #include <fstream>
@@ -165,8 +53,7 @@ int
 Deque::printindex (int x)
 {
   int val = -1;
-  Node *temp = new Node;
-  temp = front;
+  auto temp = front;
   for (int i = 0; i < x; i++)
     {
       temp = temp->next;
@@ -176,10 +63,9 @@ Deque::printindex (int x)
 }
 
 string Deque::getName(int x){
-    Node *temp = new Node;
-    temp = front;
+    auto temp = front;
     string val;
-    for(int i = 0; i < x; i ++){
+    for(int i = 0; i < x; i++){
         temp = temp->next;
     }
     val = temp->name;
@@ -393,6 +279,7 @@ interpolation_search (Deque p, int value, int size)
 int
 main ()
 {
+   
    //Double ended queue data set structure for 4 countries 
   Deque usadataset;
   
@@ -493,46 +380,53 @@ main ()
   int countryinput;
   int testscore;
     while(userinput != 2){
-        cout<<"Please choose one of the one following options:" << endl;
+        cout<<"Menu Options:" << endl;
         cout<<"1.Database"<<endl;
         cout<<"2.Exit"<<endl;
+        cout<<"Please choose one option: ";
         cin>>userinput;
         cout<<endl;
 
         if(userinput == 1){
-            cout<<"Please choose one of the following countries to find the test score data:"<<endl;
+            cout<<"Country list:"<<endl;
             cout<<"1.United States of America"<<endl;
             cout<<"2.Australia"<<endl;
             cout<<"3.Japan"<<endl;
-            cout<<"5.Russia"<<endl;
+            cout<<"4.Russia"<<endl;
+            cout<<"Please choose one country from the list: ";
             cin>>countryinput;
             switch(countryinput){
                 case 1:
-                    cout<<"Please enter the test score you would like to search for (1300-1400) in the USA leaderboard: "<<endl;
-                    cout<<endl;
+                    cout<<"Please enter the test score you would like to search for (1300-1400) in the USA leaderboard: ";
                     cin>>testscore;
+                    cout<<endl;
                     if(abs(interpolation_search(usadataset,testscore,dbs)-25) >=1 && abs(interpolation_search(usadataset,testscore,dbs)-25)<=25){
                         cout<<"With the rank of #" << abs(interpolation_search(usadataset,testscore,dbs)-25)<< " " <<usadataset.getName(interpolation_search(usadataset,testscore,dbs)) << " has the score " <<testscore<<endl;
                     }else{
                         cout<<"There is no record for a test taker with score: " << testscore <<endl;
                     }break;
-                case 2:
-                    cout<<"Please enter the test score you would like to search for (1300-1400) in the Australian leaderboard: "<<endl;
-                    cout<<endl;
+                case 2:{
+                    cout<<"Please enter the test score you would like to search for (1300-1400) in the Australian leaderboard: ";
                     cin>>testscore;
+                    cout<<endl;
                     if(abs(interpolation_search(ausdataset,testscore,dbs)-25) >=1 && abs(interpolation_search(ausdataset,testscore,dbs)-25)<=25){
                         cout<<"With the rank of #" << abs(interpolation_search(ausdataset,testscore,dbs)-25)<< " " <<ausdataset.getName(interpolation_search(ausdataset,testscore,dbs)) << " has the score " <<testscore<<endl;
                     }else{
                         cout<<"There is no record for a test taker with score: " << testscore <<endl;
-                    }break;
+                    }break;}
                 case 3:
-                    cout<<"Please enter the test score you would like to search for (1300-1400) in the Japanese leaderboard: "<<endl;
+                    cout<<"Please enter the test score you would like to search for (1300-1400) in the Japanese leaderboard: ";
                     cin>>testscore;
-                    interpolation_search(jpndataset,testscore,dbs);
-                    break;
+                    cout<<endl;
+                    if(abs(interpolation_search(jpndataset,testscore,dbs)-25) >=1 && abs(interpolation_search(jpndataset,testscore,dbs)-25)<=25){
+                        cout<<"With the rank of #" << abs(interpolation_search(jpndataset,testscore,dbs)-25)<< " " <<jpndataset.getName(interpolation_search(jpndataset,testscore,dbs)) << " has the score " <<testscore<<endl;
+                    }else{
+                        cout<<"There is no record for a test taker with score: " << testscore <<endl;
+                    }break;
                 case 4:
-                    cout<<"Please enter the test score you would like to search for (1300-1400) in the Russian leaderboard: "<<endl;
+                    cout<<"Please enter the test score you would like to search for (1300-1400) in the Russian leaderboard: ";
                     cin>>testscore;
+                    cout<<endl;
                     interpolation_search(rusdataset,testscore,dbs);
                     break;
                 default:
@@ -542,6 +436,10 @@ main ()
         }
         if(userinput == 2){
             cout<<"Exited." << endl;
+        }else{
+           if(userinput!=1){
+              cout<<"Please enter a valid input."<<endl;
+           }
         }
     }
 }
