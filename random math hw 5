@@ -1,3 +1,5 @@
+Kalden Yugyel Dorji
+Homework 5
 1a) >> n  = 1003
 
 n =
@@ -81,3 +83,90 @@ ans =
        Alternative Hypothesis: Ha < .67
        
        Since the observed test statistic is not within the rejection region, the null hypothesis is not rejected. Thus, there isn't sufficient evidence to prove that the percentage of Americans who approve of labor unions now has decreased since 1963
+2) >> Fraud = xlsread('FraudAndFirearms.xlsx','A2:A11')
+   Firearms = xlsread('FraudAndFirearms.xlsx','B2:B11')
+
+   Fraud =
+
+    3.6000
+   17.9000
+    5.3000
+    5.9000
+   10.7000
+    7.0000
+    8.5000
+   13.9000
+   11.8000
+   16.6000
+
+
+   Firearms =
+
+   25.5000
+   23.8000
+   10.4000
+   17.9000
+   18.4000
+   21.9000
+   19.6000
+   13.3000
+   20.9000
+   16.1000
+   
+>> los = .05
+
+los =
+
+    0.0500
+   >> sampleSize = size(Firearms,1)
+
+sampleSize =
+
+    10
+
+>> sampleMeanFraud = mean(Fraud)
+
+sampleMeanFraud =
+
+   10.1200
+
+>> sampleSTDFraud = std(Fraud)
+
+sampleSTDFraud =
+
+    4.8976
+   
+   >> sampleMeanFirearms = mean(Firearms)
+
+sampleMeanFirearms =
+
+   18.7800
+   
+   >> sampleSTDFirearms = std(Firearms)
+
+sampleSTDFirearms =
+
+    4.6382
+    
+   >> sp = sqrt(((sampleSize-1)*sampleSTDFraud^2+(sampleSize-1)*sampleSTDFirearms^2)/(sampleSize+sampleSize-2))
+
+sp =
+
+    4.7696
+    
+    >> ObsTestStat = (sampleMeanFraud - sampleMeanFirearms)/(sp*sqrt(1/sampleSize+1/sampleSize))
+
+ObsTestStat =
+
+   -4.0599
+   
+   >> critvalue = tinv(.05,10-1)
+
+critvalue =
+
+   -1.8331
+    
+  Null Hypothesis: Ho =  mew1 = mew2
+  Alternative Hypothesis: Ha = mew1 < mew2
+  
+  Since the observed test statistic falls below the critical value, thus, the null hypothesis is rejected in favor of the alterantive hypothesis. Therefore, it can concluded that the mean time served for fraud is less than that for firearms offenses.
