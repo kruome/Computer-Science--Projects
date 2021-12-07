@@ -29,12 +29,24 @@ public class main extends Application{
     Button button1;
     Button button2;
     Button button3;
+    Button submitButton;
     Button returnButton;
   public static void main(String[] args)throws java.io.IOException{
     launch(args);
   }
     @Override
   public void start(Stage primaryStage){
+      
+    File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
+    Scanner instructorDatabase = new Scanner(instructorFile);
+    File instructorFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
+    Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
+    
+    File departmentFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
+    Scanner departmentDatabase = new Scanner(departmentFile);
+    File departmentFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
+    Scanner departmentDatabaseSize = new Scanner(departmentFile);
+    
       primaryStage.setTitle("Primary Project");
       button1 = new Button();
       button1.setText("1. Get instructor information");
@@ -48,6 +60,9 @@ public class main extends Application{
       returnButton = new Button();
       returnButton.setText("Go back to main menu");
       
+      submitButton = new Button();
+      submitButton.setText("Ok");
+      
       StackPane mainLayout = new StackPane();
       StackPane option1layout = new StackPane();
       
@@ -59,7 +74,15 @@ public class main extends Application{
       button3.setTranslateY(50);
       returnButton.setTranslateX(0);
       returnButton.setTranslateY(100);
+      submitButton.setTranslateX(0);
+      submitButton.setTranslateY(30);
       
+      Label option1label = new Label("Enter instructor ID: ");
+      option1label.setTranslateX(0);
+      option1label.setTranslateY(-50);
+      TextField instructorIDField = new TextField();
+      instructorIDField.setPrefWidth(80);
+      instructorIDField.setMaxWidth(80);
       
       Scene mainScreen = new Scene (mainLayout,600,300);
       Scene option1Screen = new Scene(option1layout,600,300);
@@ -74,18 +97,13 @@ public class main extends Application{
           @Override
           public void handle(ActionEvent event){
                primaryStage.setScene(option1Screen);
-               Label option1label = new Label("Enter instructor ID: ");
-               TextField instructorIDField = new TextField("");
-               option1label.setTranslateX(0);
-               option1label.setTranslateY(-50);
-               option1layout.getChildren().add(option1label);
+               
+               
+               option1layout.getChildren().add(submitButton);
                option1layout.getChildren().add(instructorIDField);
-               Image img = new Image("javafx.jpg");
-            ImageView imgView = new ImageView(img);
-            option1layout.getChildren().add(imgView);
-               option1layout.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY,Insets.EMPTY)));
-               instructorIDField.setPrefWidth(80);
-               instructorIDField.setMaxWidth(80);
+               option1layout.getChildren().add(option1label);
+               option1layout.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY,Insets.EMPTY)));
+               
                
           }
       });
@@ -109,19 +127,17 @@ public class main extends Application{
               primaryStage.show();
           }
       });
+      submitButton.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event){
+            int ID = Integer.parseInt(instructorIDField.getText());
+         }
+      });
   }
 
 }
-/*
-    File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
-    Scanner instructorDatabase = new Scanner(instructorFile);
-    File instructorFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
-    Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
-    
-    File departmentFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
-    Scanner departmentDatabase = new Scanner(departmentFile);
-    File departmentFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
-    Scanner departmentDatabaseSize = new Scanner(departmentFile);
+
+    /*
  
     ArrayList<Integer> departmentFund = new ArrayList<Integer>();
     ArrayList<String> departmentName = new ArrayList<String>();
