@@ -26,26 +26,37 @@ import javafx.scene.text.Text;
 
 
 public class main extends Application{
+    Scene mainScreen;
+    Scene option1Layout;
+    StackPane mainLayout;
+    StackPane option1layout;
     Button button1;
     Button button2;
     Button button3;
     Button submitButton;
     Button returnButton;
-  public static void main(String[] args)throws java.io.IOException{
+    Label option1label;
+    TextField instructorIDField;
+  public static void main(String[] args){
     launch(args);
   }
     @Override
-  public void start(Stage primaryStage){
+  public void start(Stage primaryStage) throws FileNotFoundException{
       
-    File instructorFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
+    File instructorFile = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
     Scanner instructorDatabase = new Scanner(instructorFile);
-    File instructorFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\instructor.txt");
+    File instructorFileSize = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
     Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
     
-    File departmentFile = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
+    File departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
     Scanner departmentDatabase = new Scanner(departmentFile);
-    File departmentFileSize = new File("C:\\Users\\kdorji01\\Documents\\NetBeansProjects\\JavaApplication1\\src\\javaapplication1\\department.txt");
+    File departmentFileSize = new File("C:\\Users\\kdorji01\\Downloads\\epartment.txt");
     Scanner departmentDatabaseSize = new Scanner(departmentFile);
+    
+    ArrayList<Integer> departmentFund = new ArrayList<Integer>();
+    ArrayList<String> departmentName = new ArrayList<String>();
+    ArrayList<String> departmentLocation = new ArrayList<String>();
+    
     
       primaryStage.setTitle("Primary Project");
       button1 = new Button();
@@ -63,8 +74,8 @@ public class main extends Application{
       submitButton = new Button();
       submitButton.setText("Ok");
       
-      StackPane mainLayout = new StackPane();
-      StackPane option1layout = new StackPane();
+      mainLayout = new StackPane();
+      option1layout = new StackPane();
       
       button1.setTranslateX(0);
       button1.setTranslateY(-50);
@@ -77,10 +88,11 @@ public class main extends Application{
       submitButton.setTranslateX(0);
       submitButton.setTranslateY(30);
       
-      Label option1label = new Label("Enter instructor ID: ");
+      option1label = new Label("Enter instructor ID: ");
       option1label.setTranslateX(0);
       option1label.setTranslateY(-50);
-      TextField instructorIDField = new TextField();
+      
+      instructorIDField = new TextField();
       instructorIDField.setPrefWidth(80);
       instructorIDField.setMaxWidth(80);
       
@@ -97,14 +109,10 @@ public class main extends Application{
           @Override
           public void handle(ActionEvent event){
                primaryStage.setScene(option1Screen);
-               
-               
                option1layout.getChildren().add(submitButton);
                option1layout.getChildren().add(instructorIDField);
                option1layout.getChildren().add(option1label);
                option1layout.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY,Insets.EMPTY)));
-               
-               
           }
       });
       button2.setOnAction(new EventHandler<ActionEvent>(){
@@ -131,82 +139,62 @@ public class main extends Application{
          @Override
          public void handle(ActionEvent event){
             int ID = Integer.parseInt(instructorIDField.getText());
+             int arrOfDeptSize = 0;
+             while (departmentDatabaseSize.hasNextLine()) {
+                 arrOfDeptSize++;
+                 departmentDatabaseSize.nextLine();
+             }
+             for (int j = 0; j < arrOfDeptSize; j++) {
+                 String line = departmentDatabase.nextLine();
+                 String[] deptField = line.split(",");
+                 departmentName.add(deptField[0]);
+                 departmentLocation.add(deptField[1]);
+                 departmentFund.add(Integer.parseInt(deptField[2].trim()));
+             }
+
+             ArrayList<Integer> instructorID = new ArrayList<Integer>();
+             ArrayList<String> instructorName = new ArrayList<String>();
+             ArrayList<String> instructorDepartment = new ArrayList<String>();
+             ArrayList<String> instructorLocation = new ArrayList<String>();
+
+             int arrOfInstSize = 0;
+             while (instructorDatabaseSize.hasNextLine()) {
+                 arrOfInstSize++;
+                 instructorDatabaseSize.nextLine();
+             }
+             for (int j = 0; j < arrOfInstSize; j++) {
+                 String line = instructorDatabase.nextLine();
+                 String[] instrucField = line.split(",");
+                 instructorID.add(Integer.parseInt(instrucField[0].trim()));
+                 instructorName.add(instrucField[1]);
+                 instructorDepartment.add(instrucField[2]);
+                 for (int a = 0; a < arrOfDeptSize; a++) {
+                     if (instructorDepartment.get(j).equals(departmentName.get(a))) {
+                         instructorLocation.add(j, departmentLocation.get(a));
+                     }
+                 }
+             }
+            for(int i = 0; i < arrOfInstSize;i++){
+                    if(instructorID.get(i) == ID){
+                        System.out.println("Instructor name: " + instructorName.get(i));
+                        System.out.println("Instructor department: " + instructorDepartment.get(i));
+                        System.out.println("Instructor department location: " + instructorLocation.get(i));
+                    }
+               }
+               
          }
       });
   }
 
 }
-
-    /*
- 
-    ArrayList<Integer> departmentFund = new ArrayList<Integer>();
-    ArrayList<String> departmentName = new ArrayList<String>();
-    ArrayList<String> departmentLocation = new ArrayList<String>();
-    
-    int arrOfDeptSize = 0;
-    while(departmentDatabaseSize.hasNextLine()){
-        arrOfDeptSize++;
-        departmentDatabaseSize.nextLine();
-    }
-    for(int j = 0; j < arrOfDeptSize;j++){
-        String line = departmentDatabase.nextLine();
-        String[] deptField = line.split(",");
-        departmentName.add(deptField[0]);
-        departmentLocation.add(deptField[1]);
-        departmentFund.add(Integer.parseInt(deptField[2].trim()));
-    }
-
-    ArrayList<Integer> instructorID = new ArrayList<Integer>();
-    ArrayList<String> instructorName = new ArrayList<String>();
-    ArrayList<String> instructorDepartment = new ArrayList<String>();
-    ArrayList<String> instructorLocation = new ArrayList<String>();
-    
-    int arrOfInstSize = 0;
-    while(instructorDatabaseSize.hasNextLine()){
-        arrOfInstSize++;
-        instructorDatabaseSize.nextLine();
-    }
-    for(int j = 0; j < arrOfInstSize;j++){
-        String line = instructorDatabase.nextLine();
-        String[] instrucField = line.split(",");
-        instructorID.add(Integer.parseInt(instrucField[0].trim()));
-        instructorName.add(instrucField[1]);
-        instructorDepartment.add(instrucField[2]);
-        for(int a = 0; a < arrOfDeptSize; a++){
-            if(instructorDepartment.get(j).equals(departmentName.get(a))){
-                instructorLocation.add(j,departmentLocation.get(a));
-            }
-        }
-    }
-
-    Scanner userInput = new Scanner(System.in);
-    int userOption = 0;
-    int option1LoopCount = 0;
-    Scanner option1 = new Scanner(System.in);
-    int option1UserInput = 0;
-    Scanner option2ID = new Scanner(System.in);
-    Scanner option2Name = new Scanner(System.in);
-    Scanner option2Dept = new Scanner(System.in);
-    Scanner option2UserInput = new Scanner(System.in);
-    
-    while(userOption != 3){
-        System.out.println("        Menu: ");
-        System.out.println("1. Get instructor information");
-        System.out.println("2. Insert a new instructor");
-        System.out.println("3. Exit");
-        System.out.println();
+/*
         userOption = userInput.nextInt();
         switch(userOption){
             case 1:
                 System.out.println();
                 System.out.print("Enter the instructor ID: ");
                 option1UserInput = option1.nextInt();
-                for(int i = 0; i < arrOfInstSize;i++){
-                    if(instructorID.get(i) == option1UserInput){
-                        System.out.println();
-                        System.out.println("Instructor name: " + instructorName.get(i));
-                        System.out.println("Instructor department: " + instructorDepartment.get(i));
-                        System.out.println("Instructor department location: " + instructorLocation.get(i));
+                
                         option1LoopCount++;
                         break;
                     }
