@@ -1,3 +1,5 @@
+package JavaApplication1;
+
 import java.util.Scanner;
 import javafx.application.Application;
 import java.util.regex.*;
@@ -11,6 +13,17 @@ import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+
 
 public class main extends Application{
     Button button1;
@@ -44,6 +57,8 @@ public class main extends Application{
       button2.setTranslateY(0);
       button3.setTranslateX(0);
       button3.setTranslateY(50);
+      returnButton.setTranslateX(0);
+      returnButton.setTranslateY(100);
       
       
       Scene mainScreen = new Scene (mainLayout,600,300);
@@ -59,6 +74,19 @@ public class main extends Application{
           @Override
           public void handle(ActionEvent event){
                primaryStage.setScene(option1Screen);
+               Label option1label = new Label("Enter instructor ID: ");
+               TextField instructorIDField = new TextField("");
+               option1label.setTranslateX(0);
+               option1label.setTranslateY(-50);
+               option1layout.getChildren().add(option1label);
+               option1layout.getChildren().add(instructorIDField);
+               Image img = new Image("javafx.jpg");
+            ImageView imgView = new ImageView(img);
+            option1layout.getChildren().add(imgView);
+               option1layout.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY,Insets.EMPTY)));
+               instructorIDField.setPrefWidth(80);
+               instructorIDField.setMaxWidth(80);
+               
           }
       });
       button2.setOnAction(new EventHandler<ActionEvent>(){
