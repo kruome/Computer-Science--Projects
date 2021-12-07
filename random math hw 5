@@ -1,0 +1,83 @@
+1a) >> n  = 1003
+
+n =
+
+        1003
+        
+>> phat = 1003*.65/1003
+
+phat =
+
+    0.6500
+
+>> p = .72
+
+p =
+
+  0.7200
+  
+>> 
+
+>> n*p
+
+ans =
+
+  722.1600
+
+>> n*(1-p)
+
+ans =
+
+  280.8400
+  
+  Since n*p and n*(1-p) are both greater than 5, we can use the z distribution formula
+>> z = (phat - p)/(sqrt(p*(1-p)/n))
+
+z =
+
+   -4.9375
+
+  This is the observed test stat
+  
+  >> Critvalue = tinv(.05,n-1)
+
+ans =
+
+   -1.6464
+   
+   Null Hypothesis: Ho = .72
+   Alternative Hypothesis: ha < .72
+   
+   According to the statistics, since the observed test statistic is lower than the critival value, the null hypothesis is rejected in favor of the alternative hypothesis. Thus, it can be concluded that there is sufficient evidence to conlude that the percentage of Americans who approve of labor unions now has decreased since 1936.
+   
+1b) >> n = 1003;
+       phat = .65;
+       p = .67;
+       >> n*p
+
+       ans =
+
+       672.0100
+
+       >> n*(1-p)
+
+       ans =
+
+       330.9900
+
+       >> z = (phat - p)/(sqrt(p*(1-p)/n))
+
+       z =
+
+       -1.3471
+
+       >> tinv(.05,n-1)
+
+       ans =
+
+       -1.6464
+       
+       Null Hypothesis: Ho = .67
+       Alternative Hypothesis: Ha < .67
+       
+       Since the observed test statistic is not within the rejection region, the null hypothesis is not rejected. Thus, there isn't sufficient evidence to prove that the percentage of Americans who approve of labor unions now has decreased since 1963
