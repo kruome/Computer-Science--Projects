@@ -12,10 +12,11 @@ import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class Main extends Application{
+public class main extends Application{
     Button button1;
     Button button2;
     Button button3;
+    Button returnButton;
   public static void main(String[] args)throws java.io.IOException{
     launch(args);
   }
@@ -31,25 +32,53 @@ public class Main extends Application{
       button3 = new Button();
       button3.setText("3. Exit");
       
-      StackPane layout = new StackPane();
+      returnButton = new Button();
+      returnButton.setText("Go back to main menu");
+      
+      StackPane mainLayout = new StackPane();
+      StackPane option1layout = new StackPane();
+      
       button1.setTranslateX(0);
       button1.setTranslateY(-50);
       button2.setTranslateX(0);
       button2.setTranslateY(0);
       button3.setTranslateX(0);
       button3.setTranslateY(50);
-      layout.getChildren().add(button1);
-      layout.getChildren().add(button2);
-      layout.getChildren().add(button3);
       
-      Scene scene = new Scene (layout,600,300);
-      primaryStage.setScene(scene);
+      
+      Scene mainScreen = new Scene (mainLayout,600,300);
+      Scene option1Screen = new Scene(option1layout,600,300);
+      primaryStage.setScene(mainScreen);
       primaryStage.show();
+      mainLayout.getChildren().add(button1);
+      mainLayout.getChildren().add(button2);
+      mainLayout.getChildren().add(button3);
+      option1layout.getChildren().add(returnButton);
       
+      button1.setOnAction(new EventHandler<ActionEvent>(){
+          @Override
+          public void handle(ActionEvent event){
+               primaryStage.setScene(option1Screen);
+          }
+      });
+      button2.setOnAction(new EventHandler<ActionEvent>(){
+          @Override
+          public void handle(ActionEvent event){
+                primaryStage.setScene(option1Screen);
+
+          }
+      });
       button3.setOnAction(new EventHandler<ActionEvent>(){
           @Override
           public void handle(ActionEvent event){
               System.exit(0);
+          }
+      });
+      returnButton.setOnAction(new EventHandler<ActionEvent>(){
+          @Override
+          public void handle(ActionEvent event){
+              primaryStage.setScene(mainScreen);
+              primaryStage.show();
           }
       });
   }
