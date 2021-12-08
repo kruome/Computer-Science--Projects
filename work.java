@@ -6,6 +6,8 @@ import java.util.regex.*;
 import java.io.FileNotFoundException;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
@@ -25,7 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 
-public class main extends Application{
+public class JavaApplication1 extends Application{
     Scene mainScreen;
     Scene option1Layout;
     StackPane mainLayout;
@@ -36,23 +38,18 @@ public class main extends Application{
     Button submitButton;
     Button returnButton;
     Label option1label;
+    Label option1InstructorName;
+    Label option1InstructorDepartment;
+    Label option1InstructorLocation;
     TextField instructorIDField;
+    
+    Label error1;
   public static void main(String[] args){
     launch(args);
   }
     @Override
   public void start(Stage primaryStage) throws FileNotFoundException{
       
-    File instructorFile = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
-    Scanner instructorDatabase = new Scanner(instructorFile);
-    File instructorFileSize = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
-    Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
-    
-    File departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
-    Scanner departmentDatabase = new Scanner(departmentFile);
-    File departmentFileSize = new File("C:\\Users\\kdorji01\\Downloads\\epartment.txt");
-    Scanner departmentDatabaseSize = new Scanner(departmentFile);
-    
     ArrayList<Integer> departmentFund = new ArrayList<Integer>();
     ArrayList<String> departmentName = new ArrayList<String>();
     ArrayList<String> departmentLocation = new ArrayList<String>();
@@ -97,18 +94,18 @@ public class main extends Application{
       instructorIDField.setMaxWidth(80);
       
       Scene mainScreen = new Scene (mainLayout,600,300);
-      Scene option1Screen = new Scene(option1layout,600,300);
+      Scene optionScreen = new Scene(option1layout,600,300);
       primaryStage.setScene(mainScreen);
       primaryStage.show();
       mainLayout.getChildren().add(button1);
       mainLayout.getChildren().add(button2);
       mainLayout.getChildren().add(button3);
-      option1layout.getChildren().add(returnButton);
       
       button1.setOnAction(new EventHandler<ActionEvent>(){
           @Override
           public void handle(ActionEvent event){
-               primaryStage.setScene(option1Screen);
+               primaryStage.setScene(optionScreen);
+               option1layout.getChildren().add(returnButton);
                option1layout.getChildren().add(submitButton);
                option1layout.getChildren().add(instructorIDField);
                option1layout.getChildren().add(option1label);
@@ -118,7 +115,8 @@ public class main extends Application{
       button2.setOnAction(new EventHandler<ActionEvent>(){
           @Override
           public void handle(ActionEvent event){
-                primaryStage.setScene(option1Screen);
+                primaryStage.setScene(optionScreen);
+                option1layout.getChildren().add(returnButton);
 
           }
       });
@@ -131,6 +129,7 @@ public class main extends Application{
       returnButton.setOnAction(new EventHandler<ActionEvent>(){
           @Override
           public void handle(ActionEvent event){
+              option1layout.getChildren().clear();
               primaryStage.setScene(mainScreen);
               primaryStage.show();
           }
@@ -138,51 +137,90 @@ public class main extends Application{
       submitButton.setOnAction(new EventHandler<ActionEvent>(){
          @Override
          public void handle(ActionEvent event){
-            int ID = Integer.parseInt(instructorIDField.getText());
-             int arrOfDeptSize = 0;
-             while (departmentDatabaseSize.hasNextLine()) {
-                 arrOfDeptSize++;
-                 departmentDatabaseSize.nextLine();
-             }
-             for (int j = 0; j < arrOfDeptSize; j++) {
-                 String line = departmentDatabase.nextLine();
-                 String[] deptField = line.split(",");
-                 departmentName.add(deptField[0]);
-                 departmentLocation.add(deptField[1]);
-                 departmentFund.add(Integer.parseInt(deptField[2].trim()));
-             }
+             String strID = instructorIDField.getText();
+             if(strID.matches("\\d{4}")){
+             try {
+                 File instructorFile = new File("C:\\Users\\library.guest\\Downloads\\instructor.txt");
+                 Scanner instructorDatabase = new Scanner(instructorFile);
+                 File instructorFileSize = new File("C:\\Users\\library.guest\\Downloads\\instructor.txt");
+                 Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
+                 
+                 File departmentFile = new File("C:\\Users\\library.guest\\Downloads\\department.txt");
+                 Scanner departmentDatabase = new Scanner(departmentFile);
+                 File departmentFileSize = new File("C:\\Users\\library.guest\\Downloads\\epartment.txt");
+                 Scanner departmentDatabaseSize = new Scanner(departmentFile);
+                 
+                 int ID = Integer.parseInt(strID);
 
-             ArrayList<Integer> instructorID = new ArrayList<Integer>();
-             ArrayList<String> instructorName = new ArrayList<String>();
-             ArrayList<String> instructorDepartment = new ArrayList<String>();
-             ArrayList<String> instructorLocation = new ArrayList<String>();
-
-             int arrOfInstSize = 0;
-             while (instructorDatabaseSize.hasNextLine()) {
-                 arrOfInstSize++;
-                 instructorDatabaseSize.nextLine();
-             }
-             for (int j = 0; j < arrOfInstSize; j++) {
-                 String line = instructorDatabase.nextLine();
-                 String[] instrucField = line.split(",");
-                 instructorID.add(Integer.parseInt(instrucField[0].trim()));
-                 instructorName.add(instrucField[1]);
-                 instructorDepartment.add(instrucField[2]);
-                 for (int a = 0; a < arrOfDeptSize; a++) {
-                     if (instructorDepartment.get(j).equals(departmentName.get(a))) {
-                         instructorLocation.add(j, departmentLocation.get(a));
+                 int arrOfDeptSize = 0;
+                 while (departmentDatabaseSize.hasNextLine()) {
+                     arrOfDeptSize++;
+                     departmentDatabaseSize.nextLine();
+                 }
+                 for (int j = 0; j < arrOfDeptSize; j++) {
+                     String line = departmentDatabase.nextLine();
+                     String[] deptField = line.split(",");
+                     departmentName.add(deptField[0]);
+                     departmentLocation.add(deptField[1]);
+                     departmentFund.add(Integer.parseInt(deptField[2].trim()));
+                 }
+                 
+                 ArrayList<Integer> instructorID = new ArrayList<Integer>();
+                 ArrayList<String> instructorName = new ArrayList<String>();
+                 ArrayList<String> instructorDepartment = new ArrayList<String>();
+                 ArrayList<String> instructorLocation = new ArrayList<String>();
+                 
+                 int arrOfInstSize = 0;
+                 while (instructorDatabaseSize.hasNextLine()) {
+                     arrOfInstSize++;
+                     instructorDatabaseSize.nextLine();
+                 }
+                 for (int j = 0; j < arrOfInstSize; j++) {
+                     String line = instructorDatabase.nextLine();
+                     String[] instrucField = line.split(",");
+                     instructorID.add(Integer.parseInt(instrucField[0].trim()));
+                     instructorName.add(instrucField[1]);
+                     instructorDepartment.add(instrucField[2]);
+                     for (int a = 0; a < arrOfDeptSize; a++) {
+                         if (instructorDepartment.get(j).equals(departmentName.get(a))) {
+                             instructorLocation.add(j, departmentLocation.get(a));
+                         }
                      }
                  }
+                 boolean option1flag = false;
+                 for(int i = 0; i < arrOfInstSize;i++){
+                     if(instructorID.get(i) == ID){
+                         option1InstructorName = new Label(instructorName.get(i));
+                         option1InstructorDepartment = new Label(instructorDepartment.get(i));
+                         option1InstructorLocation = new Label(instructorLocation.get(i));
+                         option1layout.getChildren().add(option1InstructorName);
+                         option1layout.getChildren().add(option1InstructorDepartment);
+                         option1layout.getChildren().add(option1InstructorLocation);
+                         option1layout.getChildren().remove(submitButton);
+                         option1layout.getChildren().remove(option1label);
+                         option1layout.getChildren().remove(instructorIDField);
+                         option1flag = true;
+                     }
+                 }
+                 if(option1flag = false){
+                     option1layout.getChildren().remove(option1label);
+                     option1layout.getChildren().remove(submitButton);
+                     option1layout.getChildren().remove(instructorIDField);
+                     error1 = new Label("The ID does not exist in the file");
+                     option1layout.getChildren().add(error1);
+                 }
+                 
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
+             } 
+           }else{
+                 error1 = new Label("Invalid input");
+                 option1layout.getChildren().add(error1);
+                 option1layout.getChildren().remove(submitButton);
+                 option1layout.getChildren().remove(option1label);
+                 option1layout.getChildren().remove(instructorIDField);
              }
-            for(int i = 0; i < arrOfInstSize;i++){
-                    if(instructorID.get(i) == ID){
-                        System.out.println("Instructor name: " + instructorName.get(i));
-                        System.out.println("Instructor department: " + instructorDepartment.get(i));
-                        System.out.println("Instructor department location: " + instructorLocation.get(i));
-                    }
-               }
-               
-         }
+        }
       });
   }
 
