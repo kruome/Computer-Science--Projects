@@ -458,8 +458,4 @@ public class JavaApplication1 extends Application {
         Dept2.setText("");
         Name2.setText("");
     }
-
-    public void option2Stage() {
-
-    }
 }
