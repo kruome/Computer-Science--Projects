@@ -35,7 +35,7 @@ public class JavaApplication1 extends Application {
     Scene option1;
     Scene option2;
     Scene errorScreen;
-    
+
     GridPane option2layout;
     StackPane mainLayout;
     StackPane option1layout;
@@ -138,7 +138,7 @@ public class JavaApplication1 extends Application {
         mainScreen = new Scene(mainLayout, 600, 300);
         option1 = new Scene(option1layout, 600, 300);
         option2 = new Scene(option2layout, 600, 300);
-        errorScreen = new Scene(errorlayout,600,300);
+        errorScreen = new Scene(errorlayout, 600, 300);
 
         primaryStage.setScene(mainScreen);
         primaryStage.show();
@@ -160,19 +160,16 @@ public class JavaApplication1 extends Application {
             option2layout.add(ID2, 3, 1);
             option2layout.add(Name2, 3, 2);
             option2layout.add(Dept2, 3, 3);
-            option2InstructorName = new Label("Enter new instructor's name: ");
-            option2InstructorDepartment = new Label("Enter new instructor's Department: ");
-            option2InstructorID = new Label("Enter new instructor's ID: ");
+            option2InstructorName = new Label("Enter the instructor name: ");
+            option2InstructorDepartment = new Label("Enter the affiliated department name: ");
+            option2InstructorID = new Label("Enter the instructor ID: ");
             option2layout.add(option2InstructorID, 1, 1);
             option2layout.add(option2InstructorName, 1, 2);
             option2layout.add(option2InstructorDepartment, 1, 3);
             option2layout.add(submitButtonOption2, 3, 6);
         });
-        
-//output.flush();
 
-
-button3.setOnAction((ActionEvent event) -> {
+        button3.setOnAction((ActionEvent event) -> {
             System.exit(0);
         });
         returnButton.setOnAction((ActionEvent event) -> {
@@ -260,7 +257,7 @@ button3.setOnAction((ActionEvent event) -> {
                         }
                         if (option1flag == false) {
                             removeButtons();
-                            error1 = new Label("The ID does not exist in the file. Please try another ID.");
+                            error1 = new Label("The ID doesnot appear in the file.");
                             option1layout.getChildren().add(error1);
                         }
 
@@ -275,20 +272,161 @@ button3.setOnAction((ActionEvent event) -> {
             }
         });
         submitButtonOption2.setOnAction((ActionEvent event) -> {
-            String strID = ID2.getText();
-            String strDept = Dept2.getText();
-            String strName = Name2.getText();
-            
-            if (strID == "") {
-                
-                error1 = new Label("Invalid input. Please press the go back button and try again.");
-                errorlayout.getChildren().add(error1);
-                error1.setTranslateX(0);
-                error1.setTranslateY(-50);
-                errorlayout.getChildren().add(returnButton);
-                primaryStage.setScene(errorScreen);
-                primaryStage.show();
+            try {
+                String strID = ID2.getText();
+                String strDept = Dept2.getText();
+                String strName = Name2.getText();
+
+                if ("".equals(strID)) {
+                    error1 = new Label("ID field cannot be empty.");
+                    errorlayout.getChildren().add(error1);
+                    error1.setTranslateX(0);
+                    error1.setTranslateY(-50);
+                    errorlayout.getChildren().add(returnButton);
+                    primaryStage.setScene(errorScreen);
+                    primaryStage.show();
+                } else {
+                    boolean continueFlag = true;
+                    
+                    File instructorFile = new File("\\\\tsclient\\kdorji01\\instructor.txt");
+                    Scanner instructorDatabase = new Scanner(instructorFile);
+                    File instructorFileSize = new File("\\\\tsclient\\kdorji01\\instructor.txt");
+                    Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
+
+                    File departmentFile = new File("\\\\tsclient\\kdorji01\\department.txt");
+                    Scanner departmentDatabase = new Scanner(departmentFile);
+                    File departmentFileSize = new File("\\\\tsclient\\kdorji01\\department.txt");
+                    Scanner departmentDatabaseSize = new Scanner(departmentFile);
+                    
+                    FileWriter fw = new FileWriter(instructorFile, true);
+                    PrintWriter output = new PrintWriter(fw);
+
+                    int ID = Integer.parseInt(strID);
+
+                    int arrOfDeptSize = 0;
+                    while (departmentDatabaseSize.hasNextLine()) {
+                        arrOfDeptSize++;
+                        departmentDatabaseSize.nextLine();
+                    }
+                    for (int j = 0; j < arrOfDeptSize; j++) {
+                        String line = departmentDatabase.nextLine();
+                        String[] deptField = line.split(",");
+                        departmentName.add(deptField[0]);
+                        departmentLocation.add(deptField[1]);
+                        departmentFund.add(Integer.parseInt(deptField[2].trim()));
+                    }
+
+                    ArrayList<Integer> instructorID = new ArrayList<>();
+                    ArrayList<String> instructorName = new ArrayList<>();
+                    ArrayList<String> instructorDepartment = new ArrayList<>();
+                    ArrayList<String> instructorLocation = new ArrayList<>();
+
+                    int arrOfInstSize = 0;
+                    while (instructorDatabaseSize.hasNextLine()) {
+                        arrOfInstSize++;
+                        instructorDatabaseSize.nextLine();
+                    }
+                    for (int j = 0; j < arrOfInstSize; j++) {
+                        String line = instructorDatabase.nextLine();
+                        String[] instrucField = line.split(",");
+                        instructorID.add(Integer.parseInt(instrucField[0].trim()));
+                        instructorName.add(instrucField[1]);
+                        instructorDepartment.add(instrucField[2]);
+                        for (int a = 0; a < arrOfDeptSize; a++) {
+                            if (instructorDepartment.get(j).equals(departmentName.get(a))) {
+                                instructorLocation.add(j, departmentLocation.get(a));
+                            }
+                        }
+                    }
+                    for (int i = 0; i < arrOfInstSize; i++) {
+                        if (instructorID.get(i) == Integer.parseInt(strID)) {
+                            continueFlag = false;
+                            break;
+                        }
+                    }
+                    if (continueFlag == false) {
+                        error1 = new Label("ID entered already exists in the file.");
+                        errorlayout.getChildren().add(error1);
+                        error1.setTranslateX(0);
+                        error1.setTranslateY(-50);
+                        errorlayout.getChildren().add(returnButton);
+                        primaryStage.setScene(errorScreen);
+                        primaryStage.show();
+                    } else {
+                        if ("".equals(strName)) {
+                            error1 = new Label("Name field cannot be empty.");
+                            errorlayout.getChildren().add(error1);
+                            error1.setTranslateX(0);
+                            error1.setTranslateY(-50);
+                            errorlayout.getChildren().add(returnButton);
+                            primaryStage.setScene(errorScreen);
+                            primaryStage.show();
+                        } else {
+                            if(strName.matches("^[\\p{L} .'-]+$")){
+                                if("".equals(strDept)){
+                                    error1 = new Label("Department field cannot be empty.");
+                                    errorlayout.getChildren().add(error1);
+                                    error1.setTranslateX(0);
+                                    error1.setTranslateY(-50);
+                                    errorlayout.getChildren().add(returnButton);
+                                    primaryStage.setScene(errorScreen);
+                                    primaryStage.show();
+                                }else{
+                                    boolean option2DeptFlag = false;
+                                    if (strDept.matches("[A-Z]{4}") || strDept.matches("[A-Z]{3}")) {
+                                        option2DeptFlag = true;
+                                    }else{
+                                        error1 = new Label("Invalid department format.");
+                                        errorlayout.getChildren().add(error1);
+                                        error1.setTranslateX(0);
+                                        error1.setTranslateY(-50);
+                                        errorlayout.getChildren().add(returnButton);
+                                        primaryStage.setScene(errorScreen);
+                                        primaryStage.show();
+                                    }
+                                    if(option2DeptFlag == true){
+                                        arrOfInstSize++;
+                                        for (int a = 0; a < arrOfDeptSize; a++) {
+                                            if (strDept.equals(departmentName.get(a))) {
+                                                instructorID.add(Integer.parseInt(strDept));
+                                                instructorDepartment.add(strDept);
+                                                instructorName.add(strDept);
+                                                switch (strDept) {
+                                                    case "MATH":
+                                                        instructorLocation.add("RLC");
+                                                        break;
+                                                    case "BIO":
+                                                        instructorLocation.add("LEO");
+                                                        break;
+                                                    default:
+                                                        instructorLocation.add("RLC");
+                                                        break;
+                                                }
+                                            }
+                                        }
+                                        output.print("\n" + Integer.parseInt(strID) + "," + strName + "," + strDept);
+                                        output.flush();
+                                        output.close();
+                                    }
+                                }
+                            }else{
+                            error1 = new Label("Invalid name format. Please press the go back button and try again.");
+                            errorlayout.getChildren().add(error1);
+                            error1.setTranslateX(0);
+                            error1.setTranslateY(-50);
+                            errorlayout.getChildren().add(returnButton);
+                            primaryStage.setScene(errorScreen);
+                            primaryStage.show();
+                            }
+                        }
+                    }
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         });
     }
 
@@ -316,80 +454,3 @@ button3.setOnAction((ActionEvent event) -> {
 
     }
 }
-/*
-       
-                
-                
-                
-                for(int i = 0; i < arrOfInstSize; i++){
-                    if(instructorID.get(i) == Integer.parseInt(option2IDUserInput)){
-                        System.out.println("Instructor ID already exists in the file.");
-                        System.out.println();
-                        continueFlag = false;
-                        break;
-                    }
-                }
-                if(continueFlag == false){
-                    break;
-                }else{
-                    System.out.print("Enter the instructor name: ");
-                    String option2NameUserInput = option2Name.nextLine();
-                    boolean option2NameFlag = false;
-                    if(option2NameUserInput.matches("^[\\p{L} .'-]+$")){
-                        option2NameFlag = true;
-                    }
-                    while(option2NameFlag == false){
-                        System.out.print("Please enter a valid name: ");
-                        option2NameUserInput = option2Name.nextLine();
-                        if(option2NameUserInput.matches("^[\\p{L} .'-]+$")){
-                            option2NameFlag = true;
-                        }
-                    }
-
-                    System.out.print("Enter the affiliated department name: ");
-                    String option2DeptUserInput = option2Dept.nextLine();
-                    option2DeptUserInput = option2DeptUserInput.toUpperCase();
-                    boolean option2DeptFlag = false;
-                    if(option2DeptUserInput.matches("[A-Z]{4}")||option2DeptUserInput.matches("[A-Z]{3}")){
-                        option2DeptFlag = true;
-                    }
-                    while(option2DeptFlag == false){
-                        System.out.print("Please enter a valid department name: ");
-                        option2DeptUserInput = option2Dept.nextLine();
-                        if(option2DeptUserInput.matches("[A-Z]{4}")){
-                            option2DeptFlag = true;
-                        }
-                    }
-                    continueFlag = false;
-                    for(int i = 0; i < arrOfDeptSize;i++){
-                        if(departmentName.get(i).equals(option2DeptUserInput)){
-                            continueFlag = true;
-                        }
-                    }
-                    if(continueFlag == false){
-                        System.out.println("The department does not exist, hence, the instructor record cannot be added to the file.");
-                        System.out.println();
-                        break;
-                    }
-                    arrOfInstSize++;
-                    for(int a = 0; a < arrOfDeptSize; a++){
-                        if(option2DeptUserInput.equals(departmentName.get(a))){
-                            instructorID.add(Integer.parseInt(option2IDUserInput));
-                            instructorDepartment.add(option2DeptUserInput);
-                            instructorName.add(option2NameUserInput);
-                            switch (option2DeptUserInput) {
-                                case "MATH":
-                                    instructorLocation.add("RLC");
-                                    break;
-                                case "BIO":
-                                    instructorLocation.add("LEO");
-                                    break;
-                                default:
-                                    instructorLocation.add("RLC");
-                                    break;
-                            }
-                        }
-                    }
-                    output.print("\n"+option2IDUserInput+","+option2NameUserInput+","+option2DeptUserInput);
-                    output.close();
- */
