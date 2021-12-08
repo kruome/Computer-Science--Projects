@@ -34,12 +34,12 @@ public class JavaApplication1 extends Application {
     Scene mainScreen;
     Scene option1;
     Scene option2;
-    Scene error;
+    Scene errorScreen;
     
-    StackPane errorpage;
     GridPane option2layout;
     StackPane mainLayout;
     StackPane option1layout;
+    StackPane errorlayout;
     Button button1;
     Button button2;
     Button button3;
@@ -95,8 +95,8 @@ public class JavaApplication1 extends Application {
         submitButtonOption2.setText("Submit");
 
         mainLayout = new StackPane();
+        errorlayout = new StackPane();
         option1layout = new StackPane();
-        errorpage = new StackPane();
         option2layout = new GridPane();
         option2layout.setPrefWidth(10);
         option2layout.setPrefHeight(10);
@@ -138,8 +138,8 @@ public class JavaApplication1 extends Application {
         mainScreen = new Scene(mainLayout, 600, 300);
         option1 = new Scene(option1layout, 600, 300);
         option2 = new Scene(option2layout, 600, 300);
-        error = new Scene(errorpage,600,300);
-        
+        errorScreen = new Scene(errorlayout,600,300);
+
         primaryStage.setScene(mainScreen);
         primaryStage.show();
         mainLayout.getChildren().add(button1);
@@ -178,6 +178,7 @@ button3.setOnAction((ActionEvent event) -> {
         returnButton.setOnAction((ActionEvent event) -> {
             option1layout.getChildren().clear();
             option2layout.getChildren().clear();
+            errorlayout.getChildren().clear();
             clearTextField();
             primaryStage.setScene(mainScreen);
             primaryStage.show();
@@ -274,88 +275,19 @@ button3.setOnAction((ActionEvent event) -> {
             }
         });
         submitButtonOption2.setOnAction((ActionEvent event) -> {
-            try {
-                String strID = ID2.getText();
-                String strDept = Dept2.getText();
-                String strLocation = Name2.getText();
-                File instructorFile = new File("\\\\tsclient\\kdorji01\\instructor.txt");
-                Scanner instructorDatabase = new Scanner(instructorFile);
-                File instructorFileSize = new File("\\\\tsclient\\kdorji01\\instructor.txt");
-                Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
+            String strID = ID2.getText();
+            String strDept = Dept2.getText();
+            String strName = Name2.getText();
+            
+            if (strID == "") {
                 
-                File departmentFile = new File("\\\\tsclient\\kdorji01\\department.txt");
-                Scanner departmentDatabase = new Scanner(departmentFile);
-                File departmentFileSize = new File("\\\\tsclient\\kdorji01\\department.txt");
-                Scanner departmentDatabaseSize = new Scanner(departmentFile);
-                
-                FileWriter fw = new FileWriter(instructorFile, true);
-                PrintWriter output = new PrintWriter(fw);
-                
-                int ID = Integer.parseInt(strID);
-                
-                int arrOfDeptSize = 0;
-                while (departmentDatabaseSize.hasNextLine()) {
-                    arrOfDeptSize++;
-                    departmentDatabaseSize.nextLine();
-                }
-                for (int j = 0; j < arrOfDeptSize; j++) {
-                    String line = departmentDatabase.nextLine();
-                    String[] deptField = line.split(",");
-                    departmentName.add(deptField[0]);
-                    departmentLocation.add(deptField[1]);
-                    departmentFund.add(Integer.parseInt(deptField[2].trim()));
-                }
-                
-                ArrayList<Integer> instructorID = new ArrayList<>();
-                ArrayList<String> instructorName = new ArrayList<>();
-                ArrayList<String> instructorDepartment = new ArrayList<>();
-                ArrayList<String> instructorLocation = new ArrayList<>();
-                
-                int arrOfInstSize = 0;
-                while (instructorDatabaseSize.hasNextLine()) {
-                    arrOfInstSize++;
-                    instructorDatabaseSize.nextLine();
-                }
-                for (int j = 0; j < arrOfInstSize; j++) {
-                    String line = instructorDatabase.nextLine();
-                    String[] instrucField = line.split(",");
-                    instructorID.add(Integer.parseInt(instrucField[0].trim()));
-                    instructorName.add(instrucField[1]);
-                    instructorDepartment.add(instrucField[2]);
-                    for (int a = 0; a < arrOfDeptSize; a++) {
-                        if (instructorDepartment.get(j).equals(departmentName.get(a))) {
-                            instructorLocation.add(j, departmentLocation.get(a));
-                        }
-                    }
-                }
-                boolean continueFlag = true;
-                if (strID == null) {
-                    error1 = new Label("Invalid input. Please press the go back button and try again.");
-                    option2layout.getChildren().add(error1);
-                    removeButtons();
-                } else {
-                    if (strID.matches("\\d{4}")) {
-                        for (int i = 0; i < arrOfInstSize; i++) {
-                            if (instructorID.get(i) == Integer.parseInt(strID)) {
-                                continueFlag = false;
-                                break;
-                            }
-                        }
-                        if (continueFlag == false) {
-                            error1 = new Label("ID entered already exists in the file.");
-                            option2layout.getChildren().add(error1);
-                            removeButtons();
-                        }
-                    } else {
-                        error1 = new Label("Invalid ID entered.");
-                        option2layout.getChildren().add(error1);
-                        removeButtons();
-                    }
-                }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
+                error1 = new Label("Invalid input. Please press the go back button and try again.");
+                errorlayout.getChildren().add(error1);
+                error1.setTranslateX(0);
+                error1.setTranslateY(-50);
+                errorlayout.getChildren().add(returnButton);
+                primaryStage.setScene(errorScreen);
+                primaryStage.show();
             }
         });
     }
@@ -375,9 +307,9 @@ button3.setOnAction((ActionEvent event) -> {
 
     public void clearTextField() {
         instructorIDField.setText(null);
-        ID2.setText(null);
-        Dept2.setText(null);
-        Name2.setText(null);
+        ID2.setText("");
+        Dept2.setText("");
+        Name2.setText("");
     }
 
     public void option2Stage() {
