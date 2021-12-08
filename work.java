@@ -35,7 +35,7 @@ public class JavaApplication1 extends Application{
     Button button1;
     Button button2;
     Button button3;
-    Button submitButton;
+    Button submitButtonOption1;
     Button returnButton;
     Label option1label;
     Label option1InstructorName;
@@ -68,8 +68,8 @@ public class JavaApplication1 extends Application{
       returnButton = new Button();
       returnButton.setText("Go back to main menu");
       
-      submitButton = new Button();
-      submitButton.setText("Ok");
+      submitButtonOption1 = new Button();
+      submitButtonOption1.setText("Ok");
       
       mainLayout = new StackPane();
       option1layout = new StackPane();
@@ -82,8 +82,8 @@ public class JavaApplication1 extends Application{
       button3.setTranslateY(50);
       returnButton.setTranslateX(0);
       returnButton.setTranslateY(100);
-      submitButton.setTranslateX(0);
-      submitButton.setTranslateY(30);
+      submitButtonOption1.setTranslateX(0);
+      submitButtonOption1.setTranslateY(30);
       
       option1label = new Label("Enter instructor ID: ");
       option1label.setTranslateX(0);
@@ -101,129 +101,126 @@ public class JavaApplication1 extends Application{
       mainLayout.getChildren().add(button2);
       mainLayout.getChildren().add(button3);
       
-      button1.setOnAction(new EventHandler<ActionEvent>(){
-          @Override
-          public void handle(ActionEvent event){
-               primaryStage.setScene(optionScreen);
-               option1layout.getChildren().add(returnButton);
-               option1layout.getChildren().add(submitButton);
-               option1layout.getChildren().add(instructorIDField);
-               option1layout.getChildren().add(option1label);
-               option1layout.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY,Insets.EMPTY)));
-          }
-      });
-      button2.setOnAction(new EventHandler<ActionEvent>(){
-          @Override
-          public void handle(ActionEvent event){
-                primaryStage.setScene(optionScreen);
-                option1layout.getChildren().add(returnButton);
-
-          }
-      });
-      button3.setOnAction(new EventHandler<ActionEvent>(){
-          @Override
-          public void handle(ActionEvent event){
-              System.exit(0);
-          }
-      });
-      returnButton.setOnAction(new EventHandler<ActionEvent>(){
-          @Override
-          public void handle(ActionEvent event){
-              option1layout.getChildren().clear();
-              primaryStage.setScene(mainScreen);
-              primaryStage.show();
-          }
-      });
-      submitButton.setOnAction(new EventHandler<ActionEvent>(){
-         @Override
-         public void handle(ActionEvent event){
-             String strID = instructorIDField.getText();
-             if(strID.matches("\\d{4}")){
-             try {
-                 File instructorFile = new File("C:\\Users\\library.guest\\Downloads\\instructor.txt");
-                 Scanner instructorDatabase = new Scanner(instructorFile);
-                 File instructorFileSize = new File("C:\\Users\\library.guest\\Downloads\\instructor.txt");
-                 Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
-                 
-                 File departmentFile = new File("C:\\Users\\library.guest\\Downloads\\department.txt");
-                 Scanner departmentDatabase = new Scanner(departmentFile);
-                 File departmentFileSize = new File("C:\\Users\\library.guest\\Downloads\\epartment.txt");
-                 Scanner departmentDatabaseSize = new Scanner(departmentFile);
-                 
-                 int ID = Integer.parseInt(strID);
-
-                 int arrOfDeptSize = 0;
-                 while (departmentDatabaseSize.hasNextLine()) {
-                     arrOfDeptSize++;
-                     departmentDatabaseSize.nextLine();
-                 }
-                 for (int j = 0; j < arrOfDeptSize; j++) {
-                     String line = departmentDatabase.nextLine();
-                     String[] deptField = line.split(",");
-                     departmentName.add(deptField[0]);
-                     departmentLocation.add(deptField[1]);
-                     departmentFund.add(Integer.parseInt(deptField[2].trim()));
-                 }
-                 
-                 ArrayList<Integer> instructorID = new ArrayList<Integer>();
-                 ArrayList<String> instructorName = new ArrayList<String>();
-                 ArrayList<String> instructorDepartment = new ArrayList<String>();
-                 ArrayList<String> instructorLocation = new ArrayList<String>();
-                 
-                 int arrOfInstSize = 0;
-                 while (instructorDatabaseSize.hasNextLine()) {
-                     arrOfInstSize++;
-                     instructorDatabaseSize.nextLine();
-                 }
-                 for (int j = 0; j < arrOfInstSize; j++) {
-                     String line = instructorDatabase.nextLine();
-                     String[] instrucField = line.split(",");
-                     instructorID.add(Integer.parseInt(instrucField[0].trim()));
-                     instructorName.add(instrucField[1]);
-                     instructorDepartment.add(instrucField[2]);
-                     for (int a = 0; a < arrOfDeptSize; a++) {
-                         if (instructorDepartment.get(j).equals(departmentName.get(a))) {
-                             instructorLocation.add(j, departmentLocation.get(a));
-                         }
-                     }
-                 }
-                 boolean option1flag = false;
-                 for(int i = 0; i < arrOfInstSize;i++){
-                     if(instructorID.get(i) == ID){
-                         option1InstructorName = new Label(instructorName.get(i));
-                         option1InstructorDepartment = new Label(instructorDepartment.get(i));
-                         option1InstructorLocation = new Label(instructorLocation.get(i));
-                         option1layout.getChildren().add(option1InstructorName);
-                         option1layout.getChildren().add(option1InstructorDepartment);
-                         option1layout.getChildren().add(option1InstructorLocation);
-                         option1layout.getChildren().remove(submitButton);
-                         option1layout.getChildren().remove(option1label);
-                         option1layout.getChildren().remove(instructorIDField);
-                         option1flag = true;
-                     }
-                 }
-                 if(option1flag = false){
-                     option1layout.getChildren().remove(option1label);
-                     option1layout.getChildren().remove(submitButton);
-                     option1layout.getChildren().remove(instructorIDField);
-                     error1 = new Label("The ID does not exist in the file");
-                     option1layout.getChildren().add(error1);
-                 }
-                 
-             } catch (FileNotFoundException ex) {
-                 Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
-             } 
-           }else{
-                 error1 = new Label("Invalid input");
-                 option1layout.getChildren().add(error1);
-                 option1layout.getChildren().remove(submitButton);
+      button1.setOnAction((ActionEvent event) -> {
+          primaryStage.setScene(optionScreen);
+          option1layout.getChildren().add(returnButton);
+          option1layout.getChildren().add(submitButtonOption1);
+          option1layout.getChildren().add(instructorIDField);
+          option1layout.getChildren().add(option1label);
+    });
+      button2.setOnAction((ActionEvent event) -> {
+          primaryStage.setScene(optionScreen);
+          option1layout.getChildren().add(returnButton);
+    });
+      button3.setOnAction((ActionEvent event) -> {
+          System.exit(0);
+    });
+      returnButton.setOnAction((ActionEvent event) -> {
+          option1layout.getChildren().clear();
+          primaryStage.setScene(mainScreen);
+          primaryStage.show();
+    });
+      submitButtonOption1.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            String strID = instructorIDField.getText();
+            if(strID.matches("\\d{4}")){
+                try {
+                    File instructorFile = new File("C:\\Users\\library.guest\\Downloads\\instructor.txt");
+                    Scanner instructorDatabase = new Scanner(instructorFile);
+                    File instructorFileSize = new File("C:\\Users\\library.guest\\Downloads\\instructor.txt");
+                    Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
+                    
+                    File departmentFile = new File("C:\\Users\\library.guest\\Downloads\\department.txt");
+                    Scanner departmentDatabase = new Scanner(departmentFile);
+                    File departmentFileSize = new File("C:\\Users\\library.guest\\Downloads\\epartment.txt");
+                    Scanner departmentDatabaseSize = new Scanner(departmentFile);
+                    
+                    int ID = Integer.parseInt(strID);
+                    
+                    int arrOfDeptSize = 0;
+                    while (departmentDatabaseSize.hasNextLine()) {
+                        arrOfDeptSize++;
+                        departmentDatabaseSize.nextLine();
+                    }
+                    for (int j = 0; j < arrOfDeptSize; j++) {
+                        String line = departmentDatabase.nextLine();
+                        String[] deptField = line.split(",");
+                        departmentName.add(deptField[0]);
+                        departmentLocation.add(deptField[1]);
+                        departmentFund.add(Integer.parseInt(deptField[2].trim()));
+                    }
+                    
+                    ArrayList<Integer> instructorID = new ArrayList<>();
+                    ArrayList<String> instructorName = new ArrayList<>();
+                    ArrayList<String> instructorDepartment = new ArrayList<>();
+                    ArrayList<String> instructorLocation = new ArrayList<>();
+                    
+                    int arrOfInstSize = 0;
+                    while (instructorDatabaseSize.hasNextLine()) {
+                        arrOfInstSize++;
+                        instructorDatabaseSize.nextLine();
+                    }
+                    for (int j = 0; j < arrOfInstSize; j++) {
+                        String line = instructorDatabase.nextLine();
+                        String[] instrucField = line.split(",");
+                        instructorID.add(Integer.parseInt(instrucField[0].trim()));
+                        instructorName.add(instrucField[1]);
+                        instructorDepartment.add(instrucField[2]);
+                        for (int a = 0; a < arrOfDeptSize; a++) {
+                            if (instructorDepartment.get(j).equals(departmentName.get(a))) {
+                                instructorLocation.add(j, departmentLocation.get(a));
+                            }
+                        }
+                    }
+                    boolean option1flag = false;
+                    for(int i = 0; i < arrOfInstSize;i++){
+                        if(instructorID.get(i) == ID){
+                            option1InstructorName = new Label("Instructor Name: " + instructorName.get(i));
+                            option1InstructorDepartment = new Label("Instructor Department: " + instructorDepartment.get(i));
+                            option1InstructorLocation = new Label("Department Location: " + instructorLocation.get(i));
+                            option1InstructorName.setTranslateX(0);
+                            option1InstructorName.setTranslateY(-50);
+                            option1InstructorDepartment.setTranslateX(0);
+                            option1InstructorDepartment.setTranslateY(-25);
+                            option1InstructorLocation.setTranslateX(0);
+                            option1InstructorLocation.setTranslateY(0);
+                            removeButtons();
+                            option1layout.getChildren().add(option1InstructorName);
+                            option1layout.getChildren().add(option1InstructorDepartment);
+                            option1layout.getChildren().add(option1InstructorLocation);
+                            option1flag = true;
+                            clearTextField();
+                        }
+                    }
+                    if(option1flag == false){
+                        removeButtons();
+                        error1 = new Label("The ID does not exist in the file. Please try another ID.");
+                        option1layout.getChildren().add(error1);
+                        clearTextField();
+                        
+                    }
+                    
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                error1 = new Label("Invalid input. Please press the go back button and try again.");
+                option1layout.getChildren().add(error1);
+                removeButtons();
+                clearTextField();
+            }
+        }
+    });
+  }
+  public void removeButtons(){
+                 option1layout.getChildren().remove(submitButtonOption1);
                  option1layout.getChildren().remove(option1label);
                  option1layout.getChildren().remove(instructorIDField);
-             }
-        }
-      });
+      }
+  public void clearTextField(){
+      instructorIDField.setText(null);
   }
-
 }
 /*
         userOption = userInput.nextInt();
@@ -334,17 +331,4 @@ public class JavaApplication1 extends Application{
                     }
                     output.print("\n"+option2IDUserInput+","+option2NameUserInput+","+option2DeptUserInput);
                     output.close();
-                }
-                break;
-            case 3:
-                System.out.println();
-                System.out.println("Exited.");
-                System.out.println();
-                break;
-            default:
-                System.out.println();
-                System.out.println("Please enter a valid input.");
-                break;
-        }
-    }
-  }*/
+*/
