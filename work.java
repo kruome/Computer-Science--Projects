@@ -189,14 +189,14 @@ public class JavaApplication1 extends Application {
             } else {
                 if (strID.matches("\\d{4}")) {
                     try {
-                        File instructorFile = new File("\\\\tsclient\\kdorji01\\instructor.txt");
+                        File instructorFile = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
                         Scanner instructorDatabase = new Scanner(instructorFile);
-                        File instructorFileSize = new File("\\\\tsclient\\kdorji01\\instructor.txt");
+                        File instructorFileSize = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
                         Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
 
-                        File departmentFile = new File("\\\\tsclient\\kdorji01\\department.txt");
+                        File departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
                         Scanner departmentDatabase = new Scanner(departmentFile);
-                        File departmentFileSize = new File("\\\\tsclient\\kdorji01\\department.txt");
+                        File departmentFileSize = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
                         Scanner departmentDatabaseSize = new Scanner(departmentFile);
 
                         int ID = Integer.parseInt(strID);
@@ -288,21 +288,19 @@ public class JavaApplication1 extends Application {
                 } else {
                     boolean continueFlag = true;
                     
-                    File instructorFile = new File("\\\\tsclient\\kdorji01\\instructor.txt");
+                    File instructorFile = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
                     Scanner instructorDatabase = new Scanner(instructorFile);
-                    File instructorFileSize = new File("\\\\tsclient\\kdorji01\\instructor.txt");
+                    File instructorFileSize = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
                     Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
 
-                    File departmentFile = new File("\\\\tsclient\\kdorji01\\department.txt");
+                    File departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
                     Scanner departmentDatabase = new Scanner(departmentFile);
-                    File departmentFileSize = new File("\\\\tsclient\\kdorji01\\department.txt");
+                    File departmentFileSize = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
                     Scanner departmentDatabaseSize = new Scanner(departmentFile);
                     
                     FileWriter fw = new FileWriter(instructorFile, true);
                     PrintWriter output = new PrintWriter(fw);
-
-                    int ID = Integer.parseInt(strID);
-
+                    
                     int arrOfDeptSize = 0;
                     while (departmentDatabaseSize.hasNextLine()) {
                         arrOfDeptSize++;
@@ -326,8 +324,12 @@ public class JavaApplication1 extends Application {
                         arrOfInstSize++;
                         instructorDatabaseSize.nextLine();
                     }
+                    departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
+                    departmentDatabase = new Scanner(departmentFile);
+                    
                     for (int j = 0; j < arrOfInstSize; j++) {
                         String line = instructorDatabase.nextLine();
+                        System.out.print(line);
                         String[] instrucField = line.split(",");
                         instructorID.add(Integer.parseInt(instrucField[0].trim()));
                         instructorName.add(instrucField[1]);
@@ -388,9 +390,9 @@ public class JavaApplication1 extends Application {
                                         arrOfInstSize++;
                                         for (int a = 0; a < arrOfDeptSize; a++) {
                                             if (strDept.equals(departmentName.get(a))) {
-                                                instructorID.add(Integer.parseInt(strDept));
+                                                instructorID.add(Integer.parseInt(strID));
                                                 instructorDepartment.add(strDept);
-                                                instructorName.add(strDept);
+                                                instructorName.add(strName);
                                                 switch (strDept) {
                                                     case "MATH":
                                                         instructorLocation.add("RLC");
@@ -407,6 +409,13 @@ public class JavaApplication1 extends Application {
                                         output.print("\n" + Integer.parseInt(strID) + "," + strName + "," + strDept);
                                         output.flush();
                                         output.close();
+                                        Label alertWindow = new Label("The new instructor has been added.");
+                                        errorlayout.getChildren().add(alertWindow);
+                                        error1.setTranslateX(0);
+                                        error1.setTranslateY(-50);
+                                        errorlayout.getChildren().add(returnButton);
+                                        primaryStage.setScene(errorScreen);
+                                        primaryStage.show();
                                     }
                                 }
                             }else{
