@@ -1,0 +1,25 @@
+MATH 351			Fall, 2021			Optional Homework
+
+This is due on the last day of class. Feel free to display your programming skills. It is totally optional. You can use it to replace any homework or lab assignment. If you submit it, you have to tell me what homework or lab assignment you are replacing at the top of the page. Do the work in MATLAB and submit it. You can print out a diary or a pdf of the work you did in the command window. You must answer the questions.
+
+Use the table BabyInfo for this assignment. Remember that this is a table and so you have to treat it as such. 
+
+Question 1:
+
+Researchers believe that more than 50% of pregnant women smoke cigarettes. A random sample of 42 women who just gave birth is selected and information about them is in the table BabyInfo.  
+
+State the null and alternative hypotheses.
+
+At the 5% level of significance, do the data provide sufficient evidence to conclude, on average, that more than 50% of pregnant women smoke cigarettes?
+
+Be specific about the observed test statistic and its relationship to the critical value. Make sure that you answer the question.
+
+Question 2:  
+
+Researchers claim that babies born to women who smoke cigarettes have lower birthweights than babies born to women who do not smoke. A random sample of 42 newborns is selected and information about them is in the table BabyInfo.  
+
+State the null and alternative hypotheses.
+
+At the 1% level of significance, do the data provide sufficient evidence to conclude, on average, that the average birth weight of babies born to mothers who smoke is lower than average birth weight of babies born to mothers who do not smoke?
+
+Be specific about the observed test statistic and its relationship to the critical value. Make sure that you answer the question.
