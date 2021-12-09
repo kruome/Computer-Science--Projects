@@ -189,14 +189,14 @@ public class JavaApplication1 extends Application {
             } else {
                 if (strID.matches("\\d{4}")) {
                     try {
-                        File instructorFile = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
+                        File instructorFile = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
                         Scanner instructorDatabase = new Scanner(instructorFile);
-                        File instructorFileSize = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
+                        File instructorFileSize = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
                         Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
 
-                        File departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
+                        File departmentFile = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
                         Scanner departmentDatabase = new Scanner(departmentFile);
-                        File departmentFileSize = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
+                        File departmentFileSize = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
                         Scanner departmentDatabaseSize = new Scanner(departmentFile);
 
                         int ID = Integer.parseInt(strID);
@@ -257,7 +257,7 @@ public class JavaApplication1 extends Application {
                         }
                         if (option1flag == false) {
                             removeButtons();
-                            error1 = new Label("The ID doesnot appear in the file.");
+                            error1 = new Label("The ID does not appear in the file.");
                             option1layout.getChildren().add(error1);
                         }
 
@@ -288,14 +288,14 @@ public class JavaApplication1 extends Application {
                 } else {
                     boolean continueFlag = true;
                     
-                    File instructorFile = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
+                    File instructorFile = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
                     Scanner instructorDatabase = new Scanner(instructorFile);
-                    File instructorFileSize = new File("C:\\Users\\kdorji01\\Downloads\\instructor.txt");
+                    File instructorFileSize = new File("C:\\Users\\kdorji01\\Desktop\\instructor.txt");
                     Scanner instructorDatabaseSize = new Scanner(instructorFileSize);
 
-                    File departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
+                    File departmentFile = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
                     Scanner departmentDatabase = new Scanner(departmentFile);
-                    File departmentFileSize = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
+                    File departmentFileSize = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
                     Scanner departmentDatabaseSize = new Scanner(departmentFile);
                     
                     FileWriter fw = new FileWriter(instructorFile, true);
@@ -324,12 +324,11 @@ public class JavaApplication1 extends Application {
                         arrOfInstSize++;
                         instructorDatabaseSize.nextLine();
                     }
-                    departmentFile = new File("C:\\Users\\kdorji01\\Downloads\\department.txt");
+                    departmentFile = new File("C:\\Users\\kdorji01\\Desktop\\department.txt");
                     departmentDatabase = new Scanner(departmentFile);
                     
                     for (int j = 0; j < arrOfInstSize; j++) {
                         String line = instructorDatabase.nextLine();
-                        System.out.print(line);
                         String[] instrucField = line.split(",");
                         instructorID.add(Integer.parseInt(instrucField[0].trim()));
                         instructorName.add(instrucField[1]);
@@ -375,7 +374,7 @@ public class JavaApplication1 extends Application {
                                     primaryStage.show();
                                 }else{
                                     boolean option2DeptFlag = false;
-                                    if (strDept.matches("[A-Z]{4}") || strDept.matches("[A-Z]{3}")) {
+                                    if (strDept.toUpperCase().matches("CMPT") || strDept.toUpperCase().matches("BIO") || strDept.toUpperCase().matches("MATH") ) {
                                         option2DeptFlag = true;
                                     }else{
                                         error1 = new Label("Invalid department format.");
@@ -386,6 +385,7 @@ public class JavaApplication1 extends Application {
                                         primaryStage.setScene(errorScreen);
                                         primaryStage.show();
                                     }
+                                    strDept = strDept.toUpperCase();
                                     if(option2DeptFlag == true){
                                         arrOfInstSize++;
                                         for (int a = 0; a < arrOfDeptSize; a++) {
