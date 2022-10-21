@@ -5,21 +5,22 @@ binarysearch (int arr[], int left, int right)
 {
 
   if (right >= left)
-    C
+
     {
 
-      TT int mid = left + (right - left) / 2;
-      C if (arr[mid] < arr[mid - 1])
+      int mid = left + (right - left) / 2;
+      if (arr[mid] < arr[mid - 1])
 	{
-	  C return binarysearch (arr, left, mid - 1);
-	T (n / 2)}
+	  return binarysearch (arr, left, mid - 1);
+	}
       else if (arr[mid] < arr[mid + 1])
-	C return binarysearch (arr, mid + 1, right);
-      T (n / 2) Else C return mid;
-    C}
+	return binarysearch (arr, mid + 1, right);
+      else
+	return mid;
+    }
 
   return 1;
-C}
+}
 
 
 int
